@@ -1,6 +1,12 @@
 # Constellation Network 
 The user can create one or more constellation networks by specify the desired intent for the networks and their leaf modules.
 
+# Prerequisite
+1. The "infinera.com/poc/ipm" provider
+    a. Build it. Please down load and build the provider https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse
+    b. Available in accessible repository. 
+2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
 # Create and Update Constellation Network From the Intent 
 ## Example of The Creating Network with two leaf modules
 ```
@@ -35,7 +41,7 @@ provider "ipm" {
 }
 
 module "network" {
-  source                   = "git::ssh://bitbucket.infinera.com:7999/mar/terraform-ipm-modules.git//use-cases/ns/network"
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//use-cases/ns/network"
   <b>networks</b>                 = var.networks 
   <b>leaf_modules</b>             = var.leaf_modules
 }
@@ -387,3 +393,91 @@ To override the Module configuration profile setting, the user can
   leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2", <b>config = {traffic_mode = "L1Mode"}}</b>],
                  "XR Network2" = [{name = "PORT_MODE_LEAF3"}, {leaf_name = "PORT_MODE_LEAF4"}, <b>config_profile = "leaf_profile2"</b></b>]}
   </pre>
+
+## Define and Use the User Define Profiles
+The Constellation Network's profiles are system defined profiles which can be extending by the additional user defined profiles. The following steps are required to customize the network profiles.
+### Define the user defined profile files
+ Create a profile "xxx_profiles.json" file to specified to the three user define profiles: network profile, network config profile and module config profile based on the specified format show below
+```
+ variable network_profiles {
+  type = map(object({network_config_profile = optional(string), hub_config_profile: optional(string), leaf_config_profile: optional(string)}))
+}
+
+variable network_config_profiles {
+    type = map(object({constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)}))
+    description = "Map of Network Config profile"
+    default =  {"network_config_profile1": { constellation_frequency: 194000000, modulation: "16QAM"}, 
+                "network_config_profile2": { constellation_frequency: 194000000, modulation: "QPSK"}}
+}
+
+variable module_config_profiles {
+    type = map(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))
+    description = "Map of hub and leaf config profiles"
+}
+```
+
+**Example of xxx_profiles.json content**
+```
+network_profiles = {
+    "user_defined_network_profile1" = { network_config_profile: "user_defined_network_config_profile1", hub_config_profile: "user_defined_hub_profile1", leaf_config_profile:"user_defined_leaf_profile1"}
+  }
+
+network_config_profiles =  {"user_defined_network_config_profile1": { constellation_frequency: 194000000, modulation: "16QAM"}, 
+                            "user_defined_network_config_profile2": { constellation_frequency: 194000000, modulation: "QPSK"}
+}
+
+module_config_profiles = { 
+  "user_defined_hub_profile1" = {traffic_mode: "VTIMode",fiber_connection_mode: "dual", tx_power_target_per_dsc: -0.3},
+  "user_defined_hub_profile2" = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.3},
+  "user_defined_leaf_profile1" = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.3}
+  "user_defined_leaf_profile2" = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.3}
+}
+```
+
+**Example of input network.tfvars file**
+```
+networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile = "user_defined_network_profile1"</b>}]
+
+leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF1", config_profile = "user_defined_leaf_profile1"} ]}
+```
+
+## Export TF_Profile_Path Environment Variable
+```
+export TF_Profile_Path=directory/xxx_profiles.json
+```
+### To View The Support Profile
+1. Define the profile file and export its path via TF_Profile_Path.
+2. View the support profiles, run terraform init then terraform apply the tf file
+```
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera.com/poc/ipm"
+    }
+  }
+}
+
+provider "ipm" {
+  username = "xxx"
+  password = "yyy"
+  host     = "abc"
+}
+
+module "ns_profiles" {
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/profiles/ns_profiles"
+}
+
+output "network_profiles" {
+  value = module.profiles.network_profiles
+}
+
+output "network_config_profiles" {
+  value = module.profiles.network_config_profiles
+}
+
+output "module_config_profiles" {
+  value = module.profiles.module_config_profiles
+}
+```
+
+
