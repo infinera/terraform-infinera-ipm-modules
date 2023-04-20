@@ -6,13 +6,6 @@ terraform {
   }
 }
 
-
-/*provider "ipm" {
-  username = "xr-user-1"
-  password = "xr"
-  host     = "https://pt-xrivk824-dv"
-}*/
-
 // Constellation Network Resource supports CRUD functions
 resource "ipm_network" "constellation_networks" {
   for_each = { for network in var.networks : network.name => network }

@@ -6,13 +6,6 @@ terraform {
   }
 }
 
-
-/*provider "ipm" {
-  username = "xr-user-1"
-  password = "xr"
-  host     = "https://pt-xrivk824-dv"
-}*/
-
 // Constellation Network's leaf module supports CRUD functions
 resource "ipm_leaf_module" "leaf_modules" {
   for_each   = { for module in var.leaf_modules : module.name => module }
