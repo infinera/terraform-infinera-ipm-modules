@@ -6,6 +6,15 @@ terraform {
   }
 }
 
+locals {
+    # get json profile
+    data = jsondecode(file("${path.module}/profiles.json"))
+
+}
+output "data" {
+  value = local.data
+}
+
 // type = map(object({network_config_profile = optional(string), hub_config_profile: optional(string), leaf_config_profile: optional(string)}))
 output "network_profiles" {
   value = {

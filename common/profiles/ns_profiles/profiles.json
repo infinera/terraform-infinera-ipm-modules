@@ -1,0 +1,17 @@
+{
+  "network_profiles" : {
+      "network_profile1" : { "network_config_profile": "network_config_profile1", "hub_config_profile": "hub_profile1", "leaf_config_profile":"leaf_profile1"}, 
+      "network_profile2" : { "network_config_profile": "network_config_profile2", "hub_config_profile": "hub_profile2", "leaf_config_profile":"leaf_profile2"}
+  },
+    
+  "network_config_profiles" : {
+    "network_config_profile1": { "constellation_frequency": 194000000, "modulation": "16QAM"}, 
+    "network_config_profile2": { "constellation_frequency": 194000000, "modulation": "QPSK"}
+  },
+  "module_config_profiles" : { 
+    "hub_profile1" : {"traffic_mode": "L1Mode","fiber_connection_mode": "dual"},
+    "hub_profile2" : {"traffic_mode": "L1Mode","fiber_connection_mode": "single"},
+    "leaf_profile1" : {"traffic_mode": "L1Mode","fiber_connection_mode": "single"},
+    "leaf_profile2" : {"traffic_mode": "L1Mode","fiber_connection_mode": "single"}
+  }
+}
