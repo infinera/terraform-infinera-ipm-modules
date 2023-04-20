@@ -441,12 +441,12 @@ networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile
 leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF1", config_profile = "user_defined_leaf_profile1"} ]}
 ```
 
-## Export TF_Profile_Path Environment Variable
+## Export TF_VAR_Profile_Path Environment Variable
 ```
-export TF_Profile_Path=directory/xxx_profiles.json
+export TF_VAR_Profile_Path=directory/xxx_profiles.json
 ```
 ### To View The Support Profile
-1. Define the profile file and export its path via TF_Profile_Path.
+1. Define the profile file and export its path via TF_VAR_Profile_Path.
 2. View the support profiles, run terraform init then terraform apply the tf file
 ```
 terraform {
