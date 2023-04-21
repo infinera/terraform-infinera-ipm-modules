@@ -6,12 +6,6 @@ terraform {
   }
 }
 
-provider "ipm" {
-  username = "xr-user-1"
-  password = "xr"
-  host     = "https://pt-xrivk824-dv"
-}
-
 locals {
   networkMap = { for network in var.networks : network.name => network.id }
 }

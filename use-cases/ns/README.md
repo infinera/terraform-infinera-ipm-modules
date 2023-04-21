@@ -6,6 +6,7 @@ The user can create one or more constellation networks by specify the desired in
     a. Build it. Please down load and build the provider https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse
     b. Available in accessible repository. 
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+3. The user defined profiles.json is available in the TF root directory (where the command "terraform apply" is executed)
 
 # Create and Update Constellation Network From the Intent 
 ## Example of The Creating Network with two leaf modules
@@ -396,8 +397,8 @@ To override the Module configuration profile setting, the user can
 
 ## Define and Use the User Define Profiles
 The Constellation Network's profiles are system defined profiles which can be extending by the additional user defined profiles. The following steps are required to customize the network profiles.
-### Define the user defined profile files
- Create a profile "xxx_profiles.json" file to specified to the three user define profiles: network profile, network config profile and module config profile based on the specified format show below
+### Define the user defined profile "${path.root}/profiles.json" file
+ Create a profile "profiles.json" file at TF root directory to specified to the three user define profiles: network profile, network config profile and module config profile. When terraform apply command is executed on any IPM user case ns modules, the user defined profiles in the "${path.root}/profiles.json"shall be merged with the system defined network profiles.  Below are the specified formats for the user defined profiles.
 ```
  variable network_profiles {
   type = map(object({network_config_profile = optional(string), hub_config_profile: optional(string), leaf_config_profile: optional(string)}))
@@ -416,7 +417,7 @@ variable module_config_profiles {
 }
 ```
 
-**Example of xxx_profiles.json content**
+**Example of ${path.root}/profiles.json content**
 ```
 network_profiles = {
     "user_defined_network_profile1" = { network_config_profile: "user_defined_network_config_profile1", hub_config_profile: "user_defined_hub_profile1", leaf_config_profile:"user_defined_leaf_profile1"}
@@ -441,13 +442,8 @@ networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile
 leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF1", config_profile = "user_defined_leaf_profile1"} ]}
 ```
 
-## Export TF_VAR_Profile_Path Environment Variable
-```
-export TF_VAR_Profile_Path=directory/xxx_profiles.json
-```
-### To View The Support Profile
-1. Define the profile file and export its path via TF_VAR_Profile_Path.
-2. View the support profiles, run terraform init then terraform apply the tf file
+### To View The Existing Network Profiles
+1. Create the following TF file in directory XXX
 ```
 terraform {
   required_providers {
@@ -479,5 +475,9 @@ output "module_config_profiles" {
   value = module.profiles.module_config_profiles
 }
 ```
+2. Add or create user defined profile "profile.json" file in the "XXX" directory.
+3. To View the support profiles then execute
+   1. terraform init 
+   2. terraform apply
 
 
