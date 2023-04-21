@@ -12,11 +12,11 @@ locals {
 
 module "ns_profiles"  {
   source   = "../../profiles/ns_profiles"
-
 }
 
 module "network_only_by_module_name" {
   source                   = "../../tasks/network_only_by_module_name"
+  depends_on               = [module.ns_profiles]
   networks                 = var.networks
   network_profiles         = module.ns_profiles.network_profiles
   network_config_profiles  = module.ns_profiles.network_config_profiles

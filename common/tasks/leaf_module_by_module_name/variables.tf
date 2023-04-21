@@ -19,10 +19,4 @@ variable leaf_modules {
 variable module_config_profiles {
   type = map(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))
   description = "Map of modules' config profiles"
-  default = { 
-    "hub_profile1" = {traffic_mode: "VTIMode",fiber_connection_mode: "dual"},
-    "hub_profile2" = {traffic_mode: "L1Mode",fiber_connection_mode: "single"},
-    "leaf_profile1" = {traffic_mode: "L1Mode",fiber_connection_mode: "single"}
-    "leaf_profile2" = {traffic_mode: "L1Mode",fiber_connection_mode: "single"}
-  }
 }
