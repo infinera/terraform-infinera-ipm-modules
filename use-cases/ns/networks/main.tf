@@ -12,3 +12,8 @@ module "network_by_module_name" {
   leaf_modules             = var.leaf_modules
 }
 
+locals {
+  networks = [for k, v in module.network_by_module_name.constellation_networks : {"Constellation Network" = v, "leaf_modules" = module.network_by_module_name.network_leaf_modules[k]}]
+}
+
+
