@@ -29,9 +29,9 @@ terraform {
 }
 
 provider "ipm" {
-  username = "xxx"
-  password = "yyy"
-  host     = "abc"
+  username = var.ipm_user
+  password = var.ipm_password
+  host     = var.ipm_host
 }
 
 module "network" {
