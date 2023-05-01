@@ -13,3 +13,16 @@ variable networks {
   //[{name= "XR Network2", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1", config={modulation: "16QAM"}, hub_config = {traffic_mode = "VTIMode"}, leaf_modules=[{name = "PORT_MODE_LEAF3"}, {name = "PORT_MODE_LEAF4",config={traffic_mode: "VTIMode"}}]}]
              //,{name= "XR Network2", hub_name = "VTI_MODE_HUB", network_profile = "network_profile2"}]
 }
+
+variable "ipm_user" {
+  type = string
+}
+
+variable "ipm_password" {
+  type = string
+  sensitive = true
+}
+
+variable "ipm_host" {
+  type = string
+}

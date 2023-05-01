@@ -6,22 +6,21 @@ The user can create one or more constellation networks by specify the desired in
     a. Build it. Please down load and build the provider https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse
     b. Available in accessible repository. 
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-3. The user defined profiles.json is available in the TF root directory (where the command "terraform apply" is executed)
+3. IPM server credentials: Define the following environment variables: TF_VAR_ipm_user, TF_VAR_ipm_password, and TF_VAR_ipm_host. 
+4. The user defined profiles.json is available in the TF root directory (where the command "terraform apply" is executed)
 
 # Create and Update Constellation Network From the Intent 
-## Example of The Creating Network with two leaf modules
+## Example of The Creating Network no leaf modules
 ```
-XR Network1  (hub=PORT_MODE_HUB)-------------|-----> leaf 1 = PORT_MODE_LEAF1
-                                             |
-                                             |-----> leaf2 = PORT_MODE_LEAF2
+XR Network1  (hub=PORT_MODE_HUB)
 ```
 Create a new directory for network service terraform test. This directory contains two terraform files: main.tf, variables.tf and the intent network.tfvars.
 ## The intent - network.tfvars
 Please see sample intent files in <b>bitbucket.infinera.com:7999/mar/terraform-ipm-modules.git//use-cases/ns/input-data</b> directory
 ```
-networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile</b> = "network_profile1"}]
-
-leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}]}
+networks = [{name= "XR Network1", 
+             hub_name = "PORT_MODE_HUB", 
+             network_profile = "network_profile1"}] 
 ```
 
 ## The TF files
@@ -36,42 +35,68 @@ terraform {
 }
 
 provider "ipm" {
-  username = "xxx"
-  password = "yyy"
-  host     = "abc"
+  username = var.ipm_user     // TF_VAR_ipm_user
+  password = var.ipm_password // TF_VAR_ipm_password
+  host     = var.ipm_host     // TF_VAR_ipm_host
 }
 
 module "network" {
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//use-cases/ns/network"
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/workflows/network_by_module_name"
   <b>networks</b>                 = var.networks 
-  <b>leaf_modules</b>             = var.leaf_modules
 }
 ```
 
 ### variables.tf
 ```
 variable networks {
-  type = list(object({name= optional(string), hub_name = optional(string), network_profile = optional(string), config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)})), hub_config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))}))
+  type = list(object({name= optional(string), 
+                      hub_name = optional(string), 
+                      network_profile = optional(string), 
+                      config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)})), 
+                      hub_config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)})), 
+                      leaf_modules = optional(list(object({name: string, 
+                                                  config_profile = optional(string), 
+                                                  config: optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))}))
   description = "List of constellation Network"
-  default = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1", config={modulation: "16QAM"}, hub_config = {traffic_mode = "VTIMode"}}]
-             //,{name= "XR Network2", hub_name = "VTI_MODE_HUB", network_profile = "network_profile2"}]
 }
 
-variable leaf_modules {
-  type = map(list(object({name: string, config_profile = optional(string), config: optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))
-  description = "Leaf modules for specified network name "
-  default = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2",config={traffic_mode: "VTIMode"}}],
-             "XR Network2" = [{name = "PORT_MODE_LEAF3"}, {name = "PORT_MODE_LEAF4"}]}
+variable "ipm_user" {
+  type = string
+}
+
+variable "ipm_password" {
+  type = string
+  sensitive = true
+}
+
+variable "ipm_host" {
+  type = string
 }
 ```
 
-## Create New XR Network
+## Steps
 Go to the main.tf file's directory and execute the following commands
 1. terraform init
 2. terraform apply -var-file=xxx/network.tfvars
-   The network "XR Network1" with hub "PORT_MODE_HUB" and leaf modules : "PORT_MODE_LEAF1" and"PORT_MODE_LEAF2" shall be created.
+   The network "XR Network1" with hub "PORT_MODE_HUB" shall be created.
 
-## Add New Leaf Module to the just Created XR Network
+## Add New Leaf Modules to the just Created XR Network
+```
+XR Network1  (hub=PORT_MODE_HUB)-------------|-----> leaf 1 = PORT_MODE_LEAF1
+
+```
+In the same directory, follow these steps
+1. Update the intent file **network.tfvars** to add new leaf modules
+```
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1", 
+               leaf_modules =[{name = "PORT_MODE_LEAF1"}]}]    // leaf 1
+```
+2. execute commands **terraform apply -var-file=xxx/network.tfvars** 
+   Three leaf modules are added to the network "XR Network1".
+
+## Add Two Additional Leaf Modules to the XR Network "XR Network1"
 ```
 XR Network1  (hub=PORT_MODE_HUB)-------------|-----> leaf 1 = PORT_MODE_LEAF1
                                              |
@@ -81,109 +106,113 @@ XR Network1  (hub=PORT_MODE_HUB)-------------|-----> leaf 1 = PORT_MODE_LEAF1
 ```
 In the same directory, follow these steps
 1. Update the intent file **network.tfvars** to add new leaf module
-
 ```
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1"}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}, {name = "PORT_MODE_LEAF3"}]}
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1", 
+               leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, // leaf 1
+                               {name = "PORT_MODE_LEAF2"},                  // leaf 2
+                               {name = "PORT_MODE_LEAF3"}]}}]               // leaf 3
 ```
 2. execute commands **terraform apply -var-file=xxx/network.tfvars** 
    Leaf module "PORT_MODE_LEAF3" is added to the network "XR Network1".
 
-## Remove Leaf Module From The Created XR Network
+## Remove Leaf Modules From The Created XR Network
 ```
 XR Network1  (hub=PORT_MODE_HUB)-------------|-----> leaf 1 = PORT_MODE_LEAF1
 ```
 In the same directory, follow these steps
 1. Update the intent file **network.tfvars** to remove two leaf modules ""PORT_MODE_LEAF2" and "PORT_MODE_LEAF3".
 ```
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1"}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}]}
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1", 
+              leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}]}}]
 ```
 2. execute commands **terraform apply -var-file=xxx/network.tfvars** 
    Both Leaf module2 "PORT_MODE_LEAF2" and "PORT_MODE_LEAF3" are deleted from the network "XR Network1".
 
-## Update The Configuration of the Created XR Network, its Hub and Leaf Modules
-The network configuration, its hub and leaf configuration are configured by the **network profile"** settings. The **network profile** settings shall include the profile specifications for the network configurations, its hub module configurations and its leaf modules configurations. All the configuration profile's settings can be overridden by specifying the specific configuration settings in the intent. Please see the **Profiles** section for more information.
+**In the network configuration Intent, its hub and leaf configuration are specified by the **network profile"** settings. The **network profile** settings shall include the profile specifications for the network configurations, its hub module configurations and its leafs' modules configurations. All these configuration profile's settings can be overridden by specifying their specific configuration settings in the intent. Please see the **Profiles** section for more information how to override these configuration profiles.**
 
-### Update The Configuration Settings For the XR Network and all its Modules
+## Update The Configuration Settings For the XR Network and all its Modules
 In the same directory, follow these steps
-1. Update the intent file to change the network's configuration.
+1. Update the intent file **"network.tfvars"** to change the network profile to new profile.
   <pre>
-  <b>network.tfvars</b>
-
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile = "network_profile2"</b>}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}]}
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               <b>network_profile = "network_profile2"</b>, 
+               leaf_modules = [{name = "PORT_MODE_LEAF1"}]}]
   </pre>
 2. Execute commands **terraform apply -var-file=network.tfvars**. 
-   This actions will update teh network and its modules configurations based on the setting specifications in the new <b>network profile "network_profile2"</b>
+   This actions will update the network and its modules configurations based on the setting specifications in the new <b>network profile "network_profile2"</b>
 
-### Update The Configuration Settings for the XR Network
+## Update The Configuration Settings for the XR Network Only
 In the same directory, follow these steps
-1. Update the intent file to change the network's configuration.
+1. Update the intent file **network.tfvars** to change the network's configuration only.
   <pre>
-  <b>network.tfvars</b>
-
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1", <b>config={name="aaa"",constellation_frequency= 193000, modulation = "16QAM", managed_by="cm", tc_mode=true}</b>}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}]}
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1", 
+               <b>config={name="aaa"",constellation_frequency= 193000, modulation = "16QAM", managed_by="cm", tc_mode=true}</b>,
+               leaf_modules = [{name = "PORT_MODE_LEAF1"}]}]
   </pre>
 2. execute commands **terraform apply -var-file=network.tfvars** 
-   The network "Network1" configuration shall be updated base on the **config** specifications.
+   The network "Network1" configuration shall be updated using the **config** specifications.
 
-### Update The Configuration Settings for the Hub Module of an XR Network
+## Update The Configuration Settings for the Hub Module of an XR Network
 In the same directory, follow these steps
-1. Update the intent file to override the configuration of the Hub module of a constellation network
+1. Update the intent file **network.tfvars** to override the configuration of the Hub module.
   <pre>
-  <b>network.tfvars</b>
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1", 
+               <b>hub_config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>,
+              leaf_modules = [{name = "PORT_MODE_LEAF1"}]}]
+  </pre>
+1. execute commands **terraform apply -var-file=network.tfvars** 
+   The hub module's configuration of the network "Network1" shall be updated using the **hub_config** specifications.
 
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1", <b>hub_config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}]}
+## Update The Configuration Settings for the Leaf Modules of an XR Network
+In the same directory, follow these steps
+1.  Update the intent file **network.tfvars** to override the configuration of the leaf modules of a constellation network
+  <pre>
+  networks = [{name= "XR Network1", 
+               hub_name = "PORT_MODE_HUB", 
+               network_profile = "network_profile1",
+               leaf_modules = [{name = "PORT_MODE_LEAF1", <b>
+                               config_profile = "leaf_profile2"</b>},
+                               {name = "PORT_MODE_LEAF2", 
+                               <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]}]
   </pre>
 2. execute commands **terraform apply -var-file=network.tfvars** 
-   The hub module's configuration of the network "Network1" shall be updated base on the **hub_config** specifications.
+   1. The leaf module "PORT_MODE_LEAF1" configuration shall be updated using the **config_profile** specifications.
+   2. The leaf module "PORT_MODE_LEAF2" configuration shall be updated using the **config** specifications.
 
-### Update The Configuration Settings for the Leaf Modules of an XR Network
-In the same directory, follow these steps
-1. Update the intent file to override the configuration of the leaf modules of a constellation network
-  <pre>
-  <b>network.tfvars</b>
-
-  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1", <b>hub_config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]
-
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1", <b>config_profile = "leaf_profile2"</b>},
-                                  {name = "PORT_MODE_LEAF2", <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]}
-  </pre>
-2. execute commands **terraform apply -var-file=network.tfvars** 
-   1. The "PORT_MODE_LEAF1" leaf module's configuration of the network "Network1" shall be updated base on the **config_profile** specifications.
-   2. The "PORT_MODE_LEAF2" leaf module's configuration of the network "Network1" shall be updated base on the **config** specifications.
-
-# Constellation Network Intent Definitions
+# Constellation Network Intent
 To create the network the user must specify an intent with the network intent and/or its leaf module intent. The network intent shall include its Hub intent.
 Ideally the user shall specify the network and its module intent only. The profiles are defined for common deployment configuration and they will be reused across many network creation and modification.
-<pre>
-  <b>networks</b> = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1"}]
 
-  <b>leaf_modules</b> = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}, <b>{name = "PORT_MODE_LEAF3"}</b>]}
-</pre>
-
-## The Network and its Hub Module Intent
+## The Network Intent
 The network intent is a array of network specification as shown below. 
 <pre>
-<b>networks</b> = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1"}]
-
 variable networks {
-  <b>type = list(object({name= optional(string), hub_name = optional(string), network_profile = optional(string), config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)})), hub_config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))}))</b>
-  description = "Intent List of constellation Network"
-  default = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile</b> = "network_profile1"},
-             {name= "XR Network2", hub_name = "VTI_MODE_HUB", <b>network_profile</b> = "network_profile2"}]
+  type = list(object({name= optional(string), 
+              hub_name = optional(string), 
+              network_profile = optional(string), 
+              config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)})), 
+              hub_config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)})), 
+              leaf_modules = Optional(list(object({name: string, 
+                                  config_profile = optional(string), 
+                                  config: optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))}))
+    description = "List of constellation Network"
+    default = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", network_profile = "network_profile1",c
+                config={modulation: "16QAM"},
+                hub_config = {traffic_mode = "VTIMode"},
+                leaf_modules=[{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2",config={traffic_mode: "VTIMode"}}]}]
 }
 </pre>
 
-### Network Intent Definition
+## Network Intent Definition
 | Attribute              | Type   | Description                                        |
 |------------------------|--------|----------------------------------------------------|
 | name                   | string | Constellation Network Name                         |
@@ -191,8 +220,9 @@ variable networks {
 | network_profile        | string | Name of the profile for this Network.  Please see profiles section below for more details |
 | config                 | object | This will override the network profile settings    |
 | hub_config             | object | This will override the hub config profile settings |
+| leaf_modules           | List   | List of Leaf module intent                         |
 
-### Network Config Intent Object
+## Network Config Intent Object
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
 | name                    | string | Network Name        |           |                                               |
@@ -202,7 +232,7 @@ variable networks {
 | managed_by              | string | cm, host            | cm        |                                               |
 | tc_mode                 | bool   | true, false         |           |                                               |
 
-### Hub Module Config Intent Object
+## Hub Module Config Intent Object
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
 | name                    | string | Network Name        |           |                                               |
@@ -214,29 +244,14 @@ variable networks {
 | fec_iterations          | string | undefined, standard, turbo |    |                                               |
 | fec_iterations          | number | -3500 to 0          |           |                                               |
 
-## The Network Leaf Modules Intent
-The leaf modules intent is a map of leaf modules's specification to the network name.
-<pre>
- <b>leaf_modules</b> = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}, <b>{name = "PORT_MODE_LEAF3"}</b>]}
+## Leaf Module Intent Definition
+| Attribute  | Type   | Description                                                                       |
+|------------|--------|-----------------------------------------------------------------------------------|
+| name       | string | Leaf module's name                                                       |
+| config_profile | string | This specifies the module config profile which will override the network module config profile settings. Please see profiles section below for more details |
+| config     | object | This config intent has the highest precedent. It will override both the module config_profile's settings and network module config profile settings |
 
-variable leaf_modules {
-  <b>type = map(list(object({name: string, config_profile = optional(string), config: optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))</b>
-  description = "Leaf modules for specified network "
-  default = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, 
-                              {name = "PORT_MODE_LEAF2", 
-                               <b>config = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.2}</b>}],
-             "XR Network2" = [{name = "PORT_MODE_LEAF3"}, {leaf_name = "PORT_MODE_LEAF4", <b>config_profile = "leaf_profile2"</b>}]}
-}
-</pre>
-
-### Leaf Module Intent Definition
-  | Attribute  | Type   | Description                                                                       |
-  |------------|--------|-----------------------------------------------------------------------------------|
-  | name       | string | Leaf module's name                                                       |
-  | config_profile | string | This specifies the module config profile which will override the network module config profile settings. Please see profiles section below for more details |
-  | config     | object | This config intent has the highest precedent. It will override both the module config_profile's settings and network module config profile settings |
-
-### Leaf Module Config Intent Object (same as Hub)
+## Leaf Module Config Intent Object (same as Hub)
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
 | name                    | string | Network Name        |           |                                               |
@@ -391,8 +406,10 @@ To override the Module configuration profile setting, the user can
   <pre>
   // "XR Network1" network's leaf module "PORT_MODE_LEAF2" shall have traffic_mode set to "L1Mode" regardless of the setting in its config profile settings
   // "XR Network1" network's leaf module "PORT_MODE_LEAF1" shall be configured using the configuration specification from config profile "leaf_config_profile2"
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2", <b>config = {traffic_mode = "L1Mode"}}</b>],
-                 "XR Network2" = [{name = "PORT_MODE_LEAF3"}, {leaf_name = "PORT_MODE_LEAF4"}, <b>config_profile = "leaf_profile2"</b></b>]}
+  networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile</b> = "network_profile1", <b>hub_config ={tx_power_target_per_dsc=-2000}</b>,
+               leaf_modules= [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2", <b>config = {traffic_mode = "L1Mode"}}</b>]},
+              {name= "XR Network2", hub_name = "PORT_MODE_HUB", <b>network_profile</b> = "network_profile2",
+               leaf_modules =  [{name = "PORT_MODE_LEAF3"}, {leaf_name = "PORT_MODE_LEAF4"}, <b>config_profile = "leaf_profile2"</b></b>]}]
   </pre>
 
 ## Define and Use the User Define Profiles
@@ -437,9 +454,8 @@ module_config_profiles = {
 
 **Example of input network.tfvars file**
 ```
-networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile = "user_defined_network_profile1"</b>}]
-
-leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF1", config_profile = "user_defined_leaf_profile1"} ]}
+networks = [{name= "XR Network1", hub_name = "PORT_MODE_HUB", <b>network_profile = "user_defined_network_profile1"</b>
+             leaf_modules = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF1", config_profile = "user_defined_leaf_profile1"}]}]
 ```
 
 ### To View The Existing Network Profiles
@@ -454,9 +470,9 @@ terraform {
 }
 
 provider "ipm" {
-  username = "xxx"
-  password = "yyy"
-  host     = "abc"
+  username = var.ipm_user     // TF_VAR_ipm_user
+  password = var.ipm_password // TF_VAR_ipm_password
+  host     = var.ipm_host     // TF_VAR_ipm_host
 }
 
 module "ns_profiles" {
@@ -473,6 +489,18 @@ output "network_config_profiles" {
 
 output "module_config_profiles" {
   value = module.profiles.module_config_profiles
+}
+variable "ipm_user" {
+  type = string
+}
+
+variable "ipm_password" {
+  type = string
+  sensitive = true
+}
+
+variable "ipm_host" {
+  type = string
 }
 ```
 2. Add or create user defined profile "profile.json" file in the "XXX" directory.

@@ -6,10 +6,15 @@ terraform {
   }
 }
 
+provider "ipm" {
+  username = var.ipm_user
+  password = var.ipm_password
+  host     = var.ipm_host
+}
+
 module "network_by_module_name" {
-  source                   = "../../../common/workflows/network_by_module_name"
-  networks                 = var.networks
-  leaf_modules             = var.leaf_modules
+  //source                   = "../../../common/workflows/network_by_module_name"
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git/common/workflows/network_by_module_name"
 }
 
 locals {
