@@ -57,7 +57,7 @@ leaf_modules = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}]
 module_config_profile = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.2}
 ```
 ## Steps
-1. Go to "network_by_module_name" directory 
+1. Go to "network" directory 
 2. Terraform init (as needed)
 3. Terraform apply with the input data. I.E. "terraform plan -var-file=leaf_module.tfvars” -var-file=profiles.tfvars” **(The profiles.tfvars is the system defined global profiles which can be customized by the user)**
 
