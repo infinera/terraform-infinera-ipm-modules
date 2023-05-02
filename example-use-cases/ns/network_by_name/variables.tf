@@ -20,7 +20,7 @@ variable networks {
   default = [{name= "XR Network1", 
              network_profile = "network_profile1", 
              hub_module = { name = "PORT_MODE_HUB", config = {traffic_mode = "VTIMode"}}, 
-             leaf_modules=[{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2",config={traffic_mode: "VTIMode"}}]}]
+             leaf_modules=[{name = "PORT_MODE_LEAF1"},{name = "PORT_MODE_LEAF2"},{name = "PORT_MODE_LEAF3"}]}]
 }
 
 variable "ipm_user" {

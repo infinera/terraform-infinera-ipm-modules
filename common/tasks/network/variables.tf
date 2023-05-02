@@ -11,13 +11,13 @@ variable "networks" {
                             tx_clp_target : optional(string) })) }) 
   }))
   description = "List of constellation Network"
-  default = [{ name = "XR Network1",
+  /*default = [{ name = "XR Network1",
                network_profile = "network_profile1",
                hub_module      = { host_chassis_id = "00:00:00:00:00:01", host_chassis_id_subtype = "macAddress", host_port_id = "00:00:00:00:00:01",
                 host_port_id_subtype = "macAddress", config = { traffic_mode = "VTIMode" } },
                leaf_modules = [{ host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "ipAddress", host_port_id = "192.168.101.1",
                 host_port_id_subtype = "ipAddress"}, { host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent", 
-                host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "chassisComponent", config = { traffic_mode : "VTIMode" } }] }]
+                host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "chassisComponent", config = { traffic_mode : "VTIMode" } }] }]*/
   /*[{ name : "XR Network1", hub_name : "PORT_MODE_HUB", network_profile : "network_profile1",
                config = { modulation = "16QAM" },
                hub_module = { name : "PORT_MODE_HUB" } }]*/

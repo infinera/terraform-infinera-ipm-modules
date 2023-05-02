@@ -23,9 +23,9 @@ variable "networks" {
                                           fec_iterations : optional(string), tx_clp_target : optional(string) })) }))) 
   }))
   description = "List of constellation Network"
-  default = [{ name = "XR Network1",
+  /*default = [{ name = "XR Network1",
     network_profile = "network_profile1",
     config          = { modulation : "16QAM" },
     hub_module      = { name = "PORT_MODE_HUB", config = { traffic_mode = "VTIMode" } },
-  leaf_modules = [{ name = "PORT_MODE_LEAF1" }, { name = "PORT_MODE_LEAF2", config = { traffic_mode : "VTIMode" } }] }]
+  leaf_modules = [{ name = "PORT_MODE_LEAF1" }, { name = "PORT_MODE_LEAF2", config = { traffic_mode : "VTIMode" } }] }]*/
 }

@@ -22,7 +22,7 @@ variable "leaf_modules" {
                                                    planned_capacity : optional(string), requested_nominal_psd_offset : optional(string), 
                                                    fec_iterations : optional(string), tx_clp_target : optional(string) })) }))
   description = "Leaf modules for specified network name "
-  default     = [{ name = "PORT_MODE_LEAF1" }, { name = "PORT_MODE_LEAF2", config = { traffic_mode : "VTIMode" } }]
+  /*default     = [{ name = "PORT_MODE_LEAF1" }, { name = "PORT_MODE_LEAF2", config = { traffic_mode : "VTIMode" } }]*/
 }
 
 variable "module_config_profiles" {
