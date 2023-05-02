@@ -274,13 +274,13 @@ variable "networks" {
 ## Module Identifier Object
 The leaf or hub module is identified by one of 8 identifier groups below. Only one group is need to specified in the intent. I.E. if the group 1 identifier **name** is specified, there is no need to specifyy other group identi
 
-  1. Name
+  1. name
   2. id
   3. mac_address,
   4. serial_number
   5. host_name and  host_port_name
   6. host_chassis_id, host_chassis_subtype, host_port_id and host_id_subtype
-  7. host_port_sys_name, host_port_id and host_id_subtype
+  7. host_sys_name, host_port_id and host_id_subtype
   8. host_port_source_mac
 
 | Attribute               | Type   | Possible Values | Default   | Description                                   |

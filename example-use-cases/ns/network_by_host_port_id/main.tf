@@ -13,8 +13,8 @@ provider "ipm" {
 }
 
 module "network" {
-  //source                   = "../../../common/workflows/network"
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/workflows/network"
+  source                   = "../../../common/workflows/network"
+  //source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/workflows/network"
     
   networks = var.networks
 }
