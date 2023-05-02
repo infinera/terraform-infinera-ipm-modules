@@ -20,11 +20,11 @@ locals {
 
 module "network" {
   source                   = "../../tasks/network"
-  depends_on               = [module.ns_profiles]
+  depends_on               = [module.profiles]
   networks                 = var.networks
-  network_profiles         = module.ns_profiles.network_profiles
-  network_config_profiles  = module.ns_profiles.network_config_profiles
-  module_config_profiles   = module.ns_profiles.module_config_profiles
+  network_profiles         = module.profiles.network_profiles
+  network_config_profiles  = module.profiles.network_config_profiles
+  module_config_profiles   = module.profiles.module_config_profiles
 }
 
 module "leaf_module" {
@@ -33,8 +33,8 @@ module "leaf_module" {
   for_each               = module.network.constellation_networks
   network_id             = each.value.id
   leaf_modules           = local.leafModuleMap[each.key]
-  network_config_profile = module.ns_profiles.module_config_profiles[module.ns_profiles.network_profiles[local.networkMap[each.key].network_profile].leaf_config_profile]
-  module_config_profiles   = module.ns_profiles.module_config_profiles
+  network_config_profile = module.profiles.module_config_profiles[module.profiles.network_profiles[local.networkMap[each.key].network_profile].leaf_config_profile]
+  module_config_profiles   = module.profiles.module_config_profiles
 }
 
 

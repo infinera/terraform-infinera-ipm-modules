@@ -550,8 +550,8 @@ provider "ipm" {
   host     = var.ipm_host     // TF_VAR_ipm_host
 }
 
-module "ns_profiles" {
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/profiles/ns_profiles"
+module "profiles" {
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//constellation-network/profiles"
 }
 
 output "network_profiles" {
