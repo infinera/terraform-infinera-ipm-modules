@@ -259,30 +259,40 @@ variable networks {
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
 | name                    | string | Network Name        |           |                                               |
 | traffic_mode            | string | L1Mode, VTIMode     | L1Mode    |                                               |
-| constellation_frequency | number | 191000000 to 196100000 (MHz) | 193000000 |                                      |
+| constellation_frequency | number | 191000000 to 196100000 (MHz)    | 193000000 |                                   |
 | modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
 | managed_by              | string | cm, host            | cm        |                                               |
 | tc_mode                 | bool   | true, false         |           |                                               |
 
 ## Hub Module Object
-| Attribute               | Type   | Possible Values     | Default   | Description                                   |
-|-------------------------|--------|---------------------|-----------|-----------------------------------------------|
-| name                    | string |                     |           | Module Name: Use for module name selector     |
-| id                      | string |                     |     | Module Id: Use for module id selector         |
-| mac_address             | string |                     |           | Module MacAddress: Use for module MacAddress selector     |
-| serial_number           | string |                     |           | Module Serial Number: Use for module serialNumber selector         |
-| host_name               | string |                     |           | Use for Host Name selector     |
-| Host_port_name          | string |                     |           | Use for Host Name selector         |
-| host_chassis_id             | string |                     |           | Use for Host Port ID selector     |
-| host_chassis_sub_type             | string |                     |           | Use for Host Port ID selector     |
-| host_port_id             | string |                     |           | Use for Host Port ID selector and Host SysName selector  |
-| host_port_id_sub_type             | string |                     |           | Use for Host Port ID selector and Host SysName selector |
-| host_sys_name             | string |                     |           | Use for Host SysName selector     |
-| host_chassis_sub_type             | string |                     |           | Use for Host Port ID selector     |
-| host_port_source_mac             | string |                     |           | Use for Host Port SourceMac selector     |
-| config                  | object |                     |           |                                               |
-| managed_by              | string | cm, host            | cm        |                                               |
 
+| Attribute               | Type   | Possible Values | Default   | Description                                   |
+|-------------------------|--------|-----------------|-----------|-----------------------------------------------|
+| name **1**                | string |               |           | **Identifier** Use for module name selector     |
+| id **2**                  | string |               |           |**Identifier** Module Id: Use for module id selector         |
+| mac_address **3**         | string |                     |           |**Identifier** Module MacAddress: Use for module MacAddress selector     |
+| serial_number **4**       | string |                     |           |**Identifier** Module Serial Number: Use for module serialNumber selector |
+| host_name **5**           | string |                     |           |**Identifier** Use for Host Name selector     |
+| host_port_name **5**      | string |                     |           |**Identifier** Use for Host Name selector         |
+| host_chassis_id **6**     | string |                     |           |**Identifier** Use for Host Port ID selector     |
+| host_chassis_sub_type **6** | string |                    |           |**Identifier** Use for Host Port ID selector     |
+| host_port_id **6,7**      | string |                     |           |**Identifier** Use for Host Port ID selector and Host SysName selector  |
+| host_id_sub_type **6,7**  | string |                     |           |**Identifier** Use for Host Port ID selector and Host SysName selector   |
+| host_port_sys_name **7**  | string |                     |           |**Identifier** Use for Host Port SourceMac selector     |
+| host_port_source_mac**8** | string |                     |           |**Identifier** Use for Host Port SourceMac selector     |
+| config                   | object |                     |           |                                               |
+| managed_by               | string | cm, host            | cm        |                                               |
+
+**Identifier** The module is identified by one of 8 identifier groups below and only one group is need to specified in the intent.
+  1. Name
+  2. id
+  3. mac_address,
+  4. serial_number
+  5. host_name and  host_port_name
+  6. host_chassis_id, host_chassis_subtype, host_port_id and host_id_subtype
+  7. host_port_sys_name, host_port_id and host_id_subtype
+  8. host_port_source_mac
+   
 ## Hub Module Config Object
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
@@ -298,21 +308,30 @@ variable networks {
 ## Leaf Module Intent Definition
 | Attribute  | Type   | Description                                                                       |
 |------------|--------|-----------------------------------------------------------------------------------|
-| name                    | string |                     |           | Module Name: Use for module name selector     |
-| id                      | string |                     |     | Module Id: Use for module id selector         |
-| mac_address             | string |                     |           | Module MacAddress: Use for module MacAddress selector     |
-| serial_number           | string |                     |           | Module Serial Number: Use for module serialNumber selector         |
-| host_name               | string |                     |           | Use for Host Name selector     |
-| Host_port_name          | string |                     |           | Use for Host Name selector         |
-| host_chassis_id             | string |                     |           | Use for Host Port ID selector     |
-| host_chassis_sub_type             | string |                     |           | Use for Host Port ID selector     |
-| host_port_id             | string |                     |           | Use for Host Port ID selector and Host SysName selector  |
-| host_port_id_sub_type             | string |                     |           | Use for Host Port ID selector and Host SysName selector |
-| host_sys_name             | string |                     |           | Use for Host SysName selector     |
-| host_chassis_sub_type             | string |                     |           | Use for Host Port ID selector     |
-| host_port_source_mac             | string |                     |           | Use for Host Port SourceMac selector     |
+| name **1**                | string | **Identifier** Use for module name selector     |
+| id **2**                  | string | **Identifier** Module Id: Use for module id selector         |
+| mac_address **3**         | string | **Identifier** Module MacAddress: Use for module MacAddress selector     |
+| serial_number **4**       | string | **Identifier** Module Serial Number: Use for module serialNumber selector |
+| host_name **5**           | string | **Identifier** Use for Host Name selector     |
+| host_port_name **5**      | string | **Identifier** Use for Host Name selector         |
+| host_chassis_id **6**     | string | **Identifier** Use for Host Port ID selector     |
+| host_chassis_sub_type **6** | string | **Identifier** Use for Host Port ID selector     |
+| host_port_id **6,7**      | string | **Identifier** Use for Host Port ID selector and Host SysName selector  |
+| host_id_sub_type **6,7**  | string | **Identifier** Use for Host Port ID selector and Host SysName selector   |
+| host_port_sys_name **7**  | string | **Identifier** Use for Host Port SourceMac selector     |
+| host_port_source_mac **8** | string | **Identifier** Use for Host Port SourceMac selector     |
 | config_profile | string | This specifies the module config profile which will override the network module config profile settings. Please see profiles section below for more details |
 | config     | object | This config intent has the highest precedent. It will override both the module config_profile's settings and network module config profile settings |
+
+**Identifier** The module is identified by one of 8 identifier groups below and only one group is need to specified in the intent.
+  1. Name
+  2. id
+  3. mac_address,
+  4. serial_number
+  5. host_name and  host_port_name
+  6. host_chassis_id, host_chassis_subtype, host_port_id and host_id_subtype
+  7. host_port_sys_name, host_port_id and host_id_subtype
+  8. host_port_source_mac
 
 ## Leaf Module Config Intent Object (same as Hub)
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
