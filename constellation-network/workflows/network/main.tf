@@ -10,8 +10,8 @@ locals {
   networkMap = { for network in var.networks : network.name => network }
 }
 
-module "ns_profiles"  {
-  source   = "../../profiles/ns_profiles"
+module "profiles"  {
+  source   = "../../profiles"
 }
 
 locals {
