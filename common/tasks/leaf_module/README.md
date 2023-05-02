@@ -1,4 +1,4 @@
-# Leaf Module By Module Name
+# Leaf Module
 This module support CRUD operation for constellation network's leaf device. 
 
 # Expected Intent
@@ -10,80 +10,35 @@ This module support CRUD operation for constellation network's leaf device.
 
 ## Leaf Modules
 <pre>
-variable leaf_modules {
-  type = list(object({name: string, config: optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), tx_power_target_per_dsc: optional(number)}))}))
-  description = "Leaf modules for specified network "
-  default = [{name = "PORT_MODE_LEAF1"}, 
-             {name = "PORT_MODE_LEAF2", <b>config</b> = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.2}}]
-  }
+variable "leaf_modules" {
+  type = list(object({ name = optional(string), id = optional(string), serial_number = optional(string),
+                        mac_address     = optional(string), host_port_name = optional(string), host_name = optional(string),
+                        host_chassis_id = optional(string), host_chassis_id_subtype = optional(string),
+                        host_port_id    = optional(string), host_port_id_subtype = optional(string),
+                        host_sys_name   = optional(string), host_port_source_mac = optional(string),
+                        config_profile  = optional(string),
+                        config = optional(object({ traffic_mode : optional(string), fiber_connection_mode : optional(string), managed_by : optional(string), planned_capacity : optional(string), requested_nominal_psd_offset : optional(string), fec_iterations : optional(string), tx_clp_target : optional(string) })) }))
+  description = "Leaf modules for specified network name "
+  default     = [{ name = "PORT_MODE_LEAF1" }, { name = "PORT_MODE_LEAF2", config = { traffic_mode : "VTIMode" } }]
+}
 </pre>
-  The support attributes for leaf modules are shown in table below
-  | Attribute  | Type   | Description                                                                       |
-  | -----------| -------|-----------------------------------------------------------------------------------|
-  | name       | string | Leaf Module Name                                                                  |
-  | **config**     | object | This will override the profile configuration. Please see Module configuration profile below for support attributes |
+ ## Leaf Module Intent Definition
+| Attribute  | Type   | Description                                                                       |
+|------------|--------|-----------------------------------------------------------------------------------|
+| name       | string | Leaf module's name                                                       |
+| config_profile | string | This specifies the module config profile which will override the network module config profile settings. Please see profiles section below for more details |
+| config     | object | This config intent has the highest precedent. It will override both the module config_profile's settings and network module config profile settings |
 
-## Module configuration profile. 
-They specify the common configurations for Leaf Module.
-```
-  variable module_config_profiles {
-    type = object({traffic_mode: optional(string),fiber_connection_mode: optional(string), tx_power_target_per_dsc: optional(number)})
-    description = "Module config profile"
-    default = {traffic_mode: "VTIMode",fiber_connection_mode: "dual", tx_power_target_per_dsc: -0.3} 
-  }
-```
-  The supported configured attributes are listed below
-  | Attribute  | Type   | Description                                                                       |
-  | -----------| -------|-----------------------------------------------------------------------------------|
-  | traffic_mode                | string | Possible values: L1Mode, VTIMode                                 |
-  | fiber_connection_mode       | string | Possible values: 16QAM, QPSK, 8QAM                               |
-  | tx_power_target_per_dsc     | string | Carrier center frequency of the  module                          |
+## Leaf Module Config Intent Object (same as Hub)
+| Attribute               | Type   | Possible Values     | Default   | Description                                   |
+|-------------------------|--------|---------------------|-----------|-----------------------------------------------|
+| name                    | string | Network Name        |           |                                               |
+| fiber_connection_mode   | string | single, dual        | single    |                                               |
+| modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
+| managed_by              | string | cm, host            | cm        |                                               |
+| planned_capacity        | string | 400G, 200G, 100G, 50G, 25G |    |                                               |
+| requested_nominal_psd_offset | string | 0dB, +3dB, +6dB |          |                                               |
+| fec_iterations          | string | undefined, standard, turbo |    |                                               |
+| fec_iterations          | number | -3500 to 0          |           |                                               |
 
-
-## Override the Module configuration profile settings
-To override the Module configuration profile setting, the user can specify the Module configuration profile "config" in the leaf_modules intent as shown below for "XR Network1"
-  <pre>
-  // "XR Network1" network's leaf module "PORT_MODE_LEAF2" shall have traffic_mode set to "L1Mode" regardless of the setting in its leaf config profile ""leaf_config_profile"
-  // "XR Network1" network's leaf module "PORT_MODE_LEAF1" shall be configured using the specification from leaf config profile "leaf_config_profile"
-  leaf_modules = {"XR Network1" = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2", <b>config</b> = {traffic_mode = "L1Mode"}}]},
-                 {"XR Network2" = [{name = "PORT_MODE_LEAF3"}, {leaf_name = "PORT_MODE_LEAF4"}]}
-  <pre>
-# Use cases
-## Add Leaf Module to Constellation Network "ABC"
-### Intent (leaf_module.tfvars)
-```
-network_id = "ABC"
-leaf_modules = [{name = "PORT_MODE_LEAF1"}, {name = "PORT_MODE_LEAF2"}]
-module_config_profile = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.2}
-```
-## Steps
-1. Go to "network" directory 
-2. Terraform init (as needed)
-3. Terraform apply with the input data. I.E. "terraform plan -var-file=leaf_module.tfvars” -var-file=profiles.tfvars” **(The profiles.tfvars is the system defined global profiles which can be customized by the user)**
-
-## Updated Leaf Module "PORT_MODE_LEAF1" in Constellation Network "ABC"
-### Intent (leaf_module.tfvars
-Change fiber_connection_mode: **"Single"** to fiber_connection_mode: **"dual"**
-```
-network_id = "ABC"
-leaf_modules = [{name = "PORT_MODE_LEAF2"}]
-module_config_profile = {traffic_mode: "L1Mode",fiber_connection_mode: "dual", tx_power_target_per_dsc: -0.2}
-```
-## Steps
-1. Go to "network_only_by_module_name" directory 
-2. Terraform apply with the input data. I.E. "terraform plan -var-file=leaf_module.tfvars” -var-file=profiles.tfvars” 
-
-## Remove Leaf Module "PORT_MODE_LEAF1" From Constellation Network "ABC"
-### Intent (leaf_module.tfvars)
-Remove **{name = "PORT_MODE_LEAF1"}**
-```
-network_id = "ABC"
-leaf_modules = [~~{name = "PORT_MODE_LEAF1"},~~ {name = "PORT_MODE_LEAF2"}]
-module_config_profile = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.2}
-```
-## Steps
-1. Go to "network_only_by_module_name" directory 
-2. Terraform apply with the input data. I.E. "terraform plan -var-file=leaf_module.tfvars”
-
-
-
+# Example 

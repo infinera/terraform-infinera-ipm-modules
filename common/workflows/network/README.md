@@ -56,14 +56,19 @@ variable networks {
                                             host_port_name = optional(string),  host_name = optional(string), host_chassis_id = optional(string), 
                                             host_chassis_id_sub_type = optional(string), host_port_id = optional(string), host_port_id_sub_type = optional(string),
                                             host_sys_name = optional(string), host_port_source_mac = optional(string),
-                                            config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})
+                                            config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), 
+                                            managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string),
+                                            fec_iterations: optional(string), tx_clp_target: optional(string)}))})
                       leaf_modules = optional(list(object({name = optional(string), id = optional(string), serial_number = optional(string), 
                                                            mac_address = optional(string), host_port_name = optional(string),  host_name = optional(string),
                                                            host_chassis_id = optional(string), host_chassis_id_sub_type = optional(string), 
                                                            host_port_id = optional(string), host_port_id_sub_type = optional(string), 
                                                            host_sys_name = optional(string), host_port_source_mac = optional(string), 
                                                           config_profile = optional(string), 
-                                                          config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))}))
+                                                          config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string),
+                                                          managed_by: optional(string), planned_capacity: optional(string), 
+                                                          requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), 
+                                                          tx_clp_target: optional(string)}))})))}))
   description = "List of constellation Network"
 }
 
@@ -173,7 +178,8 @@ In the same directory, follow these steps
   networks = [{name= "XR Network1", 
                 network_profile = "network_profile2", 
                 hub_module = { name = "PORT_MODE_HUB",
-                               <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}, 
+                               <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G",
+                                requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}, 
                 leaf_modules=[{name = "PORT_MODE_LEAF1"}]}]
   </pre>
 2. execute commands **terraform apply -var-file=network.tfvars** 
@@ -189,7 +195,8 @@ In the same directory, follow these steps
                 leaf_modules=[{name = "PORT_MODE_LEAF1", <b>
                                config_profile = "leaf_profile2"</b>},
                                {name = "PORT_MODE_LEAF2", 
-                               <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G", requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]}]
+                               <b>config={traffic_mode: "L1Mode",fiber_connection_mode: "single"", managed_by: "cm"", planned_capacity: "400G",
+                                requested_nominal_psd_offset: "+3dB", fec_iterations: "standard", tx_clp_target: -3500}</b>}]}]
   </pre>
 2. execute commands **terraform apply -var-file=network.tfvars** 
    . The leaf module "PORT_MODE_LEAF1" configuration shall be updated using the **config_profile** specifications.
@@ -205,19 +212,29 @@ The network intent is a array of network specification as shown below.
 variable networks {
   type = list(object({name= optional(string), 
                       network_profile = optional(string), 
-                      config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)})), hub_config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)})), 
+                      config=optional(object({name=optional(string),constellation_frequency= optional(number), modulation = optional(string), 
+                      managed_by=optional(string), tc_mode=optional(string)})), hub_config = optional(object({traffic_mode: optional(string),
+                      fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string),
+                      requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)})), 
                       hub_module = object({ name = optional(string), id = optional(string), serial_number = optional(string), mac_address = optional(string), 
                                             host_port_name = optional(string),  host_name = optional(string), host_chassis_id = optional(string), 
-                                            host_chassis_id_sub_type = optional(string), host_port_id = optional(string), host_port_id_sub_type = optional(string),
+                                            host_chassis_id_sub_type = optional(string), host_port_id = optional(string), 
+                                            host_port_id_sub_type = optional(string),
                                             host_sys_name = optional(string), host_port_source_mac = optional(string),
-                                            config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})
+                                            config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), 
+                                            managed_by: optional(string), planned_capacity: optional(string), 
+                                            requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), 
+                                            tx_clp_target: optional(string)}))})
                       leaf_modules = optional(list(object({name = optional(string), id = optional(string), serial_number = optional(string), 
                                                            mac_address = optional(string), host_port_name = optional(string),  host_name = optional(string),
                                                            host_chassis_id = optional(string), host_chassis_id_sub_type = optional(string), 
                                                            host_port_id = optional(string), host_port_id_sub_type = optional(string), 
                                                            host_sys_name = optional(string), host_port_source_mac = optional(string), 
                                                           config_profile = optional(string), 
-                                                          config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))})))}))
+                                                          config = optional(object({traffic_mode: optional(string),fiber_connection_mode: optional(string),
+                                                           managed_by: optional(string), planned_capacity: optional(string), 
+                                                           requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), 
+                                                           tx_clp_target: optional(string)}))})))}))
   description = "List of constellation Network"
   default = [{name= "XR Network1", 
              network_profile = "network_profile1", 
@@ -346,7 +363,9 @@ The user shall be able to create and update the constellation network and its hu
     "network_profile1" = { network_config_profile: "network_config_profile1", hub_config_profile: "hub_profile1", leaf_config_profile:"leaf_profile1"}
   }
   variable network_profiles {
-  type = map(object({network_config_profile = optional(string), hub_config_profile: optional(string), leaf_config_profile: optional(string)}))
+  type = map(object({network_config_profile = optional(string), 
+                     hub_config_profile: optional(string), 
+                     leaf_config_profile: optional(string)}))
   description = "Map of Network Profile"
   default = {
     "network_profile1" = { network_config_profile: "network_config_profile1", hub_config_profile: "hub_profile1", leaf_config_profile:"leaf_profile1"}, 
@@ -368,7 +387,8 @@ They specify the common configurations for a constellation network.
                              "network_config_profile2": { constellation_frequency: 194000000, modulation: "QPSK"}
   }
   variable network_config_profiles {
-    type = map(object({constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), tc_mode=optional(string)}))
+    type = map(object({constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), 
+                       tc_mode=optional(string)}))
     description = "Map of Network Config profile"
     default =  {"network_config_profile1": { constellation_frequency: 194000000, modulation: "16QAM"}, 
                 "network_config_profile2": { constellation_frequency: 194000000, modulation: "QPSK"}}
@@ -489,7 +509,9 @@ variable network_config_profiles {
 }
 
 variable module_config_profiles {
-    type = map(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), tx_clp_target: optional(string)}))
+    type = map(object({traffic_mode: optional(string),fiber_connection_mode: optional(string), managed_by: optional(string), 
+    planned_capacity: optional(string), requested_nominal_psd_offset: optional(string), fec_iterations: optional(string), 
+    tx_clp_target: optional(string)}))
     description = "Map of hub and leaf config profiles"
 }
 ```
