@@ -19,8 +19,5 @@ module "network" {
   networks = var.networks
 }
 
-output "network" {
-  value = module.network
-}
 
 
