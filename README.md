@@ -1,19 +1,33 @@
 # Terraform IPM Modules 
-Terraform IPM Modules are a collection of TF modules to support CRUD operation on the IPM managed services. The table below shows the supported IPM services.
+Terraform IPM Modules are a collection of TF modules to support provision and configuration operations on the IPM managed services and End to End Network Operational Workflow across multiple services. 
 
-**IPM Supported Services**
-| Services                                |  Description                                        |
-|-----------------------------------------|-----------------------------------------------------|
-| [Aggregator Fault Management](aggregator-fault-mgnmt) |                           |
-| [Device Aggregator Management](device-aggregator-mgnmt)          |                |
-| [Domain Fault Management](domain-fault-mgnmt)                 |      |
-| [Event Gateway Management](event-gateway-mgnmt)             |                                          |
-| [Host Management](host-mgnmt)           |                  |
-| [Module Management](module-mgnmt) |                           |
-| [Network Connection Management](network-connection-mgnmt)          |                |
-| [NDU Management](ndu-mgnmt)                |      |
-| [Network Management](network-mgnmt)             |                                          |
-| [Onboarding Tool Management](onboard-tool-mgnmt)           |                  |
-| [Module Software Management](module-software-mgnmt)             |                                          |
-| [Transport Capacity Management](transport-capacity-mgnmt)           |                  |
+## IPM Services' Provision and Configuration Modules
+Each service shall have a collection of TF modules for configurations of its resources.
 
+| Service                                                   |  Description                                   | State  |
+|-----------------------------------------------------------|------------------------------------------------|--------|
+| [Aggregator Fault Management](aggregator-fault-mgnmt)     |                                                |        |
+| [Device Aggregator Management](device-aggregator-mgnmt)   |                                                |        |
+| [Domain Fault Management](domain-fault-mgnmt)             |                                                |        |
+| [Event Gateway Management](event-gateway-mgnmt)           |                                                |        |
+| [Host Management](host-mgnmt)                             |                                                |        |
+| [Module Management](module-mgnmt)                         |                                                |        |
+| [Network Connection Management](network-connection-mgnmt) |                                                |        |
+| [NDU Management](ndu-mgnmt)                               |                                                |        |
+| [Network Management](network-mgnmt)                       |                                                | Ready  |
+| [Onboarding Tool Management](onboard-tool-mgnmt)          |                                                |        |
+| [Module Software Management](module-software-mgnmt)       |                                                |        |
+| [Transport Capacity Management](transport-capacity-mgnmt) |                                                |        |
+
+### How to Use
+Please see the README description of each service for more detail information and examples about their usages.
+
+# IPM E2E Network Operational Modules
+These modules are used to orchestrate the E2E configuration and provisioning of constellation networks and their resources across multiple services.
+
+| E2E Orchestration Modules                                 |  Description                                   | State  |
+|-----------------------------------------------------------|------------------------------------------------|--------|
+| [E2E Orchestration](e2e-orchestration)                    |                                                | TBD    |
+
+### How to Use
+Please see the README description for more detail information and examples about their usages.

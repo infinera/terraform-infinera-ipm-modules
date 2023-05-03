@@ -7,7 +7,7 @@ The user can create one or more constellation networks by specify the desired in
     b. Available in accessible repository. 
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 3. IPM server credentials: Define the following environment variables: TF_VAR_ipm_user, TF_VAR_ipm_password, and TF_VAR_ipm_host. 
-4. The user defined profiles.json is available in the TF root directory (where the command "terraform apply" is executed)
+4. If it is required, the user defined Constellation Network profiles.json must be available in the TF root directory (where the command "terraform apply" is executed)
 
 # Create and Update Constellation Network From the Intent 
 ## Example of The Creating Network no leaf modules
