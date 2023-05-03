@@ -37,4 +37,10 @@ module "leaf_module" {
   module_config_profiles   = module.profiles.module_config_profiles
 }
 
+data "ipm_networks" "networks" {
+  depends_on = [ module.leaf_module ]
+  for_each   = module.network.constellation_networks
+    id = each.value.id
+}
+
 

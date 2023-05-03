@@ -18,8 +18,8 @@ module "network" {
   networks = var.networks
 }
 
-locals {
-  networks = [for k, v in module.network.networks : { "Constellation Network" = v, "leaf_modules" = module.network.network_leaf_modules[k] }]
+output "network" {
+  value = module.network
 }
 
 
