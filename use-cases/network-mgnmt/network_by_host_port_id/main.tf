@@ -14,13 +14,13 @@ provider "ipm" {
 
 module "network" {
   //source                   = "../../../common/workflows/network"
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//constellation-network/workflows/network"
-  
+  source = "git::https://github.com/infinera/terraform-ipm_modules.git//network-mgnmt/workflows/network"
+
   networks = var.networks
 }
 
 locals {
-  networks = [for k, v in module.network.networks : {"Constellation Network" = v, "leaf_modules" = module.network.network_leaf_modules[k]}]
+  networks = [for k, v in module.network.networks : { "Constellation Network" = v, "leaf_modules" = module.network.network_leaf_modules[k] }]
 }
 
 

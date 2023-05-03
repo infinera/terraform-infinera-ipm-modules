@@ -551,7 +551,7 @@ provider "ipm" {
 }
 
 module "profiles" {
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//constellation-network/profiles"
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-mgnmt/profiles"
 }
 
 output "network_profiles" {
