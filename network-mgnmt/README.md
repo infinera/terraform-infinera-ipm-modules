@@ -9,7 +9,14 @@ The user can create one or more constellation networks by specify the desired in
 3. IPM server credentials: Define the following environment variables: TF_VAR_ipm_user, TF_VAR_ipm_password, and TF_VAR_ipm_host. 
 4. If it is required, the user defined Constellation Network profiles.json must be available in the TF root directory (where the command "terraform apply" is executed)
 
-# Create and Update Constellation Network From the Intent 
+# Create Constellation Network From the Intent 
+## Steps
+Go to the main.tf file's directory and execute the following commands
+1. Create new "ABC" directory go to existing "ABC" directory
+2. or terraform init
+3. terraform apply -var-file=xxx/network.tfvars
+   The network "XR Network1" with hub "PORT_MODE_HUB" shall be created.
+
 ## Example of The Creating Network no leaf modules
 ```
 XR Network1  (hub=PORT_MODE_HUB)

@@ -10,14 +10,14 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Device Aggregator Management](device-aggregator-mgnmt)   |                                                |        |
 | [Domain Fault Management](domain-fault-mgnmt)             |                                                |        |
 | [Event Gateway Management](event-gateway-mgnmt)           |                                                |        |
-| [Host Management](host-mgnmt)                             |                                                |        |
+| [Host Management](host-mgnmt)                             |                                                | In Progress |
 | [Module Management](module-mgnmt)                         |                                                |        |
-| [Network Connection Management](network-connection-mgnmt) |                                                |        |
+| [Network Connection Management](network-connection-mgnmt) |                                                | In Progress |
 | [NDU Management](ndu-mgnmt)                               |                                                |        |
 | [Network Management](network-mgnmt)                       |                                                | Ready  |
 | [Onboarding Tool Management](onboard-tool-mgnmt)          |                                                |        |
 | [Module Software Management](module-software-mgnmt)       |                                                |        |
-| [Transport Capacity Management](transport-capacity-mgnmt) |                                                |        |
+| [Transport Capacity Management](transport-capacity-mgnmt) |                                                | In Progress |
 
 ### How to Use
 Please see the README description of each service for more detail information and examples about their usages.

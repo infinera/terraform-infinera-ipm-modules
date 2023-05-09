@@ -1,6 +1,5 @@
 variable "network_connections" {
-  type = list(object({ nc_name = optional(string),
-                      nc_profile = optional(string),
+  type = list(object({ profile = optional(string),
                       name = optional(string), service_mode = optional(string), mc = optional(string),
                       outer_vid = optional(string), implicit_transport_capacity = optional(string), labels = optional(map(string)),
                       endpoints = list(object({ identifier = object({name = optional(string), id = optional(string), serial_number = optional(string), 
@@ -8,11 +7,10 @@ variable "network_connections" {
                                                                 host_chassis_id = optional(string), host_chassis_id_subtype = optional(string),
                                                                 host_port_id = optional(string), host_port_id_subtype = optional(string),
                                                                 host_sys_name  = optional(string), host_port_source_mac = optional(string)}),
-                                                capacity : optional(number)}))
+                                                capacity = optional(number)}))
   }))
   description = "List of Network Connection"
-  default = [{ nc_name = "NC1",
-               nc_profile = "nc_profile1",
+  default = [{ profile = "nc_profile1",
                endpoints = [ { identifier = {host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "ipAddress", host_port_id = "192.168.101.1",
                 host_port_id_subtype = "ipAddress"}}, { identifier = {host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent", 
                 host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "chassisComponent"}, capacity = 400}] 
