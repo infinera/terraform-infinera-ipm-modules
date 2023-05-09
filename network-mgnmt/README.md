@@ -191,4 +191,5 @@ The *network_profile2* profile specifies the configuration profiles for the netw
 </pre>
 ### __Result__: The network "Network1" shall be deleted.
 
-**Please see [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Detail%20Readme.md) for more information**
+## Intent Definitions, Profile Definitions and Their Usages
+**Please see [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Detail%20Readme.md) for more information about the intent definition and profile settings and usages.**
