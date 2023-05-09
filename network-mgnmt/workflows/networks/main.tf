@@ -19,7 +19,7 @@ locals {
 }
 
 module "network" {
-  source                   = "../../tasks/network"
+  source                   = "../../tasks/networks"
   depends_on               = [module.profiles]
   networks                 = var.networks
   network_profiles         = module.profiles.network_profiles
@@ -28,7 +28,7 @@ module "network" {
 }
 
 module "leaf_module" {
-  source                 = "../../tasks/leaf_module"
+  source                 = "../../tasks/leaf_modules"
   depends_on             = [module.network]
   for_each               = module.network.constellation_networks
   network_id             = each.value.id
