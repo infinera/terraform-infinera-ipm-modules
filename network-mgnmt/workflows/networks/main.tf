@@ -33,7 +33,7 @@ module "leaf_module" {
   for_each               = module.network.constellation_networks
   network_id             = each.value.id
   leaf_modules           = local.leafModuleMap[each.key]
-  network_config_profile = module.profiles.module_config_profiles[module.profiles.network_profiles[local.networkMap[each.key].network_profile].leaf_config_profile]
+  leaf_config_profile = local.networkMap[each.key].profile != null ? module.profiles.network_profiles[local.networkMap[each.key].profile].leaf_config_profile : null
   module_config_profiles   = module.profiles.module_config_profiles
 }
 

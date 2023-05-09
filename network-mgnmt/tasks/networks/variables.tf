@@ -18,7 +18,7 @@ variable "networks" {
 }
 
 variable "network_profiles" {
-  type        = map(object({ config_profile = optional(string), hub_config_profile = optional(string), leaf_config_profile = optional(string) }))
+  type        = map(object({ network_config_profile = optional(string), hub_config_profile = optional(string), leaf_config_profile = optional(string) }))
   description = "Map of Network Profile"
 }
 

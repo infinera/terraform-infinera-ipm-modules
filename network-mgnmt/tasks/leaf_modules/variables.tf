@@ -3,12 +3,8 @@ variable "network_id" {
   default = "48b8610a-2a6b-491f-a71c-5fd12345be14"
 }
 
-variable "network_config_profile" {
-  type        = object({ traffic_mode : optional(string), fiber_connection_mode : optional(string), managed_by : optional(string), 
-                         planned_capacity : optional(string), requested_nominal_psd_offset : optional(string), fec_iterations : optional(string),
-                         tx_clp_target : optional(string) })
-  description = "Map of hub and leaf config profiles"
-  default     = { traffic_mode : "VTIMode", fiber_connection_mode : "dual" }
+variable "leaf_config_profile" {
+  type        = string
 }
 
 variable "leaf_modules" {
