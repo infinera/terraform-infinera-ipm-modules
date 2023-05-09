@@ -23,8 +23,7 @@ variable "networks" {
   }))
   description = "List of constellation Network"
   /*default = [{ name = "XR Network1",
-    network_profile = "network_profile1",
-    config          = { modulation : "16QAM" },
-    hub_module      = { identifier= {name = "PORT_MODE_HUB"}, config = { traffic_mode = "VTIMode" } },
-  leaf_modules = [{ identifier= {name = "PORT_MODE_LEAF1" }}, { identifier= {name = "PORT_MODE_LEAF2"}, config = { traffic_mode : "VTIMode" } }] }]*/
+                  profile = "network_profile1", modulation : "16QAM" ,
+                  hub_module      = { identifier= {name = "PORT_MODE_HUB"}, traffic_mode = "VTIMode" },
+                  leaf_modules = [{ identifier= {name = "PORT_MODE_LEAF1" }}, { identifier= {name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }] }]*/
 }
