@@ -1,19 +1,20 @@
 # Constellation Network 
-The user can create one or more constellation networks by specify the desired intent for the networks and their leaf modules.
-Basically for any network configurations, There are two required data : the configuration intent and the configuration profiles.
+The user can create one or more constellation networks by specify the desired intent for the networks and their modules.
+Basically for any network configurations, There are two required data : the intent and the configuration profiles.
 * The configuration Intent are specified by user to create, retrieve, update and delete the network.
-* The configuration Profiles are defined once and they include both system defined and user define configuration settings. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Detail%20Readme.md) for more information.
+* The configuration Profiles are defined once and they include both system defined and user define configuration settings. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information.
 
 ## Prerequisite
 1. The "infinera.com/poc/ipm" provider is accessible from infinera repository
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 3. IPM server credentials: Define the following environment variables: TF_VAR_ipm_user, TF_VAR_ipm_password, and TF_VAR_ipm_host. 
 4. If it is required, the user defined Constellation Network profiles.json must be available in the TF root directory (where the command "terraform apply" is executed)
-5. Create new **ABC** directory go to existing **ABC** directory. Copy files *variables.tf*, *main.tf*, *profiles.json* and input file *network.tfvars* to directory **ABC**. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Detail%20Readme.md) for more information. 
+5. Create new **ABC** directory go to existing **ABC** directory. Copy files *variables.tf*, *main.tf*, *profiles.json* and input file *network.tfvars* to directory **ABC**. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information. 
 <pre>
     Directory ABC -----|-----> network.tfvars  // Update the intent for CRUD operations. Please see variables.tf for the intent definition.
                        |
-                       |-----> main.tf         // TF executable file. No change is needed unless want to specify custom output. Require Terraform HCL knowledge.
+                       |-----> main.tf         // TF executable file. Normally no change is required unless user wants to specify custom output. 
+                       |                          Require Terraform HCL knowledge.
                        |
                        |-----> variables.tf    // Fixed. Defined the intent definition. Do not change.
                        |
@@ -191,5 +192,26 @@ The *network_profile2* profile specifies the configuration profiles for the netw
 </pre>
 ### __Result__: The network "Network1" shall be deleted.
 
+## Example of TF main.tf
+```
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera.com/poc/ipm"
+    }
+  }
+}
+
+provider "ipm" {
+  username = var.ipm_user     // TF_VAR_ipm_user
+  password = var.ipm_password // TF_VAR_ipm_password
+  host     = var.ipm_host     // TF_VAR_ipm_host
+}
+
+module "network" {
+  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/workflows/network"
+  <b>networks</b>                 = var.networks 
+}
+```
 ## Intent Definitions, Profile Definitions and Their Usages
-**Please see [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Detail%20Readme.md) for more information about the intent definition and profile settings and usages.**
+**Please see [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information about the intent definition and profile settings and usages.**
