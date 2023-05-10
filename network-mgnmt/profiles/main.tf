@@ -12,15 +12,14 @@ locals {
     "network_profile2" = { network_config_profile = "network_config_profile2", hub_config_profile = "hub_profile2", leaf_config_profile = "leaf_profile2" },
   }
   system_network_config_profiles = {
-    "network_config_profile1" = { constellation_frequency = 194000000, modulation = "16QAM" },
-    "network_config_profile2" = { constellation_frequency = 194000000, modulation = "QPSK" }
+    "network_config_profile1"= { "constellation_frequency"= 194000000, "modulation"= "16QAM", "tc_mode" = true, "topology"= "p2mp"}, 
+    "network_config_profile2"= { "constellation_frequency"= 194000000, "modulation"= "QPSK", "tc_mode" = true, "topology"= "p2mp"}
   }
-
-  system_module_config_profiles = {
-    "hub_config_profile1"  = { traffic_mode = "L1Mode", fiber_connection_mode = "dual" },
-    "hub_config_profile2"  = { traffic_mode = "L1Mode", fiber_connection_mode = "single" },
-    "leaf_config_profile1" = { traffic_mode = "L1Mode", fiber_connection_mode = "single" }
-    "leaf_config_profile2" = { traffic_mode = "L1Mode", fiber_connection_mode = "single" }
+  system_module_config_profiles = { 
+    "hub_config_profile1" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "dual", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
+    "hub_config_profile2" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
+    "leaf_config_profile1" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
+    "leaf_config_profile2" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5}
   }
 
   profiles = jsondecode(file("${path.root}/profiles.json"))

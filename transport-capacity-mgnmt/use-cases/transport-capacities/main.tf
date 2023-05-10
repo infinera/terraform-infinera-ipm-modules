@@ -6,20 +6,21 @@ terraform {
   }
 }
 
-provider "ipm" {
-  username = var.ipm_user
-  password = var.ipm_password
-  host     = var.ipm_host
+module "profiles"  {
+  source   = "../../profiles"
 }
 
-module "network_connection" {
-  //source                   = "../../../common/workflows/network"
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-mgnmt/tasks/network-connection"
-  networks = var.network_connections
+module "transport-capacities" {
+  source                   = "../../tasks/transport-capacities"
+  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//transport-capacity-mgnmt/tasks/transport-capacities"
+
+  transport-capacities = var.transport-capacities
+  tc_profiles         = module.profiles.tc_profiles
+
 }
 
-output "network_connection" {
-  value = module.network_connection
+output "transport-capacities" {
+  value = module.transport-capacities
 }
 
 

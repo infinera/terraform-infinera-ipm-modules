@@ -16,9 +16,4 @@ variable "transport-capacities" {
                 }]
 }
 
-variable "tc_profiles" {
-  type = map(object({ capacity_mode = optional(string), labels = optional(map(string)), endpoint_capacity : optional(string)}))
-  description = "Map of tc profiles"
-}
-
 

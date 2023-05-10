@@ -15,6 +15,7 @@ resource "ipm_constellation_network" "constellation_networks" {
     modulation = each.value.modulation != null ? each.value.modulation : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].modulation
     tc_mode = each.value.tc_mode != null ? each.value.tc_mode : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].tc_mode
     managed_by = each.value.managed_by != null ? each.value.managed_by : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].managed_by
+    topology = each.value.topology != null ? each.value.topology : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].topology
   }
   hub_module = {
     config = {
