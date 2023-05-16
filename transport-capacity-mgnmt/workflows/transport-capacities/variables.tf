@@ -17,11 +17,7 @@ variable "transport-capacities" {
                 }]
 }
 
-variable "profile_path" {
-  type = string
-}
-
-variable "user_profile_name" {
+variable "system_profile_path" {
   type = string
 }
 
