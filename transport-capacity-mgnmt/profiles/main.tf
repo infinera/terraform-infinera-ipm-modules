@@ -8,11 +8,11 @@ terraform {
 
 locals {
 
-  system_profiles = jsondecode(file("${var.profile_path}/tc_profiles.json"))
+  system_profiles = fileexists("${var.profile_path}/tc_profiles.json")? jsondecode(file("${var.profile_path}/tc_profiles.json")) : null
 
-  user_profiles = jsondecode(file("${path.root}/tc_profiles.json"))
+  user_profiles = fileexists("${path.root}/tc_profiles.json")? jsondecode(file("${path.root}/tc_profiles.json")) : null
   
-  tc_profiles  = local.user_profiles != null ? merge(local.system_profiles.tc_profiles, local.user_profiles.tc_profiles) : local.system_profiles.tc_profiles
+  tc_profiles  = local.user_profiles != null ? merge(local.user_profiles.tc_profiles, local.system_profiles != null ? local.system_profiles.tc_profiles: {}) : local.system_profiles != null ? local.system_profiles.tc_profiles: {}
 }
 
 output "tc_profiles" {
