@@ -17,11 +17,11 @@ variable "transport-capacities" {
                 }]
 }
 
-variable "ipm_profile_path" {
+variable "profile_path" {
   type = string
 }
 
-variable "ipm_user_profile_name" {
+variable "user_profile_name" {
   type = string
 }
 
