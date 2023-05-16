@@ -7,13 +7,11 @@ terraform {
 }
 
 locals {
-  system_host_profiles = {
-    "host_profile1" : { "managed_by" : "cm", "location" : {"latitude" : 335480, "longtitude" : -121.893028}, "labels" : {"region" : "West"}},
-    "host_profile2" : { "managed_by" : "host", "location" : {"latitude" : 335480, "longtitude" : -121.893028}, "labels" : {"region" : "East"}},
-  }
+  system_profiles = fileexists("${var.profile_path}/host_profiles.json")? jsondecode(file("${var.profile_path}/host_profiles.json")) : {host_profiles : {}}
 
-  profiles = jsondecode(file("${path.root}/profiles.json"))
-  host_profiles  = local.profiles != null ? merge(local.system_host_profiles, local.profiles.host_profiles) : local.system_host_profiles
+  user_profiles = fileexists("${path.root}/host_profiles.json")? jsondecode(file("${path.root}/host_profiles.json")) : {host_profiles : {}}
+  
+  host_profiles  = merge(local.user_profiles.host_profiles, local.system_profiles.host_profiles)
 }
 
 output "host_profiles" {

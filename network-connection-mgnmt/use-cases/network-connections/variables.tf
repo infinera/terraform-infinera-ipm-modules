@@ -23,4 +23,8 @@ variable "nc_profiles" {
   description = "Map of NC Config profiles"
 }
 
+variable "imp_profile_path" {
+  type = string
+}
+
 

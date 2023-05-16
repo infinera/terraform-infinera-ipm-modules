@@ -13,9 +13,10 @@ provider "ipm" {
 }
 
 module "network_connection" {
-  //source                   = "../../../common/workflows/network"
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-mgnmt/tasks/network-connection"
+  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-mgnmt/workflows/network-connection"
+  
   networks = var.network_connections
+  profile_path = var.ipm_profile_path
 }
 
 output "network_connection" {

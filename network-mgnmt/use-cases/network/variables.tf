@@ -23,9 +23,9 @@ type = list(object({ name = optional(string),
   }))
   description = "List of constellation Network"
   default = [{ name = "XR Network1",
-    network_profile = "network_profile1",
-    hub_module      = { identifier = {name = "PORT_MODE_HUB"}, config = { traffic_mode = "VTIMode" } },
-  leaf_modules = [{ identifier = {name = "PORT_MODE_LEAF1" }}, { identifier = {name = "PORT_MODE_LEAF2"}, config = { traffic_mode : "VTIMode" } }] }]
+                profile = "network_profile1",
+                hub_module      = { identifier = {name = "PORT_MODE_HUB"} },
+                leaf_modules = [{ identifier = {name = "PORT_MODE_LEAF1" }}, { identifier = {name = "PORT_MODE_LEAF2"}}] }]
 }
 
 variable "ipm_user" {
@@ -40,3 +40,8 @@ variable "ipm_password" {
 variable "ipm_host" {
   type = string
 }
+
+variable "imp_profile_path" {
+  type = string
+}
+

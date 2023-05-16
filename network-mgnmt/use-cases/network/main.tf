@@ -13,9 +13,10 @@ provider "ipm" {
 }
 
 module "network" {
-  //source                   = "../../../common/workflows/network"
   source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-mgnmt/workflows/network"
+
   networks = var.networks
+  profile_path = var.ipm_profile_path
 }
 
 output "network" {

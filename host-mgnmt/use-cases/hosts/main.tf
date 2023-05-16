@@ -13,9 +13,10 @@ provider "ipm" {
 }
 
 module "hosts" {
-  //source                   = "../../../common/workflows/network"
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//hosts/tasks/hosts"
+  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//hosts/workflows/hosts"
+
   hosts = var.hosts
+  profile_path = var.ipm_profile_path
 }
 
 output "hosts" {

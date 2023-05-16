@@ -17,7 +17,7 @@ variable "transport-capacities" {
                 }]
 }
 
-variable "system_profile_path" {
+variable "profile_path" {
   type = string
 }
 

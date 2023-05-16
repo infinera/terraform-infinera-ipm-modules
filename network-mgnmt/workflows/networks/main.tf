@@ -12,6 +12,8 @@ locals {
 
 module "profiles"  {
   source   = "../../profiles"
+
+  profile_path = var.profile_path
 }
 
 locals {

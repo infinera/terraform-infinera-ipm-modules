@@ -17,7 +17,6 @@ module "transport-capacities" {
 
   transport-capacities = var.transport-capacities
   profile_path = var.ipm_profile_path
-  user_profile_name = var.ipm_tc_profile_name
 }
 
 output "transport-capacities" {

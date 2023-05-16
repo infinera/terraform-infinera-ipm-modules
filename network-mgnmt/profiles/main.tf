@@ -7,30 +7,13 @@ terraform {
 }
 
 locals {
-  system_network_profiles = {
-    "network_profile1" = { network_config_profile = "network_config_profile1", hub_config_profile = "hub_config_profile1", leaf_config_profile = "leaf_config_profile1" },
-    "network_profile2" = { network_config_profile = "network_config_profile2", hub_config_profile = "hub_profile2", leaf_config_profile = "leaf_profile2" },
-  }
-  system_network_config_profiles = {
-    "network_config_profile1"= { "constellation_frequency"= 194000000, "modulation"= "16QAM", "tc_mode" = true, "topology"= "p2mp"}, 
-    "network_config_profile2"= { "constellation_frequency"= 194000000, "modulation"= "QPSK", "tc_mode" = true, "topology"= "p2mp"}
-  }
-  system_module_config_profiles = { 
-    "hub_config_profile1" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "dual", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
-    "hub_config_profile2" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
-    "leaf_config_profile1" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5},
-    "leaf_config_profile2" = {"traffic_mode"= "L1Mode","fiber_connection_mode"= "single", "planned_capacity" = "400G","requested_nominal_psd_offset" = "0dB","fec_iterations"= "standard", "tx_clp_target" = -5}
-  }
+  system_profiles = fileexists("${var.profile_path}/network_profiles.json")? jsondecode(file("${var.profile_path}/network_profiles.json")) : {network_profiles : {}, network_config_profiles : {}, module_config_profiles : {}}
 
-  profiles = jsondecode(file("${path.root}/profiles.json"))
-  //profiles = jsondecode(file("/home/lhoang/apimodels/test/ns/network-mgnmt/profiles.json"))
-  network_profiles        = local.profiles != null ? merge(local.system_network_profiles, local.profiles.network_profiles) : local.system_network_profiles
-  network_config_profiles = local.profiles != null ? merge(local.system_network_config_profiles, local.profiles.network_config_profiles) : local.system_network_config_profiles
-  module_config_profiles  = local.profiles != null ? merge(local.system_module_config_profiles, local.profiles.module_config_profiles) : local.system_module_config_profiles
-}
+  user_profiles = fileexists("${path.root}/network_profiles.json")? jsondecode(file("${path.root}/network_profiles.json")) : {network_profiles : {}, network_config_profiles : {}, module_config_profiles : {}}
 
-output "profiles" {
-  value = local.profiles
+  network_profiles        = merge(local.user_profiles.network_profiles, local.system_profiles.network_profiles)
+  network_config_profiles = merge(local.user_profiles.network_config_profiles, local.system_profiles.network_config_profiles)
+  module_config_profiles  = merge(local.user_profiles.module_config_profiles, local.system_profiles.module_config_profiles)
 }
 
 // type = map(object({network_config_profile = optional(string), hub_config_profile= optional(string), leaf_config_profile= optional(string)}))

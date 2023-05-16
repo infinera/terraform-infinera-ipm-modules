@@ -27,3 +27,7 @@ variable "networks" {
                   hub_module      = { identifier= {name = "PORT_MODE_HUB"}, traffic_mode = "VTIMode" },
                   leaf_modules = [{ identifier= {name = "PORT_MODE_LEAF1" }}, { identifier= {name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }] }]*/
 }
+
+variable "profile_path" {
+  type = string
+}

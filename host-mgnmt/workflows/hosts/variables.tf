@@ -19,8 +19,9 @@ variable "host_profiles" {
   description = "Map of Host profiles"
 }
 
-variable "ipm_profile_path" {
+variable "profile_path" {
   type = string
 }
+
 
 
