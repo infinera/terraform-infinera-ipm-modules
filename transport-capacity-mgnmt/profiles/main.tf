@@ -8,9 +8,9 @@ terraform {
 
 locals {
 
-  system_profiles = jsondecode(file("${var.ipm_profile_path}/tc_profiles.json"))
+  system_profiles = jsondecode(file("${var.profile_path}/tc_profiles.json"))
 
-  user_profiles = jsondecode(file("${path.root}/${var.ipm_tc_profile_name}"))
+  user_profiles = jsondecode(file("${path.root}/${var.user_profile_name}"))
   
   tc_profiles  = local.user_profiles != null ? merge(local.system_profiles.tc_profiles, local.user_profiles.tc_profiles) : local.system_profiles.tc_profiles
 }
