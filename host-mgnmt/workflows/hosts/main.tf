@@ -14,7 +14,7 @@ module "profiles"  {
 }
 
 module "hosts" {
-  source           = "../../../tasks/hosts"
+  source           = "../../tasks/hosts"
 
   hosts = var.hosts
 }

@@ -1,13 +1,6 @@
-/* 
-variable "host_profiles" {
-  type = map(object({ managed_by = optional(string), location = optional(object({longtitude = number, latitude = number})),
-                      labels = optional(map(string)),}))
-  description = "Map of Host profiles"
-}
-*/
 {
   "host_profiles" : {
       "user_host_profile1" : { "managed_by" : "cm", "location" : {"latitude" : 335480, "longtitude" : -121.893028}, "labels" : {"region" : "West"}},
-      "user_host_profile2" : { "managed_by" : "host", "location" : {"latitude" : 335480, "longtitude" : -121.893028}, "labels" : {"region" : "East"}},
+      "user_host_profile2" : { "managed_by" : "host", "location" : {"latitude" : 335480, "longtitude" : -121.893028}, "labels" : {"region" : "East"}}
   }
 }

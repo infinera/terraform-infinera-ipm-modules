@@ -12,15 +12,15 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-module "network_connection" {
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-mgnmt/workflows/network-connection"
-  
-  networks = var.network_connections
+module "network_connections" {
+  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-mgnmt/workflows/network-connections"
+
+  network_connections = var.network_connections
   profile_path = var.ipm_profile_path
 }
 
 output "network_connection" {
-  value = module.network_connection
+  value = module.network_connections
 }
 
 

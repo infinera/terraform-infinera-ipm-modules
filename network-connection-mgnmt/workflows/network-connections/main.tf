@@ -13,8 +13,8 @@ module "profiles"  {
 }
 
 module "network_connection" {
-  source                   = "../../../common/workflows/network"
-  networks = var.network_connections
+  source                   =  "../../tasks/network-connections"
+  network_connections = var.network_connections
 }
 
 output "network_connection" {
