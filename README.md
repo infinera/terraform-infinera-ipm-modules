@@ -17,7 +17,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Network Management](network-mgnmt)                       |                                                | Ready  |
 | [Onboarding Tool Management](onboard-tool-mgnmt)          |                                                |        |
 | [Module Software Management](module-software-mgnmt)       |                                                |        |
-| [Transport Capacity Management](transport-capacity-mgnmt) |                                                | In Progress |
+| [Transport Capacity Management](transport-capacity-mgnmt) |                                                | Ready  |
 
 ### How to Use
 Please see the README description of each service for more detail information and examples about their usages.

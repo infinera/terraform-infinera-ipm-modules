@@ -20,7 +20,7 @@ locals {
   leafModuleMap =  { for network in var.networks : network.name => network.leaf_modules }
 }
 
-module "network" {
+module "networks" {
   source                   = "../../tasks/networks"
   depends_on               = [module.profiles]
   networks                 = var.networks
@@ -29,7 +29,7 @@ module "network" {
   module_config_profiles   = module.profiles.module_config_profiles
 }
 
-module "leaf_module" {
+module "leaf_modules" {
   source                 = "../../tasks/leaf_modules"
   depends_on             = [module.network]
   for_each               = module.network.constellation_networks
@@ -40,8 +40,8 @@ module "leaf_module" {
 }
 
 data "ipm_networks" "networks" {
-  depends_on = [ module.leaf_module ]
-  for_each   = module.network.constellation_networks
+  depends_on = [ module.leaf_modules ]
+  for_each   = module.networks.constellation_networks
     id = each.value.id
 }
 
