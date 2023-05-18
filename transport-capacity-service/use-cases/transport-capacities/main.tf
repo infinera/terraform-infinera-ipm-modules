@@ -13,7 +13,7 @@ provider "ipm" {
 }
 
 module "transport-capacities" {
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//transport-capacity-mgnmt/workflows/transport-capacities"
+  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//transport-capacity-service/workflows/transport-capacities"
 
   transport-capacities = var.transport-capacities
   profile_path = var.ipm_profile_path
