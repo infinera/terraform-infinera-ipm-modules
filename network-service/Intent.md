@@ -1,4 +1,4 @@
-# Network Intent
+# Network Intent and Usages
 The network intent is the network template for the creation and management of the constellation network. It uses system and user defined profiles for the network's configuration settings. This allows the network designer to define the common or custom network templates for uniformly creation and management of the constellation networks at different site, region, country, etc. For more information about profiles specification and usages, please refer to the [Profile Specification](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Profiles.md)
 *The Network Intent definition is fixed and any modification of its definitions may cause error in the execution.*
 ## Network Intent TF Variable

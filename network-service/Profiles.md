@@ -1,4 +1,4 @@
-# Constellation Network Profiles 
+# Constellation Network Profiles and Usages
 The network profiles (AKA templates) are the common system and/or user defined configuration settings for the constellation network. 
 Usually the network designer shall define the common network profiles for network and/or its modules: **Network Profile**, **Network Configuration Profile**, and **Module Configuration Profile**. Using these profiles in the network intents shall allow the creation of networks with the same characteristics within or across sites, regions or domain networks. In addition, the user can override the profile settings in the intent as desired.
 
