@@ -9,7 +9,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Host Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)                             |                                                | In Progress |
 | [Module Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)                         |                                                | In Progress  |
 | [Network Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service)                       |                                                | Ready  |
-| [Transport Capacity Service](https://github.com/infinera/terraform-ipm_modules/tree/master/transport-capacity-service) |                                                | Ready  |
+| [Transport Capacity Service](https://github.com/infinera/terraform-ipm_modules/tree/master/transport-capacity-service) |                                                | In Progress  |
 | [Network Connection Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service) |                                                | In Progress |
 | [Module Software Manager](https://github.com/infinera/terraform-ipm_modules/tree/master/module-software-manager)       |                                                |        |
 | [NDU Service](https://github.com/infinera/terraform-ipm_modules/tree/master/ndu-service)                               |                                                |        |
@@ -18,7 +18,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Domain Fault Management Service]((https://github.com/infinera/terraform-ipm_modules/tree/master/domain-fault-management-service))             |                                                |        |
 | [Event Gateway]((https://github.com/infinera/terraform-ipm_modules/tree/master/event-gateway))           |                                                |        |
 | [Onboarding Tool](https://github.com/infinera/terraform-ipm_modules/tree/master/onboard-tool)          |                                                |        |
-| Author Server |                                                |   |
+| [Author Server](https://github.com/infinera/terraform-ipm_modules/tree/master/author-server) |                                                |   |
 
 ### How to Use
 Please see the README description of each service for more detail information and examples about their usages.
