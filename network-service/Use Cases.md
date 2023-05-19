@@ -1,15 +1,15 @@
 # Constellation Network Use Cases
-| Use Case               | Description   |
-|-------------------------|---------------|
-| Create Constellation Network With No Leaf            |  |
-| Create Constellation Network With One Leaf            |  |
-| Add New Leaf Modules to Constellation Network            |  |
-| Remove Leaf Modules From The Created XR Network            |  |
-| Update The Configuration Settings For the XR Network and all its Modules            |  |
-| Update The Configuration Settings for the XR Network Only            |  |
-| Update The Configuration Settings for the Hub Module of an XR Network            |  |
-| Update The Configuration Settings for the Leaf Modules of an XR Network            |  |
-| Delete The XR Network            |  |
+|  |Use Case               | Description   |
+|--|-----------------------|---------------|
+| 1 | Create Constellation Network With No Leaf            |  |
+| 2 | Create Constellation Network With One Leaf            |  |
+| 3 | Add New Leaf Modules to Constellation Network            |  |
+| 4 | Remove Leaf Modules From The Created XR Network            |  |
+| 5 | Update The Configuration Settings For the XR Network and all its Modules            |  |
+| 6 | Update The Configuration Settings for the XR Network Only            |  |
+| 7 | Update The Configuration Settings for the Hub Module of an XR Network            |  |
+| 8 | Update The Configuration Settings for the Leaf Modules of an XR Network            |  |
+| 9 | Delete The XR Network            |  |
 
 ## Use Case 1: Create Constellation Network With No Leaf 
 ### __Steps__

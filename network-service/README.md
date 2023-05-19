@@ -22,8 +22,15 @@ networks = [{network_name= "XR Network1",
 3. In the working directory, if this is the first run, run **terraform init** to initialize and load Terraform IPM modules.
 4. Run **terraform apply -var-file="*ABC.tfvars*"**. 
 ## Results
-The *XR Network1* network shall be created with hub module *PORT_MODE_HUB* and one leaf module *PORT_MODE-LEAF1*. For more information about the intent specification, please refer to the [Intent Specification](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Intent.md)
+The *XR Network1* network shall be created with hub module *PORT_MODE_HUB* and one leaf module *PORT_MODE-LEAF1*. For more information about the intent specification, please refer to the [Intents and Usages](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Intent.md)
 
-*The profile **network_profile1** specifies the system or user defined network configuration settings. For more information about profiles specification and their usages, please refer to the [Profile Specification](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Profiles.md)*
+*The profile **network_profile1** specifies the system or user defined network configuration settings. For more information about profiles specification and their usages, please refer to the [Profiles and Usages](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Profiles.md)*
 
 # [Uses Cases](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Use%20Cases.md)
+
+# Roles
+## Network Designer
+The network designer shall create the templates for the desired networks by defining the network intents and their profiles. These template shall be used by the network operators to create common or custom constellation networks across one or multiple regions.
+Please refer to the *Intents and Usages* and *Profiles and Usages* links above for more details.
+## Network Operator
+The network operators shall execute the specified network intent template to create and/or manage the network. As needed they can customize the network settings by overriding the profiles' settings. Please refer to the *Profiles and Usages* links above for more details.
