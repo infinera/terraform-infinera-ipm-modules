@@ -41,7 +41,7 @@ variable "ipm_host" {
   type = string
 }
 
-variable "imp_profile_path" {
+variable "ipm_profile_path" {
   type = string
 }
 
