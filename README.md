@@ -6,18 +6,18 @@ Each service shall have a collection of TF modules for configurations of its res
 
 | Service                                                   |  Description                                   | State  |
 |-----------------------------------------------------------|------------------------------------------------|--------|
-| [Host Management Service](host-mgnmt)                             |                                                | In Progress |
-| [Module Management Service](module-mgnmt)                         |                                                | In Progress  |
-| [Network Service](network-mgnmt)                       |                                                | Ready  |
-| [Transport Capacity Service](transport-capacity-mgnmt) |                                                | Ready  |
-| [Network Connection Service](network-connection-mgnmt) |                                                | In Progress |
-| [Module Software Manager](module-software-mgnmt)       |                                                |        |
-| [NDU Service](ndu-mgnmt)                               |                                                |        |
-| [Device Aggregator](device-aggregator-mgnmt)   |                                                |        |
-| [Aggregator Fault Management Service](aggregator-fault-mgnmt)     |                                                |        |
-| [Domain Fault Management Service](domain-fault-mgnmt)             |                                                |        |
-| [Event Gateway](event-gateway-mgnmt)           |                                                |        |
-| [Onboarding Tool](onboard-tool-mgnmt)          |                                                |        |
+| [Host Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)                             |                                                | In Progress |
+| [Module Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)                         |                                                | In Progress  |
+| [Network Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service)                       |                                                | Ready  |
+| [Transport Capacity Service](https://github.com/infinera/terraform-ipm_modules/tree/master/transport-capacity-service) |                                                | Ready  |
+| [Network Connection Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service) |                                                | In Progress |
+| [Module Software Manager](https://github.com/infinera/terraform-ipm_modules/tree/master/module-software-manager)       |                                                |        |
+| [NDU Service](https://github.com/infinera/terraform-ipm_modules/tree/master/ndu-service)                               |                                                |        |
+| [Device Aggregator](https://github.com/infinera/terraform-ipm_modules/tree/master/device-aggregator)   |                                                |        |
+| [Aggregator Fault Management Service]((https://github.com/infinera/terraform-ipm_modules/tree/master/aggregator-fault-management-service))     |                                                |        |
+| [Domain Fault Management Service]((https://github.com/infinera/terraform-ipm_modules/tree/master/domain-fault-management-service))             |                                                |        |
+| [Event Gateway]((https://github.com/infinera/terraform-ipm_modules/tree/master/event-gateway))           |                                                |        |
+| [Onboarding Tool](https://github.com/infinera/terraform-ipm_modules/tree/master/onboard-tool)          |                                                |        |
 | Author Server |                                                |   |
 
 ### How to Use
