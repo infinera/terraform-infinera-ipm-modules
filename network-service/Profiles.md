@@ -1,138 +1,5 @@
-# Network Intent and Profiles
-The network intent specifies the creation and management of the constellation network, its hub and leaf modules. The profiles define the configuration templates for the network and its modules. The network Designer will define the common network profiles (templates) and use them in the intents to uniformly create and manage constellation networks at a site, region, country, etc. 
-
-# Network Intent
-The network intent specifies a list of desired constellation networks. The Network Intent definition is fixed and any modification of its definitions may cause error in TF run.
-## Network Intent TF Variable
-```
-variable "networks" {
-  type = list(object({ profile = optional(string), // the profile name which will point to the three other profiles: Network, Hub and Leaf profile  
-                       name = optional(string), 
-                       constellation_frequency = optional(number), 
-                       modulation = optional(string), 
-                       managed_by = optional(string), 
-                       tc_mode = optional(string) ,
-                       hub_module = object({ identifier = object({name = optional(string), 
-                                                                  id = optional(string), 
-                                                                  serial_number = optional(string), 
-                                                                  mac_address = optional(string), 
-                                                                  host_port_name = optional(string), 
-                                                                  host_name = optional(string),
-                                                                  host_chassis_id = optional(string), 
-                                                                  host_chassis_id_subtype = optional(string),
-                                                                  host_port_id = optional(string),
-                                                                  host_port_id_subtype = optional(string),
-                                                                  host_sys_name  = optional(string),
-                                                                  host_port_source_mac = optional(string)}),
-                                            traffic_mode : optional(string), 
-                                            fiber_connection_mode : optional(string), 
-                                            managed_by : optional(string), 
-                                            planned_capacity : optional(string), 
-                                            requested_nominal_psd_offset : optional(string), 
-                                            fec_iterations : optional(string), 
-                                            tx_clp_target : optional(string) })
-                      leaf_modules = optional(list(object({ identifier = object({name = optional(string), 
-                                                                                 id = optional(string), 
-                                                                                 serial_number = optional(string), 
-                                                                                 mac_address = optional(string), 
-                                                                                 host_port_name = optional(string), 
-                                                                                 host_name = optional(string),
-                                                                                 host_chassis_id = optional(string), 
-                                                                                 host_chassis_id_subtype = optional(string),
-                                                                                 host_port_id = optional(string), 
-                                                                                 host_port_id_subtype = optional(string),
-                                                                                 host_sys_name  = optional(string), 
-                                                                                 host_port_source_mac = optional(string)}),
-                                                            profile  = optional(string),
-                                                            traffic_mode = optional(string), 
-                                                            fiber_connection_mode = optional(string),  
-                                                            managed_by = optional(string), 
-                                                            planned_capacity = optional(string),
-                                                            requested_nominal_psd_offset = optional(string),
-                                                            fec_iterations = optional(string),
-                                                            tx_clp_target = optional(string) }))) 
-  }))
-  description = "List of constellation Network"
-  default = [{ name = "XR Network1",
-                  profile = "network_profile1", modulation : "16QAM" ,
-                  hub_module      = { identifier= {name = "PORT_MODE_HUB"}, traffic_mode = "VTIMode" },
-                  leaf_modules = [{ identifier= {name = "PORT_MODE_LEAF1" }}, { identifier= {name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }] }]
-}
-```
-
-## Network Intent Definition
-| Attribute               | Type   | Possible Values     | Default   | Description                                   |
-|-------------------------|--------|---------------------|-----------|-----------------------------------------------|
-| profile                 | string | Network Profile     |           |  The network profile name.                                             |
-| name                    | string | Network Name        |           |                                               |
-| traffic_mode            | string | L1Mode, VTIMode     | L1Mode    |                                               |
-| constellation_frequency | number | 191000000 to 196100000 (MHz)    | 193000000 |                                   |
-| modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
-| managed_by              | string | cm, host            | cm        |                                               |
-| tc_mode                 | bool   | true, false         |           |                                               |
-| hub_module              | object | NA                  |           | Network's Hub Module                          |
-| leaf_modules            | List   | NA                  |           | List of Leaf modules                          |
-
-## Hub Module Intent
-
-| Attribute               | Type   | Possible Values | Default   | Description                                   |
-|-------------------------|--------|-----------------|-----------|-----------------------------------------------|
-| identifier              | object |                 |           | Module Identifier     |
-| managed_by              | string | cm, host        | cm        |                                               |
-| name                    | string | Network Name        |           |                                               |
-| fiber_connection_mode   | string | single, dual        | single    |                                               |
-| modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
-| managed_by              | string | cm, host            | cm        |                                               |
-| planned_capacity        | string | 400G, 200G, 100G, 50G, 25G |    |                                               |
-| requested_nominal_psd_offset | string | 0dB, +3dB, +6dB |          |                                               |
-| fec_iterations          | string | undefined, standard, turbo |    |                                               |
-| fec_iterations          | number | -3500 to 0          |           |                                               |
-
-
-## Leaf Module Intent
-| Attribute               | Type   | Possible Values     | Default   | Description                                   |
-|-------------------------|--------|---------------------|-----------|-----------------------------------------------|
-| identifier              | object |                     |           | Module Identifier          |
-| profile                 | string |                     |           | configuration profile name for the leaf module |
-| name                    | string | Network Name        |           |                                               |
-| fiber_connection_mode   | string | single, dual        | single    |                                               |
-| modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
-| managed_by              | string | cm, host            | cm        |                                               |
-| planned_capacity        | string | 400G, 200G, 100G, 50G, 25G |    |                                               |
-| requested_nominal_psd_offset | string | 0dB, +3dB, +6dB |          |                                               |
-| fec_iterations          | string | undefined, standard, turbo |    |                                               |
-| fec_iterations          | number | -3500 to 0          |           |                                               |
-
-## Module Identifier Object
-The leaf or hub module is identified by one of 8 identifier groups below. Only one group is need to specified in the intent. I.E. if the group 1 identifier **name** is specified, only *name* is needed to specify the *module name selector* group
-
-  1. Name
-  2. id
-  3. mac_address,
-  4. serial_number
-  5. host_name and  host_port_name
-  6. host_chassis_id, host_chassis_subtype, host_port_id and host_id_subtype
-  7. host_port_sys_name, host_port_id and host_id_subtype
-  8. host_port_source_mac
-
-| Attribute               | Type   | Possible Values | Default   | Description                                   |
-|-------------------------|--------|-----------------|-----------|-----------------------------------------------|
-| name **1**                | string |               |           | Use for module name selector     |
-| id **2**                  | string |               |           | Module Id: Use for module id selector         |
-| mac_address **3**         | string |               |           | Module MacAddress: Use for module MacAddress selector     |
-| serial_number **4**       | string |               |           | Module Serial Number: Use for module serialNumber selector |
-| host_name **5**           | string |               |           | Use for Host Name selector     |
-| host_port_name **5**      | string |               |           | Use for Host Name selector         |
-| host_chassis_id **6**     | string |               |           | Use for Host Port ID selector     |
-| host_chassis_sub_type **6** | string |             |           | Use for Host Port ID selector     |
-| host_port_id **6,7**      | string |               |           | Use for Host Port ID selector and Host SysName selector  |
-| host_id_sub_type **6,7**  | string |               |           | Use for Host Port ID selector and Host SysName selector   |
-| host_port_sys_name **7**  | string |               |           | Use for Host Port SourceMac selector     |
-| host_port_source_mac**8** | string |               |           | Use for Host Port SourceMac selector     |
-
-
 # Constellation Network Profiles 
-The network profiles (AKA templates) are the common system and/or user defined settings for network and module configurations. 
+The network profiles (AKA templates) are the common system and/or user defined configuration settings for the constellation network. 
 Usually the network designer shall define the common network profiles for network and/or its modules: **Network Profile**, **Network Configuration Profile**, and **Module Configuration Profile**. Using these profiles in the network intents shall allow the creation of networks with the same characteristics within or across sites, regions or domain networks. In addition, the user can override the profile settings in the intent as desired.
 
 ```
@@ -187,18 +54,18 @@ network_profiles = {
 The Network Configuration Profile specifies the common configurations for a constellation network. 
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
-| name                    | string | Network Name        |           |                                               |
 | traffic_mode            | string | L1Mode, VTIMode     | L1Mode    |                                               |
 | constellation_frequency | number | 191000000 to 196100000 (MHz) | 193000000 |                                      |
 | modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
 | managed_by              | string | cm, host            | cm        |                                               |
 | tc_mode                 | bool   | true, false         |           |                                               |
+| topology                | string |          |           |                                               |
 
 ### Network Configuration Profile TF Variable
 ```
 variable network_config_profiles {
     type = map(object({constellation_frequency= optional(number), modulation = optional(string), managed_by=optional(string), 
-                       tc_mode=optional(string)}))
+                       tc_mode=optional(string),topology=optional(string)}))
     description = "Map of Network Config profile"
 }
 ```
@@ -212,7 +79,6 @@ network_config_profiles =  {"network_config_profile1": { constellation_frequency
 The Module Configuration Profile specifies the common configurations for a Hub/Leaf Module.
 | Attribute               | Type   | Possible Values     | Default   | Description                                   |
 |-------------------------|--------|---------------------|-----------|-----------------------------------------------|
-| name                    | string | Network Name        |           |                                               |
 | fiber_connection_mode   | string | single, dual        | single    |                                               |
 | modulation              | string | 16QAM, QPSK, 8QAM   |           |                                               |
 | managed_by              | string | cm, host            | cm        |                                               |
@@ -245,11 +111,11 @@ The Module Configuration Profile specifies the common configurations for a Hub/L
     <pre>
     // "XR Network1" network shall have constellation_frequency set to 194000001 regardless of setting in the network config profile "network_profile1"
     // "XR Network2" network's configuration shall be configured using the specification from network config profile "network_profile2"
-    networks = [{name= "XR Network1", 
+    networks = [{network_name= "XR Network1", 
                   network_profile = "network_profile1", 
                   <b>constellation_frequency=194000001</b>   // This constellation_frequency settings shall override the settings in network_profile 
-                  hub_module = { identifier = {name = "PORT_MODE_HUB"}}, 
-                  leaf_modules=[{identifier =  {name = "PORT_MODE_LEAF1"}}]}]`
+                  hub_module = { identifier = {module_name = "PORT_MODE_HUB"}}, 
+                  leaf_modules=[{identifier =  {module_name = "PORT_MODE_LEAF1"}}]}]`
     </pre>
 
 2. Execute Terraform apply
@@ -262,21 +128,21 @@ The Module Configuration Profile specifies the common configurations for a Hub/L
       For hub module, specify the inline configuration settings in the network's hub intent data as shown in the example below
       <pre>
       // The network's hub module shall have <b>traffic_mode set to "L1Mode"</b> overriding the hub config setting specified in network_profile
-      networks = [{name= "XR Network1", 
+      networks = [{network_name= "XR Network1", 
                     network_profile = "network_profile1", 
-                    hub_module = { identifier = {name = "PORT_MODE_HUB"}, <b>traffic_mode = "L1Mode"</b>}, 
-                    leaf_modules=[{identifier =  {name = "PORT_MODE_LEAF1"}}]}]
+                    hub_module = { identifier = {module_name = "PORT_MODE_HUB"}, <b>traffic_mode = "L1Mode"</b>}, 
+                    leaf_modules=[{identifier =  {module_name = "PORT_MODE_LEAF1"}}]}]
       </pre>
    2. __Leaf Module__
       For leaf module, specify inline configuration settings in the leaf_modules intent data as shown in the example below
       <pre>
       // Leaf module "PORT_MODE_LEAF1" shall be configured using the configuration specification from config profile "leaf_config_profile2"
       // Leaf module "PORT_MODE_LEAF2" shall have traffic_mode set to "L1Mode" regardless of the setting in its config profile settings
-      networks = [{name= "XR Network1", 
+      networks = [{network_name= "XR Network1", 
                       network_profile = "network_profile1", 
-                      hub_module = { identifier = {name = "PORT_MODE_HUB"}}, 
-                      leaf_modules=[{identifier =  {name = "PORT_MODE_LEAF1"}, profile = "leaf_config_profile2"},
-                                    {identifier =  {name = "PORT_MODE_LEAF2"}, <b>traffic_mode = "L1Mode"}</b>]}]
+                      hub_module = { identifier = {module_name = "PORT_MODE_HUB"}}, 
+                      leaf_modules=[{identifier =  {module_name = "PORT_MODE_LEAF1"}, profile = "leaf_config_profile2"},
+                                    {identifier =  {module_name = "PORT_MODE_LEAF2"}, <b>traffic_mode = "L1Mode"}</b>]}]
       </pre>
 2. Execute Terraform apply
    
