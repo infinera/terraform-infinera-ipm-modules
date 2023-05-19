@@ -24,7 +24,7 @@ variable "network_profiles" {
 
 variable "network_config_profiles" {
   type        = map(object({ constellation_frequency = optional(number), modulation = optional(string), managed_by = optional(string), 
-                             tc_mode = optional(string) }))
+                             tc_mode = optional(string), topology = optional(string) }))
   description = "Map of Network Config profile"
 }
 
