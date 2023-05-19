@@ -8,7 +8,7 @@ terraform {
 
 // Constellation Network Resource supports CRUD functions
 resource "ipm_constellation_network" "constellation_networks" {
-  for_each = { for network in var.networks : network.name => network }
+  for_each = { for network in var.networks : network.network_name => network }
   config = {
     name                    = each.value.network_name
     constellation_frequency = each.value.constellation_frequency != null ? each.value.constellation_frequency : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].constellation_frequency

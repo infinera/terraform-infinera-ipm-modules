@@ -20,7 +20,7 @@ module "networks" {
 }
 
 output "networks" {
-  value = module.network
+  value = module.networks
 }
 
 
