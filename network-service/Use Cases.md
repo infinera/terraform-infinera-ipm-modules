@@ -22,7 +22,8 @@ networks = [{network_name= "XR Network1",
 3. In the working directory, if this is the first run, run **terraform init** to initialize and load Terraform IPM modules.
 4. Run **terraform apply -var-file="*ABC.tfvars*"**. 
 ## Results
-
+Network **"XR Network1"** is created with hub module *PORT_MODE_HUB* and one leaf module *PORT_MODE-LEAF1*.
+The network and its modules' configuration settings are specified via the network level profile **network_profile1**. For more indow
 If it is required, the user defined Constellation Network profiles.json must be available in the TF root directory (where the command "terraform apply" is executed)
 1. Create new **ABC** directory go to existing **ABC** directory. Copy files *variables.tf*, *main.tf*, *profiles.json* and input file *network.tfvars* to directory **ABC**. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information. 
 <pre>
@@ -229,4 +230,4 @@ module "network" {
 }
 ```
 ## Intent Definitions, Profile Definitions and Their Usages
-**Please see [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information about the intent definition and profile settings and usages.**
+**Please see for details in the [Intent and Profiles](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information about the intent definition and profile settings and usages.**
