@@ -8,7 +8,7 @@ variable "leaf_config_profile" {
 }
 
 variable "leaf_modules" {
-  type = list(object({ identifier = object({name = optional(string), id = optional(string), serial_number = optional(string), 
+  type = list(object({ identifier = object({module_name = optional(string), module_id = optional(string), serial_number = optional(string), 
                                             mac_address = optional(string), host_port_name = optional(string), host_name = optional(string),
                                             host_chassis_id = optional(string), host_chassis_id_subtype = optional(string),
                                             host_port_id = optional(string), host_port_id_subtype = optional(string),
@@ -18,7 +18,7 @@ variable "leaf_modules" {
                         planned_capacity = optional(string), requested_nominal_psd_offset = optional(string),fec_iterations = optional(string),
                         tx_clp_target = optional(string) }))
   description = "Leaf modules for specified network name "
-  /*default     = [{ identifier = {name = "PORT_MODE_LEAF1" }}, { identifier = {name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }]*/
+  /*default     = [{ identifier = {module_name = "PORT_MODE_LEAF1" }}, { identifier = {module_name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }]*/
 }
 
 variable "module_config_profiles" {

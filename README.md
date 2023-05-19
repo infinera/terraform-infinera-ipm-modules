@@ -7,7 +7,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | Service                                                   |  Description                                   | State  |
 |-----------------------------------------------------------|------------------------------------------------|--------|
 | [Host Management Service](host-mgnmt)                             |                                                | In Progress |
-| [Module Management Service](module-mgnmt)                         |                                                |        |
+| [Module Management Service](module-mgnmt)                         |                                                | In Progress  |
 | [Network Service](network-mgnmt)                       |                                                | Ready  |
 | [Transport Capacity Service](transport-capacity-mgnmt) |                                                | Ready  |
 | [Network Connection Service](network-connection-mgnmt) |                                                | In Progress |

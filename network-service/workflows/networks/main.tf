@@ -7,7 +7,7 @@ terraform {
 }
 
 locals {
-  networkMap = { for network in var.networks : network.name => network }
+  networkMap = { for network in var.networks : network.network_name => network }
 }
 
 module "profiles"  {
@@ -17,7 +17,7 @@ module "profiles"  {
 }
 
 locals {
-  leafModuleMap =  { for network in var.networks : network.name => network.leaf_modules }
+  leafModuleMap =  { for network in var.networks : network.network_name => network.leaf_modules }
 }
 
 module "networks" {
