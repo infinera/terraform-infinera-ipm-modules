@@ -25,3 +25,5 @@ networks = [{network_name= "XR Network1",
 The *XR Network1* network shall be created with hub module *PORT_MODE_HUB* and one leaf module *PORT_MODE-LEAF1*. For more information about the intent specification, please refer to the [Intent Specification](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Intent.md)
 
 *The profile **network_profile1** specifies the system or user defined network configuration settings. For more information about profiles specification and their usages, please refer to the [Profile Specification](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Profiles.md)*
+
+# [Uses Cases](https://github.com/infinera/terraform-ipm_modules/blob/master/network-service/Use%20Cases.md)
