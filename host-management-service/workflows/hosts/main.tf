@@ -4,6 +4,7 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
+  experiments = [module_variable_optional_attrs]
 }
 
 
