@@ -14,9 +14,9 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Module Software Manager](https://github.com/infinera/terraform-ipm_modules/tree/master/module-software-manager)       |                                                |        |
 | [NDU Service](https://github.com/infinera/terraform-ipm_modules/tree/master/ndu-service)                               |                                                |        |
 | [Device Aggregator](https://github.com/infinera/terraform-ipm_modules/tree/master/device-aggregator)   |                                                |        |
-| [Aggregator Fault Management Service]((https://github.com/infinera/terraform-ipm_modules/tree/master/aggregator-fault-management-service))     |                                                |        |
-| [Domain Fault Management Service]((https://github.com/infinera/terraform-ipm_modules/tree/master/domain-fault-management-service))             |                                                |        |
-| [Event Gateway]((https://github.com/infinera/terraform-ipm_modules/tree/master/event-gateway))           |                                                |        |
+| [Aggregator Fault Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/aggregator-fault-management-service)     |                                                |        |
+| [Domain Fault Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/domain-fault-management-service)             |                                                |        |
+| [Event Gateway](https://github.com/infinera/terraform-ipm_modules/tree/master/event-gateway)           |                                                |        |
 | [Onboarding Tool](https://github.com/infinera/terraform-ipm_modules/tree/master/onboard-tool)          |                                                |        |
 | [Author Server](https://github.com/infinera/terraform-ipm_modules/tree/master/author-server) |                                                |   |
 
