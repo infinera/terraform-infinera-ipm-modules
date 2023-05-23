@@ -1,0 +1,32 @@
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera.com/poc/ipm"
+    }
+  }
+  experiments = [module_variable_optional_attrs]
+}
+
+provider "ipm" {
+  username = var.ipm_user
+  password = var.ipm_password
+  host     = var.ipm_host
+}
+
+module "networks" {
+  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/networks"
+  source = "../../../network-service/workflows/networks"
+
+  networks = var.networks
+  profile_path = var.ipm_profile_path
+}
+
+
+module "transport-capacities" {
+  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//transport-capacity-service/workflows/transport-capacities"
+  source = "../../../transport-capacity-service/workflows/transport-capacities"
+  depends_on = [ module.networks ]
+
+  transport-capacities = var.transport-capacities
+  profile_path = var.ipm_profile_path
+}
