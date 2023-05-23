@@ -25,6 +25,7 @@ variable "nc_profiles" {
 
 variable "imp_profile_path" {
   type = string
+  default = "../../ipm-profiles"
 }
 
 

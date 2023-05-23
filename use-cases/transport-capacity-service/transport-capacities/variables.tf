@@ -32,4 +32,5 @@ variable "ipm_host" {
 
 variable "imp_profile_path" {
   type = string
+  default = "../../ipm-profiles"
 }
