@@ -18,7 +18,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Domain Fault Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/domain-fault-management-service)             |                                                |        |
 | [Event Gateway](https://github.com/infinera/terraform-ipm_modules/tree/master/event-gateway)           |                                                |        |
 | [Onboarding Tool](https://github.com/infinera/terraform-ipm_modules/tree/master/onboard-tool)          |                                                |        |
-| [Author Server](https://github.com/infinera/terraform-ipm_modules/tree/master/author-server) |                                                |   |
+| [Author Server](https://github.com/infinera/terraform-ipm_modules/tree/master/author-server) |                  |   |
 
 ### How to Use
 Please see the README description of each service for more detail information and examples about their usages.
