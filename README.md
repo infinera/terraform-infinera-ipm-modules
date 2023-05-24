@@ -33,5 +33,5 @@ These modules are used to orchestrate the E2E configuration and provisioning of 
 ### How to Use
 Please see the README description for more detail information and examples about their usages.
 
-## Manage the XR Network via Configuration Intent and IPM Service Docker Image
-Please see [Manage the XR Network via Configuration Intent and IPM Service Docker Image](https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse/README.md) for more details.
+# Manage the XR Network via Configuration Intent and IPM Service Docker Image
+Please see [Manage the XR Network via Configuration Intent](https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse/Manage-XR-Network-Using%20-IPM-Services.md) for more details.
