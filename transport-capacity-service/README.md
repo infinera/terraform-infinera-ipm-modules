@@ -11,3 +11,6 @@
 
 # How to Use
 
+# Manage the XR Network via Configuration Intent and IPM Service Docker Image
+Please see [Manage the XR Network via Configuration Intent and IPM Service Docker Image](https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse/README.md) for more details.
+

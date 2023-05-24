@@ -4,6 +4,9 @@ Basically for any network configurations, There are two required data : the inte
 * The configuration Intent are specified by user to create, retrieve, update and delete the network.
 * The configuration Profiles are defined once and they include both system defined and user define configuration settings. Please refer to the [Detail Readme](https://github.com/infinera/terraform-ipm_modules/blob/master/network-mgnmt/Intent%20and%20Profiles.md) for more information.
 
+## Manage the XR Network via Configuration Intent and IPM Service Docker Image
+Please see [Manage the XR Network via Configuration Intent and IPM Service Docker Image](https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse/README.md) for more details.
+
 ## Prerequisite For All Use Cases
 1. The Infinera IPM provider
 2. Installed Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
