@@ -4,7 +4,6 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-experiments = 
 }
 
 locals {

@@ -4,7 +4,7 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-  experiments = 
+
 }
 
 provider "ipm" {
@@ -18,7 +18,7 @@ module "transport-capacities" {
   source = "../../../transport-capacity-service/workflows/transport-capacities"
 
   transport-capacities = var.transport-capacities
-  profile_path = var.ipm_profile_path
+  profile_path         = var.ipm_profile_path
 }
 
 output "transport-capacities" {

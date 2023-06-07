@@ -4,7 +4,7 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-  experiments = 
+
 }
 
 provider "ipm" {
@@ -17,16 +17,16 @@ module "networks" {
   //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/networks"
   source = "../../../network-service/workflows/networks"
 
-  networks = var.networks
+  networks     = var.networks
   profile_path = var.ipm_profile_path
 }
 
 
 module "transport-capacities" {
   //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//transport-capacity-service/workflows/transport-capacities"
-  source = "../../../transport-capacity-service/workflows/transport-capacities"
-  depends_on = [ module.networks ]
+  source     = "../../../transport-capacity-service/workflows/transport-capacities"
+  depends_on = [module.networks]
 
   transport-capacities = var.transport-capacities
-  profile_path = var.ipm_profile_path
+  profile_path         = var.ipm_profile_path
 }

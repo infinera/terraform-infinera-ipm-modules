@@ -3,7 +3,7 @@ terraform {
     ipm = {
       source = "infinera.com/poc/ipm"
     }
-    experiments = 
+
   }
 }
 
@@ -18,7 +18,7 @@ module "network_connections" {
   source = "../../../network-connection-service/workflows/network-connections"
 
   network_connections = var.network_connections
-  profile_path = var.ipm_profile_path
+  profile_path        = var.ipm_profile_path
 }
 
 output "network_connection" {

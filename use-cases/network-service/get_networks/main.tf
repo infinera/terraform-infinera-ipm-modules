@@ -3,7 +3,7 @@ terraform {
     ipm = {
       source = "infinera.com/poc/ipm"
     }
-    experiments = 
+
   }
 }
 

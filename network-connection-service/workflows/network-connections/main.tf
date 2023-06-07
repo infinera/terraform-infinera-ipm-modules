@@ -4,17 +4,17 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-  experiments = 
+
 }
 
-module "profiles"  {
-  source   = "../../profiles"
+module "profiles" {
+  source = "../../profiles"
 
   profile_path = var.profile_path
 }
 
 module "network_connection" {
-  source                   =  "../../tasks/network-connections"
+  source              = "../../tasks/network-connections"
   network_connections = var.network_connections
 }
 

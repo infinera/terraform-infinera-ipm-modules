@@ -4,7 +4,7 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-  experiments = 
+
 }
 
 provider "ipm" {
