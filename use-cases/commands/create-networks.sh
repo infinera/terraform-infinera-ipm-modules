@@ -12,11 +12,9 @@ do
 done
 cd  ../network-service/networks
 if [[ $force_init ]]; then
-  echo "1111"
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
-  echo "2222"
   terraform init
 fi
 touch .tfinit
