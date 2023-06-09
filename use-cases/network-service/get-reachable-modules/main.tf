@@ -13,12 +13,12 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_hub_module" "hub_module" {
-  network_id = "fe1ec0a8-2dc7-402c-86d8-5ea0ebaa2ebe"
+data "ipm_reachable_modules" "reachable_modules" {
+  network_id = var.network_id
 }
 
-output "hub_module" {
-  value = data.ipm_hub_module.hub_module
+output "reachable_modules" {
+  value = data.ipm_reachable_modules.reachable_modules
 }
 
 

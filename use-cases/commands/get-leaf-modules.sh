@@ -5,6 +5,7 @@ do
   val=$(echo $arg | cut -f2 -d=)
   case $index in
     force_init) force_init="$val";;
+    id) id="$val";;
     *)
   esac
 done
@@ -20,7 +21,7 @@ if [[ -v IPM_PASSWORD ]] ; then
   export TF_VAR_ipm_password="$IPM_PASSWORD"
 fi
 
-cd  module-management-service/get-modules
+cd  network-service/get-leaf-modules
 if [[ $force_init ]]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init

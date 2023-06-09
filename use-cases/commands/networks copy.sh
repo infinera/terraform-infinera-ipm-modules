@@ -54,11 +54,18 @@ fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
 
 cd  network-service/networks
-if [ -z "${force_init}" ]; then
+if [[ -v force_init ]]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
   terraform init
 fi
 touch .tfinit
+
+echo cmd="$cmd"
+if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
+  terraform $cmd -var-file="$intent"
+else
+  terraform $cmd
+fi
 cd ../..

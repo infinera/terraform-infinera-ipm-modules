@@ -20,7 +20,7 @@ if [[ -v IPM_PASSWORD ]] ; then
   export TF_VAR_ipm_password="$IPM_PASSWORD"
 fi
 
-cd  module-management-service/get-modules
+cd  network-service/get-hub-module
 if [[ $force_init ]]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init

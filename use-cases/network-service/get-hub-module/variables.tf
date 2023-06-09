@@ -10,3 +10,7 @@ variable "ipm_password" {
 variable "ipm_host" {
   type = string
 }
+
+variable "network_id" {
+  type = string
+}
