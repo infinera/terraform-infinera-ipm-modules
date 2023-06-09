@@ -30,7 +30,7 @@ variable "system_data_path" {
 
 variable "user_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "nc_profiles.json"
 }
 
 

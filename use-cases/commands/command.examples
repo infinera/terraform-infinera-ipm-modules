@@ -1,1 +1,2 @@
-bash create-networks.sh system_data_path="`pwd`/ipm-data" force_init=yes
+bash create-networks.sh system_data_path=
+ force_init=yes

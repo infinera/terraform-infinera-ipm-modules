@@ -7,39 +7,42 @@ do
     force_init) force_init="$val";;
     system_data_path) system_data_path="$val";;
     user_profile_file) user_profile="$val";;
-    intent_file) intent_file="$val";;
+    intent) intent="$val";;
     cmd) cmd="$val";;
     *)
   esac
 done
 
 # Check intent file
-if [[ ! -v intent_file ]] && [[ ! -v INTEN_FILE ]]; then
+if [[ ! -v intent ]] && [[ ! -v INTENT ]]; then
   echo "Can't proceed. Intent File is not specified."
   exit
-elif [[ ! -v intent_file ]]; then
-  intent_file = "$INTEN_FILE"
+elif [[ ! -v intent ]]; then
+  intent="$INTENT"
 fi
 
+echo INTENt="$intent"
+
 # Check if system profile path is set
-if [ -n "$system_data_path" ]; then
+if [[ -v system_data_path ]]; then
   export TF_VAR_system_data_path="$system_data_path"
-elif [ ! -n "${SYSTEM_DATA_PATH}" ]; then
+elif [[ -v SYSTEM_DATA_PATH ]]; then
   export TF_VAR_system_data_path="${SYSTEM_DATA_PATH}"
 else
   echo "Can't proceed. System data path is not specified."
   exit
 fi
+echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 
 # Check if user profile file is set
-if [ -n "$user_profile_file" ]; then
+if [[ -v user_profile ]]; then
   export TF_VAR_user_profile_file="$user_profile_file"
-elif [ -n "${USER_PROFILE_FILE}" ]; then
-  export TF_VAR_user_profile_file="${USER_PROFILE_FILE}"
-else
-;;
+elif [[ -v USER_PROFILE ]]; then
+  export TF_VAR_user_profile="${USER_PROFILE}"
 fi
-cd  ../network-service/networks
+echo TF_VAR_user_profile="$TF_VAR_user_profile"
+
+cd  network-service/networks
 if [[ $force_init ]]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
@@ -48,11 +51,9 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-echo $TF_VAR_user_profile_file
-echo $TF_VAR_system_data_path
-
-if [ "${cmd}" = "apply" -o  "${cmd}" = "plan"] then
-  terraform $cmd -var-file="$intent_file"
+echo cmd="$cmd"
+if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
+  terraform $cmd -var-file="$intent"
 else
   terraform $cmd
 fi
