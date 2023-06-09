@@ -11,7 +11,8 @@ terraform {
 module "profiles" {
   source = "../../profiles"
 
-  profile_path = var.profile_path
+  system_data_path = var.system_data_path
+  user_data_path   = var.user_data_path
 }
 
 module "hosts" {

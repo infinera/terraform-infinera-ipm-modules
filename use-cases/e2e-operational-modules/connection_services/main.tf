@@ -18,7 +18,8 @@ module "networks" {
   source = "../../../network-service/workflows/networks"
 
   networks     = var.networks
-  profile_path = var.ipm_profile_path
+  system_data_path = var.system_data_path
+  user_data_path = var.user_data_path
 }
 
 
@@ -28,5 +29,6 @@ module "transport-capacities" {
   depends_on = [module.networks]
 
   transport-capacities = var.transport-capacities
-  profile_path         = var.ipm_profile_path
+  system_data_path = var.system_data_path
+  user_data_path = var.user_data_path
 }

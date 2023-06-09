@@ -8,9 +8,9 @@ terraform {
 }
 
 locals {
-  system_profiles = fileexists("${var.profile_path}/network_profiles.json") ? jsondecode(file("${var.profile_path}/network_profiles.json")) : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
+  system_profiles = fileexists("${var.system_data_path}/network_profiles.json") ? jsondecode(file("${var.system_data_path}/network_profiles.json")) : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
 
-  user_profiles = fileexists("${path.root}/network_profiles.json") ? jsondecode(file("${path.root}/network_profiles.json")) : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
+  user_profiles = fileexists("${var.user_data_path}/network_profiles.json") ? jsondecode(file("${var.user_data_path}/network_profiles.json")) : fileexists("${path.root}/network_profiles.json") ? jsondecode(file("${path.root}/network_profiles.json")) :  { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
 
   network_profiles        = merge(local.user_profiles.network_profiles, local.system_profiles.network_profiles)
   network_config_profiles = merge(local.user_profiles.network_config_profiles, local.system_profiles.network_config_profiles)

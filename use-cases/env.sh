@@ -1,4 +1,5 @@
 export TF_VAR_ipm_user=""
 export TF_VAR_ipm_host=""
 export TF_VAR_ipm_password=""
-export TF_VAR_ipm_profile_path=""
+export TF_VAR_user_data_path=""
+export TF_VAR_system_data_path=""
