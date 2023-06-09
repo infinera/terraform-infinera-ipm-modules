@@ -8,7 +8,7 @@ do
     *)
   esac
 done
-cd  ../module-management-service/get-modules
+cd  module-management-service/get-modules
 if [[ $force_init ]]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
@@ -16,5 +16,5 @@ elif [ ! -f ".tfinit" ]; then
   terraform init
 fi
 touch .tfinit
-terraform apply
+terraform apply -auto-approve 
 cd ../..
