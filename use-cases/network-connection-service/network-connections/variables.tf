@@ -28,7 +28,7 @@ variable "system_data_path" {
   default = "../../ipm-data"
 }
 
-variable "user_data_path" {
+variable "user_profile" {
   type    = string
   default = "../../ipm-data"
 }

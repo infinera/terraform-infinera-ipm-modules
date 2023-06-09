@@ -12,7 +12,7 @@ module "profiles" {
   source = "../../profiles"
 
   system_data_path = var.system_data_path
-  user_data_path   = var.user_data_path
+  user_profile     = var.user_profile
 }
 
 module "hosts" {

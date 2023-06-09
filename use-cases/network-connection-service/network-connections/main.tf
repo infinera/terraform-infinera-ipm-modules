@@ -18,7 +18,7 @@ module "network_connections" {
   source = "../../../network-connection-service/workflows/network-connections"
 
   system_data_path = var.system_data_path
-  user_data_path   = var.user_data_path
+  user_profile     = var.user_profile
 }
 
 output "network_connection" {
