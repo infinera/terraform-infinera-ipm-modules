@@ -61,4 +61,12 @@ elif [ ! -f ".tfinit" ]; then
   terraform init
 fi
 touch .tfinit
+
+echo cmd="$cmd"
+if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
+  terraform $cmd -var-file="$intent"
+else
+  terraform $cmd
+fi
+
 cd ../..
