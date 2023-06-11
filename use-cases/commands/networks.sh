@@ -1,10 +1,12 @@
 #!/bin/bash
+
+init="no"
 for arg in "$@"
 do
   index=$(echo $arg | cut -f1 -d=)
   val=$(echo $arg | cut -f2 -d=)
   case $index in
-    force_init) force_init="$val";;
+    init) init="$val";;
     system_data_path) system_data_path="$val";;
     user_profile_file) user_profile="$val";;
     intent) intent="$val";;
@@ -52,9 +54,13 @@ elif [[ -v USER_PROFILE ]]; then
   export TF_VAR_user_profile="${USER_PROFILE}"
 fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
-
-cd  network-service/networks
-if [ -z "${force_init}" ]; then
+previousDir="`pwd`"
+cd  ${TF_ROOT}/network-service/networks
+if [ -f ${previousDir}/terraform.tfstate ]; then
+  cp ${previousDir}/terraform.tfstate .
+  cp ${previousDir}/.terraform.lock.hcl .
+fi
+if [ "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
@@ -68,5 +74,14 @@ if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
 else
   terraform $cmd
 fi
+if [ $? -eq 0 ]; then
+  echo "0 - Terraform applied successfully"
+  mv terraform.tfstate $previousDir
+  mv .terraform.lock.hcl $previousDir
+elif [ $? -eq 1 ]; then
+  echo "1- Terraform applied failed"
+elif [ $? -eq 2 ]; then
+  echo "2- Terraform applied failed"
+fi
 
-cd ../..
+cd $previousDir

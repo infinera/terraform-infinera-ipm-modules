@@ -1,4 +1,5 @@
 #!/bin/bash
+init="no"
 for arg in "$@"
 do
   index=$(echo $arg | cut -f1 -d=)
@@ -22,12 +23,13 @@ if [[ -v IPM_PASSWORD ]] ; then
 fi
 
 cd  network-service/get-leaf-modules
-if [[ $force_init ]]; then
+if [ "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
   terraform init
 fi
 touch .tfinit
+
 terraform apply -auto-approve -var="network_id=${id}"
 cd ../..
