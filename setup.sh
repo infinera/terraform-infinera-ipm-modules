@@ -18,7 +18,7 @@ alias get-networks=". ${IPM_CMDS}/get-networks.sh"
 if [ ! -d "${WORK_DIR}" ]; then
   mkdir $WORK_DIR
   mkdir $INTENT_DIR
-  cp ${TF_ROOT}/network-services/intents/* $INTENT_DIR
+  cp ${TF_ROOT}/network-service/intents/* $INTENT_DIR
   mkdir $PROFILE_DIR
   cp ${TF_ROOT}/user-profiles/*  $PROFILE_DIR
 fi
