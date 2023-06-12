@@ -8,7 +8,7 @@ do
   case $index in
     init) init="$val";;
     system_data_path) system_data_path="$val";;
-    user_profile_file) user_profile="$val";;
+    user_profile) user_profile="$val";;
     intent) intent="$val";;
     cmd) cmd="$val";;
     *)
@@ -27,8 +27,8 @@ if [[ -v IPM_PASSWORD ]] ; then
 fi
 
 # Check intent file
-if [[ ! -v "${INTENT_DIR}/intent" ]]; then
-  echo "Can't proceed. Intent File is not specified in ${INTENT_DIR}."
+if [[ ! -v "${INTENT_DIR}/${intent}" ]]; then
+  echo "Can't proceed. Intent File ${intent} is not specified in ${INTENT_DIR}."
   exit
 fi
 
@@ -47,9 +47,9 @@ echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 
 # Check if user profile file is set
 if [[ -v user_profile ]]; then
-  export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile_file}"
+  export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile}"
 elif [[ -v USER_PROFILE ]]; then
-  export TF_VAR_user_profile="$${PROFILE_DIR}/{USER_PROFILE}"
+  export TF_VAR_user_profile="${PROFILE_DIR}/{USER_PROFILE}"
 fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
 
