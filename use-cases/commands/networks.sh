@@ -27,8 +27,8 @@ if [[ -v IPM_PASSWORD ]] ; then
 fi
 
 # Check intent file
-if [[ ! -v "${INTENT_DIR}/${intent}" ]]; then
-  echo "Can't proceed. Intent File ${intent} is not specified in ${INTENT_DIR}."
+if [[ ! -f ${INTENT_DIR}/${intent} ]]; then
+  echo "Can't proceed. Intent File ${intent} is not existed in ${INTENT_DIR}."
   exit
 fi
 
@@ -48,8 +48,8 @@ echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 # Check if user profile file is set
 if [[ -v user_profile ]]; then
   export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile}"
-elif [[ -v USER_PROFILE ]]; then
-  export TF_VAR_user_profile="${PROFILE_DIR}/{USER_PROFILE}"
+else
+  export TF_VAR_user_profile="${PROFILE_DIR}/network_profiles.json"
 fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
 
@@ -68,7 +68,7 @@ touch .tfinit
 
 echo cmd="$cmd"
 if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
-  terraform $cmd -var-file="$intent"
+  terraform $cmd -var-file="${INTENT_DIR}/${intent}"
 else
   terraform $cmd
 fi
@@ -82,4 +82,4 @@ elif [ $? -eq 2 ]; then
   echo "2- Terraform applied failed"
 fi
 
-cd $previousDir
+cd $$WORK_DIR
