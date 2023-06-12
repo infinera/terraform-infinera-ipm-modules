@@ -31,4 +31,4 @@ fi
 touch .tfinit
 
 terraform apply -auto-approve 
-cd ../..
+cd $WORK_DIR

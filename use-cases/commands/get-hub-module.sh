@@ -31,4 +31,4 @@ fi
 touch .tfinit
 
 terraform apply -auto-approve -var="network_id=${id}"
-cd ../..
+cd $WORK_DIR
