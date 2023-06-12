@@ -10,7 +10,6 @@ do
     system_data_path) system_data_path="$val";;
     user_profile) user_profile="$val";;
     intent) intent="$val";;
-    cmd) cmd="$val";;
     *)
   esac
 done
@@ -66,11 +65,17 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-echo cmd="$cmd"
-if [ "${cmd}" = "apply" -o  "${cmd}" = "plan" ]; then
-  terraform $cmd -var-file="${INTENT_DIR}/${intent}"
+echo cmd="$1"
+if [ "${1}" = "create" -o  "${1}" = "update" ]; then
+  terraform apply -var-file="${INTENT_DIR}/${intent}"
+elif [ "${1}" = "plan" ]; then
+  terraform plan -var-file="${INTENT_DIR}/${intent}" -out=${WORK_DIR}/networks-plan.json
+elif [ "${1}" = "delete" ]; then
+  terraform destroy -var-file="${INTENT_DIR}/${intent}"
 else
-  terraform $cmd
+  echo "Invalid command ${1}."
+  cd $WORK_DIR
+  exit
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
@@ -83,5 +88,4 @@ elif [ $? -eq 1 ]; then
 elif [ $? -eq 2 ]; then
   echo "2- Terraform applied failed"
 fi
-
 cd $WORK_DIR
