@@ -27,14 +27,12 @@ if [[ -v IPM_PASSWORD ]] ; then
 fi
 
 # Check intent file
-if [[ ! -v intent ]] && [[ ! -v INTENT ]]; then
-  echo "Can't proceed. Intent File is not specified."
+if [[ ! -v "${INTENT_DIR}/intent" ]]; then
+  echo "Can't proceed. Intent File is not specified in ${INTENT_DIR}."
   exit
-elif [[ ! -v intent ]]; then
-  intent="$INTENT"
 fi
 
-echo INTENt="$intent"
+echo INTENT="${INTENT_DIR}/${intent}"
 
 # Check if system profile path is set
 if [[ -v system_data_path ]]; then
