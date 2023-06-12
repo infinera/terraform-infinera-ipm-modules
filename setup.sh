@@ -26,7 +26,7 @@ if [ ! -v "${IPM_VOLUME}/ipm-system-data/network_profiles" ]; then
   cp ${TF_ROOT}/ipm-data/network_profiles.json ${IPM_VOLUME}/ipm-system-data
 fi
 
-export PATH=$PATH:${IPM_CMDS}
+export PATH=$PATH:/ipm-services:${IPM_CMDS}
 chmod +x  ${IPM_CMDS}/*
 cd $WORK_DIR
 . ${IPM_CMDS}/alias.sh
