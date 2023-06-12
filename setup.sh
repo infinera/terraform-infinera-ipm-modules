@@ -2,12 +2,12 @@
 export IPM_USER="xr-user-1"
 export IPM_HOST="pt-xrivk824-dv"
 export IPM_PASSWORD="infinera"
-export IPM_VOLUME="./Work-Directory"
+export IPM_VOLUME="/Work-Directory"
 export WORK_DIR="${IPM_VOLUME}/${1}"
 export INTENT_DIR="${WORK_DIR}/user-intents"
 export USER_PROFILE="${WORK_DIR}/user-profiles/network_profiles.json"
 #export TF_ROOT=/ipm-services/apimodels/terraform-ipm-modules/use-cases
-export TF_ROOT=./terraform-ipm-modules/use-cases
+export TF_ROOT=/ipm-services/terraform-ipm-modules/use-cases
 export SYSTEM_DATA_PATH="${IPM_VOLUME}/ipm-system-data"
 alias networks=". ${TF_ROOT}/commands/networks.sh"
 alias get-modules=". ${TF_ROOT}/commands/get-modules.sh"
