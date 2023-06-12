@@ -6,12 +6,11 @@ do
   val=$(echo $arg | cut -f2 -d=)
   case $index in
     init) init="$val";;
-    network_id) network_id="$val";;
     *)
   esac
 done
 
-if [[ ! -v network_id ]]; then
+if [ ! -n "$1" ]; then
   echo "Can't proceed. Network id is not specified."
   exit
 fi
@@ -36,6 +35,6 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-terraform apply -auto-approve -var="network_id=${network_id}"
+terraform apply -auto-approve -var="network_id=${1}"
 terraform output > $WORK_DIR/get-hub-modules-output.json
 cd $WORK_DIR
