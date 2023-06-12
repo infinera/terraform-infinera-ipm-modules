@@ -74,7 +74,7 @@ else
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
-  terraform output ${WORK_DIR}/output
+  terraform output > ${WORK_DIR}/networks-output.json
   mv terraform.tfstate $WORK_DIR
   mv .terraform.lock.hcl $WORK_DIR
   terraform output ${WORK_DIR}/output
