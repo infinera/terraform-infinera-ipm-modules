@@ -47,16 +47,16 @@ echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 
 # Check if user profile file is set
 if [[ -v user_profile ]]; then
-  export TF_VAR_user_profile_file="$user_profile_file"
+  export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile_file}"
 elif [[ -v USER_PROFILE ]]; then
-  export TF_VAR_user_profile="${USER_PROFILE}"
+  export TF_VAR_user_profile="$${PROFILE_DIR}/{USER_PROFILE}"
 fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
-previousDir="`pwd`"
+
 cd  ${TF_ROOT}/network-service/networks
-if [ -f ${previousDir}/terraform.tfstate ]; then
-  cp ${previousDir}/terraform.tfstate .
-  cp ${previousDir}/.terraform.lock.hcl .
+if [ -f ${WORK_DIR}/terraform.tfstate ]; then
+  cp ${WORK_DIR}/terraform.tfstate .
+  cp ${WORK_DIR}/.terraform.lock.hcl .
 fi
 if [ "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
@@ -74,8 +74,8 @@ else
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
-  mv terraform.tfstate $previousDir
-  mv .terraform.lock.hcl $previousDir
+  mv terraform.tfstate $WORK_DIR
+  mv .terraform.lock.hcl $WORK_DIR
 elif [ $? -eq 1 ]; then
   echo "1- Terraform applied failed"
 elif [ $? -eq 2 ]; then
