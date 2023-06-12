@@ -74,12 +74,14 @@ else
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
+  terraform output ${WORK_DIR}/output
   mv terraform.tfstate $WORK_DIR
   mv .terraform.lock.hcl $WORK_DIR
+  terraform output ${WORK_DIR}/output
 elif [ $? -eq 1 ]; then
   echo "1- Terraform applied failed"
 elif [ $? -eq 2 ]; then
   echo "2- Terraform applied failed"
 fi
 
-cd $$WORK_DIR
+cd $WORK_DIR

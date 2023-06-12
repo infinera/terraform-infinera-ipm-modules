@@ -10,11 +10,6 @@ export PROFILE_DIR="${WORK_DIR}/user-profiles"
 export TF_ROOT=/ipm-services/use-cases
 export IPM_CMDS="${TF_ROOT}/commands"
 export SYSTEM_DATA_PATH="${IPM_VOLUME}/ipm-system-data"
-alias networks=". ${IPM_CMDS}/networks.sh"
-alias get-modules=". ${IPM_CMDS}/get-modules.sh"
-alias get-hub-module=". ${IPM_CMDS}/get-hub-module.sh"
-alias get-leaf-modules=". ${IPM_CMDS}/get-leaf-modules.sh"
-alias get-networks=". ${IPM_CMDS}/get-networks.sh"
 if [ ! -d "${WORK_DIR}" ]; then
   mkdir $WORK_DIR
   mkdir $INTENT_DIR
@@ -30,5 +25,8 @@ fi
 if [ ! -v "${IPM_VOLUME}/ipm-system-data/network_profiles" ]; then
   cp ${TF_ROOT}/ipm-data/network_profiles.json ${IPM_VOLUME}/ipm-system-data
 fi
+
+export PATH=$PATH:${IPM_CMDS}
+chmod +x  ${IPM_CMDS}/*
 cd $WORK_DIR
-bash
+. ${IPM_CMDS}/alias.sh
