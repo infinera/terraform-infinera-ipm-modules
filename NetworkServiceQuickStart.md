@@ -1,7 +1,8 @@
 # Manage XR Network Quick Start
 ## Preconditions:
-1. IPM Service Docker Image. Please see
-2. Intent Files
+1. IPM Service Docker Image. Please see [IPM Services Docker Image and Container](https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse/IPM%20Services%20Docker%20Image%20and%20Container.md)
+2. Intent Files. Please see [Intent Definition](https://github.com/infinera/terraform-ipm-modules/blob/master/network-service/Intent.md) for more details.
+3. User Profile files if needed. Please see [User Profile Files](https://github.com/infinera/terraform-ipm-modules/blob/master/network-service/Profiles.md) for  more details.
 
 ## Procedures
 1. Bring up the docker container in desired working directory by executing this command *docker run -it -v "$(pwd)":/Work-Directory --add-host=pt-xrivk824-dv:10.46.76.81 sv-artifactory.infinera.com/marvel/ipm/ipm-services:v0.0.1 bash*. 
@@ -20,9 +21,5 @@
 6. **View Leaf Modules of the XR Network**. Run the command *get-leaf-modules network_id init=yes*. If the execution is success, it shall generate *get-leaf-modules-output.json* file at */Work-Directory/network1*. (*init=yes* option is only needed at the first run.)
 8. **View Reachable Modules of the XR Network**. Run the command *get-reachable-modules network_id init=yes*. If the execution is success, it shall generate *get-reachable-modules-output.json* file at */Work-Directory/network1*. (*init=yes* option is only needed at the first run.)
 
-## Manage Transport Capacities - TBD - Not Ready Yet
-
-## Manage Network Connections (NC) - TBD - Not Ready Yet
-   
 ## Trouble Shooting
-1. If terraform **apply** fails for any reason, the terraform state file may need to be removed and run "terraform init" again. Execute the command "*networks $1 init=yes intent=networks.tfvars*
+1. If terraform **command** fails for any reason, the terraform state file may need to be removed and run "terraform init" again. Execute the command "*networks command init=yes intent=networks.tfvars*
