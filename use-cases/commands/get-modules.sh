@@ -10,17 +10,6 @@ do
   esac
 done
 
-# Check Credential
-if [[ -v IPM_USER ]] ; then
-  export TF_VAR_ipm_user="$IPM_USER"
-fi
-if [[ -v IPM_HOST ]] ; then
-  export TF_VAR_ipm_host="$IPM_HOST"
-fi
-if [[ -v IPM_PASSWORD ]] ; then
-  export TF_VAR_ipm_password="$IPM_PASSWORD"
-fi
-
 cd  ${TF_ROOT}/module-management-service/get-modules
 if [ "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;

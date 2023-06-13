@@ -10,19 +10,9 @@ do
   esac
 done
 
-# Check Credential
-if [[ -v IPM_USER ]] ; then
-  export TF_VAR_ipm_user="$IPM_USER"
-fi
-if [[ -v IPM_HOST ]] ; then
-  export TF_VAR_ipm_host="$IPM_HOST"
-fi
-if [[ -v IPM_PASSWORD ]] ; then
-  export TF_VAR_ipm_password="$IPM_PASSWORD"
-fi
 if [ ! -n "$1" ]; then
   echo "Can't proceed. Network id is not specified."
-  exit
+  return 1
 fi
 
 cd  ${TF_ROOT}/network-service/get-reachable-modules

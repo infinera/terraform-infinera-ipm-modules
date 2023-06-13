@@ -14,21 +14,10 @@ do
   esac
 done
 
-# Check Credential
-if [[ -v IPM_USER ]] ; then
-  export TF_VAR_ipm_user="$IPM_USER"
-fi
-if [[ -v IPM_HOST ]] ; then
-  export TF_VAR_ipm_host="$IPM_HOST"
-fi
-if [[ -v IPM_PASSWORD ]] ; then
-  export TF_VAR_ipm_password="$IPM_PASSWORD"
-fi
-
 # Check intent file
 if [[ ! -f ${INTENT_DIR}/${intent} ]]; then
   echo "Can't proceed. Intent File ${intent} is not existed in ${INTENT_DIR}."
-  exit
+  return 1
 fi
 
 echo INTENT="${INTENT_DIR}/${intent}"
@@ -40,7 +29,7 @@ elif [[ -v SYSTEM_DATA_PATH ]]; then
   export TF_VAR_system_data_path="${SYSTEM_DATA_PATH}"
 else
   echo "Can't proceed. System data path is not specified."
-  exit
+  return 1
 fi
 echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 
@@ -75,7 +64,7 @@ elif [ "${1}" = "delete" ]; then
 else
   echo "Invalid command ${1}."
   cd $WORK_DIR
-  exit
+  return 1
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
