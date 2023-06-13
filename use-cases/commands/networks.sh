@@ -15,7 +15,7 @@ do
 done
 
 # Check intent file
-if [[ ! -f ${INTENT_DIR}/${intent} ]]; then
+if [[ ! -f ${INTENT_DIR}/${intent} -a "${1}" != "delete"]]; then
   echo "Can't proceed. Intent File ${intent} is not existed in ${INTENT_DIR}."
   return 1
 fi
