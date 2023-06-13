@@ -17,7 +17,7 @@ if [ ! -n "$1" ]; then
 fi
 
 cd  ${TF_ROOT}/network-service/get-leaf-modules
-if [ "$init" = "yes" ]; then
+if [ "$init" = "y" || "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then

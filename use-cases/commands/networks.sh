@@ -46,7 +46,7 @@ if [ -f ${WORK_DIR}/terraform.tfstate ]; then
   cp ${WORK_DIR}/terraform.tfstate .
   cp ${WORK_DIR}/.terraform.lock.hcl .
 fi
-if [ "$init" = "yes" ]; then
+if [ "$init" = "y" || "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
