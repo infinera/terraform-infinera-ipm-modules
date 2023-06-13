@@ -1,7 +1,7 @@
 #!/bin/bash
-export IPM_USER="xr-user-1"
-export IPM_HOST="pt-xrivk824-dv"
-export IPM_PASSWORD="infinera"
+export TF_VAR_ipm_user="xr-user-1"
+export TF_VAR_ipm_host="pt-xrivk824-dv"
+export TF_VAR_ipm_password="infinera"
 export IPM_VOLUME="/Work-Directory"
 export WORK_DIR="${IPM_VOLUME}/${1}"
 export INTENT_DIR="${WORK_DIR}/user-intents"

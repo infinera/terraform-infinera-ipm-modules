@@ -15,7 +15,7 @@ if [ ! -n "$1" ]; then
   return 1
 fi
 
-cd  ${TF_ROOT}/network-service/get-hub-module
+cd  ${TF_ROOT}/network-service/get-networks
 if [ "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
@@ -25,5 +25,5 @@ fi
 touch .tfinit
 
 terraform apply -auto-approve -var="network_id=${1}"
-terraform output > $WORK_DIR/get-hub-module-output.json
+terraform output > $WORK_DIR/get-networks-output.json
 cd $WORK_DIR

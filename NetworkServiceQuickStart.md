@@ -7,7 +7,7 @@
 ## Procedures
 1. Bring up the docker container in desired working directory by executing this command *'docker run -it -v "$(pwd)":/Work-Directory --add-host=pt-xrivk824-dv:10.46.76.81 sv-artifactory.infinera.com/marvel/ipm/ipm-services:v0.0.1 bash'*. 
 2. Now in the container's bash shell, execute the command *". setup.sh network1"*. The *network1* directory will be created as needed together with its user-intents and user-profiles subdirectories in the host volume */Work-Directory*. 
-   1. These subdirectories are populated with sample intents and user profiles. The user can copy and/or create new intent or user profile files to be used in the management of the  XR network. The user profile name for network service (by convention) must be *"network-profiles.json"* ( similarly, *"nc-profiles.json"* for Network Connection service, *"tc-profiles.json"* for Traffic Capacity service, etc.) 
+   1. These subdirectories are populated with sample intents and user profiles. The user can copy and/or create new intent or user profile files to be used in the management of the  XR network.
    2. Notice that the */Work-Directory* is the container volume which is mapped to the host *$(pwd)* directory; hence the user can add, update, save, or removed any user intents and user profiles in the host directly without the need to rebuild the container image or rerun the container.
 3. **View all modules in the XR Networks**. Execute the command *"get-modules $1 init=yes"*. If the execution is success, it shall generate *get-modules-output.json* file at */Work-Directory/network1*.
 4. **Manage Constellation Network**. Execute the command *"networks command init=yes intent=networks.tfvars"*. (**Notice The option *init=yes* only require the first time execution**.) 

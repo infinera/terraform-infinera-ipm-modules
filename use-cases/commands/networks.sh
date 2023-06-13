@@ -8,7 +8,7 @@ do
   case $index in
     init) init="$val";;
     system_data_path) system_data_path="$val";;
-    user_profile) user_profile="$val";;
+    profile) profile="$val";;
     intent) intent="$val";;
     *)
   esac
@@ -34,12 +34,12 @@ fi
 echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
 
 # Check if user profile file is set
-if [[ -v user_profile ]]; then
-  export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile}"
+if [[ -v profile ]]; then
+  export TF_VAR_user_profile="${PROFILE_DIR}/${profile}"
 else
   export TF_VAR_user_profile="${PROFILE_DIR}/network_profiles.json"
 fi
-echo TF_VAR_user_profile="$TF_VAR_user_profile"
+echo TF_VAR_user_profile="$TF_VAR_profile"
 
 cd  ${TF_ROOT}/network-service/networks
 if [ -f ${WORK_DIR}/terraform.tfstate ]; then
