@@ -16,7 +16,7 @@ if [ ! -n "$1" ]; then
 fi
 
 cd  ${TF_ROOT}/network-service/get-reachable-modules
-if [ "$init" = "y" || "$init" = "yes" ]; then
+if [ "$init" = "y" -o "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then

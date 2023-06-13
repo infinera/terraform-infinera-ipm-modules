@@ -11,7 +11,7 @@ do
 done
 
 cd  ${TF_ROOT}/module-management-service/get-modules
-if [ "$init" = "y" || "$init" = "yes" ]; then
+if [ "$init" = "y" -o "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
