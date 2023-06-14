@@ -24,6 +24,6 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-terraform apply -auto-approve -var="network_id=${1}"
+terraform apply -auto-approve -var="id=${1}"
 terraform output > $WORK_DIR/get-networks-output.json
 cd $WORK_DIR
