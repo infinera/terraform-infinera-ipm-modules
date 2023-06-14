@@ -50,13 +50,16 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
+searchstring="/"
+rest=${1#*$searchstring}
+
 echo cmd="$1"
 if [ "${2}" = "create" -o  "${2}" = "update" ]; then
-  terraform apply -var-file="${intent}" -state=${WORK_DIR}
+  terraform apply -var-file="${intent}" -state=${WORK_DIR}/${rest}.tfstate
 elif [ "${2}" = "plan" ]; then
-  terraform plan -var-file="${intent}" -out=${WORK_DIR}
+  terraform plan -var-file="${intent}" -out=${WORK_DIR} -state=${WORK_DIR}/${rest}.tfstate
 elif [ "${2}" = "delete" ]; then
-  terraform destroy 
+  terraform destroy -state=${WORK_DIR}/${rest}.tfstate
 else
   echo "Invalid command ${2}."
   cd $WORK_DIR
@@ -64,8 +67,6 @@ else
 fi
 if [ $? -eq 0 ]; then
   echo "0 - Terraform applied successfully"
-  searchstring="/"
-  rest=${1#*$searchstring}
   terraform output > ${WORK_DIR}/${rest}-output.json
 elif [ $? -eq 1 ]; then
   echo "1- Terraform applied failed"
