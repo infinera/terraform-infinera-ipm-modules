@@ -14,6 +14,7 @@ provider "ipm" {
 }
 
 data "ipm_modules" "modules" {
+  id = var.id
 }
 
 output "modules" {

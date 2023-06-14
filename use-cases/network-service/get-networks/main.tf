@@ -14,7 +14,7 @@ provider "ipm" {
 }
 
 data "ipm_networks" "networks" {
-  id = var.network_id
+  id = var.id
 }
 
 output "networks" {

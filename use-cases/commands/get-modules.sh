@@ -10,6 +10,11 @@ do
   esac
 done
 
+if [ ! -n "$1" ]; then
+  echo "Can't proceed. Module id is not specified."
+  return 1
+fi
+
 cd  ${TF_ROOT}/module-management-service/get-modules
 if [ "$init" = "y" -o "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
@@ -19,6 +24,6 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-terraform apply -auto-approve 
+terraform apply -auto-approve -var="id=${1}"
 terraform output > $WORK_DIR/get-modules-output.json
 cd $WORK_DIR

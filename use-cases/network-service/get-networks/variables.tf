@@ -11,6 +11,6 @@ variable "ipm_host" {
   type = string
 }
 
-variable "network_id" {
+variable "id" {
   type = string
 }
