@@ -20,7 +20,7 @@ variable "host_profiles" {
 }
 
 
-variable "system_data_path" {
+variable "system_profile" {
   type = string
 }
 

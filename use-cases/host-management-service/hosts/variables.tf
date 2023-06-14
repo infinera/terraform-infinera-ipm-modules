@@ -19,7 +19,7 @@ variable "host_profiles" {
   description = "Map of Host profiles"
 }
 
-variable "system_data_path" {
+variable "system_profile" {
   type    = string
   default = "../../ipm-data"
 }

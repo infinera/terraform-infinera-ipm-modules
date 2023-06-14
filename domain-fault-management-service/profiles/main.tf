@@ -7,7 +7,7 @@ terraform {
 
 }
 locals {
-  system_profiles = fileexists("${var.system_data_path}/domain_fault_profiles.json") ? jsondecode(file("${var.system_data_path}/domain_fault_profiles.json")) : { domain_fault_profiles : {} }
+  system_profiles = fileexists("${var.system_profile}") ? jsondecode(file("${var.system_profile}")) : { domain_fault_profiles : {} }
 
   user_profiles = fileexists("${var.user_profile}") ? jsondecode(file("${var.user_profile}")) : fileexists("${path.root}/${var.user_profile}") ? jsondecode(file("${path.root}/${var.user_profile}")) : { domain_fault_profiles : {} }
 

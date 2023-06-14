@@ -1,2 +1,2 @@
-bash create-networks.sh system_data_path=
+bash create-networks.sh system_profile=
  force_init=yes

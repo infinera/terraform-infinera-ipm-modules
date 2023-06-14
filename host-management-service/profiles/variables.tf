@@ -1,6 +1,6 @@
 
 
-variable "system_data_path" {
+variable "system_profile" {
   type = string
 }
 variable "user_profile" {

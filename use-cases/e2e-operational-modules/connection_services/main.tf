@@ -17,9 +17,9 @@ module "networks" {
   //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/networks"
   source = "../../../network-service/workflows/networks"
 
-  networks         = var.networks
-  system_data_path = var.system_data_path
-  user_profile     = var.user_profile
+  networks       = var.networks
+  system_profile = var.system_profile
+  user_profile   = var.user_profile
 }
 
 
@@ -29,6 +29,6 @@ module "transport-capacities" {
   depends_on = [module.networks]
 
   transport-capacities = var.transport-capacities
-  system_data_path     = var.system_data_path
+  system_profile       = var.system_profile
   user_profile         = var.user_profile
 }

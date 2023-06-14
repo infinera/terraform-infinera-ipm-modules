@@ -30,7 +30,7 @@ variable "ipm_host" {
   type = string
 }
 
-variable "system_data_path" {
+variable "system_profile" {
   type    = string
   default = "../../ipm-data"
 }

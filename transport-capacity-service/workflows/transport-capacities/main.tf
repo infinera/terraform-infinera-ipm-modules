@@ -10,8 +10,8 @@ terraform {
 module "profiles" {
   source = "../../profiles"
 
-  system_data_path = var.system_data_path
-  user_profile     = var.user_profile
+  system_profile = var.system_profile
+  user_profile   = var.user_profile
 }
 
 module "transport-capacities" {

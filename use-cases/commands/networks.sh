@@ -7,35 +7,35 @@ do
   val=$(echo $arg | cut -f2 -d=)
   case $index in
     init) init="$val";;
-    system_data_path) system_data_path="$val";;
-    profile) profile="$val";;
+    system_profile) system_profile="$val";;
+    user_profile) user_profile="$val";;
     intent) intent="$val";;
     *)
   esac
 done
 
 # Check intent file
-if [[ ! -f ${INTENT_DIR}/${intent} -a "${1}" != "delete"]]; then
+if [[ ! -f ${INTENT_DIR}/${intent}]] && [[ "${1}" != "delete"]]; then
   echo "Can't proceed. Intent File ${intent} is not existed in ${INTENT_DIR}."
   return 1
 fi
 
 echo INTENT="${INTENT_DIR}/${intent}"
 
-# Check if system profile path is set
-if [[ -v system_data_path ]]; then
-  export TF_VAR_system_data_path="$system_data_path"
+# Check if system system_profile path is set
+if [[ -v system_profile ]]; then
+  export TF_VAR_system_profile="$system_profile"
 elif [[ -v SYSTEM_DATA_PATH ]]; then
-  export TF_VAR_system_data_path="${SYSTEM_DATA_PATH}"
+  export TF_VAR_system_profile="${SYSTEM_DATA_PATH}"
 else
   echo "Can't proceed. System data path is not specified."
   return 1
 fi
-echo TF_VAR_system_data_path="$TF_VAR_system_data_path"
+echo TF_VAR_system_profile="$TF_VAR_system_profile"
 
-# Check if user profile file is set
-if [[ -v profile ]]; then
-  export TF_VAR_user_profile="${PROFILE_DIR}/${profile}"
+# Check if user user_profile file is set
+if [[ -v user_profile ]]; then
+  export TF_VAR_user_profile="${PROFILE_DIR}/${user_profile}"
 else
   export TF_VAR_user_profile="${PROFILE_DIR}/network_profiles.json"
 fi
@@ -56,9 +56,9 @@ touch .tfinit
 
 echo cmd="$1"
 if [ "${1}" = "create" -o  "${1}" = "update" ]; then
-  terraform apply -var-file="${INTENT_DIR}/${intent}"
+  terraform apply -var-file="${INTENT_DIR}/${intent}" -state=${WORK_DIR}/state.tfstate
 elif [ "${1}" = "plan" ]; then
-  terraform plan -var-file="${INTENT_DIR}/${intent}" -out=${WORK_DIR}/networks-plan.json
+  terraform plan -var-file="${INTENT_DIR}/${intent}" -out=${WORK_DIR}/networks-plan.json -state=${WORK_DIR}/state.tfstate
 elif [ "${1}" = "delete" ]; then
   terraform destroy -var-file="${INTENT_DIR}/${intent}"
 else

@@ -28,7 +28,7 @@ variable "networks" {
                   leaf_modules = [{ identifier= {module_name = "PORT_MODE_LEAF1" }}, { identifier= {module_name = "PORT_MODE_LEAF2"}, traffic_mode : "VTIMode" }] }]*/
 }
 
-variable "system_data_path" {
+variable "system_profile" {
   type = string
 }
 

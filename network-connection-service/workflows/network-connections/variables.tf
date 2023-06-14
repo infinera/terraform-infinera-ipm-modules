@@ -18,7 +18,7 @@ variable "nc_profiles" {
   description = "Map of NC Config profiles"
 }
 
-variable "system_data_path" {
+variable "system_profile" {
   type = string
 }
 

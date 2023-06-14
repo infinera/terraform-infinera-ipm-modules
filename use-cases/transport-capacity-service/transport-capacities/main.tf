@@ -18,7 +18,7 @@ module "transport-capacities" {
   source = "../../../transport-capacity-service/workflows/transport-capacities"
 
   transport-capacities = var.transport-capacities
-  system_data_path     = var.system_data_path
+  system_profile       = var.system_profile
   user_profile         = var.user_profile
 }
 

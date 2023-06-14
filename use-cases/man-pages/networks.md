@@ -7,7 +7,7 @@ NAME
 SYNOPSIS
 ========
 
-| **networks** **command** init=yes|no intent=userIntentFileName system_data_path=systemDataPath profile=userProfileName** 
+| **networks** **command** init=yes|no intent=userIntentFileName system_profile=systemDataPath profile=userProfileName** 
 
 DESCRIPTION
 ===========
@@ -29,7 +29,7 @@ Arguments
 2. init=yes|no. This will remove the state files and execute the *"terraform init"* before the *terraform apply* 
 3. intent=userIntentFile
 4. profile=userProfile
-5. system_data_path=systemDataPath
+5. system_profile=systemDataPath
 
 
 :   Prints brief usage information.

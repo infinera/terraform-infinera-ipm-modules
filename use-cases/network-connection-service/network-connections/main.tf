@@ -17,8 +17,8 @@ module "network_connections" {
   //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-connection-service/workflows/network-connections"
   source = "../../../network-connection-service/workflows/network-connections"
 
-  system_data_path = var.system_data_path
-  user_profile     = var.user_profile
+  system_profile = var.system_profile
+  user_profile   = var.user_profile
 }
 
 output "network_connection" {

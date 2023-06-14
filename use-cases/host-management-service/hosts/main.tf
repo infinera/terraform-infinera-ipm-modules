@@ -16,9 +16,9 @@ provider "ipm" {
 module "hosts" {
   source = "git::https://github.com/infinera/terraform-ipm_modules.git//host-management-service/workflows/hosts"
 
-  hosts            = var.hosts
-  system_data_path = var.system_data_path
-  user_profile     = var.user_profile
+  hosts          = var.hosts
+  system_profile = var.system_profile
+  user_profile   = var.user_profile
 }
 
 output "hosts" {
