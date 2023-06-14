@@ -1,6 +1,7 @@
 #!/bin/bash
-
-export IPM_VOLUME="/Work-Directory"
+vol=`grep "^/dev" /etc/mtab | grep -v " \/etc/"`
+stringarray=($vol)
+export IPM_VOLUME=${stringarray[1]}
 export WORK_DIR="${IPM_VOLUME}/${1}"
 #export TF_ROOT=/ipm-services/apimodels/terraform-ipm-modules/use-cases
 export TF_ROOT=/ipm-services/use-cases
