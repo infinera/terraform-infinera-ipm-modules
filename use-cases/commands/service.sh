@@ -41,19 +41,20 @@ else
 fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
 
+searchstring="/"
+rest=${1#*$searchstring}
+
 cd  ${TF_ROOT}/${1}
 if [ "$init" = "y" -o "$init" = "yes" ]; then
-  rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
+  rm ./.terraform.lock.hcl; rm ${WORK_DIR}/${rest}.tfstate;
   terraform init
 elif [ ! -f ".tfinit" ]; then
   terraform init
 fi
 touch .tfinit
 
-searchstring="/"
-rest=${1#*$searchstring}
 
-echo cmd="$1"
+echo cmd="$2"
 if [ "${2}" = "create" -o  "${2}" = "update" ]; then
   terraform apply -var-file="${intent}" -state=${WORK_DIR}/${rest}.tfstate
 elif [ "${2}" = "plan" ]; then

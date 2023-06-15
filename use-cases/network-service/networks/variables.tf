@@ -41,7 +41,6 @@ variable "ipm_host" {
   type = string
 }
 
-
 variable "system_profile" {
   type    = string
   default = "../../ipm-data"
