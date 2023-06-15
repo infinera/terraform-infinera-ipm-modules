@@ -13,4 +13,6 @@ export PATH=$PATH:/ipm-services:${IPM_CMDS}
 chmod +x  ${IPM_CMDS}/*
 cd $WORK_DIR
 . ${IPM_CMDS}/alias.sh
-. ${IPM_CMDS}/credentials.sh
+if [ ! -f ${WORK_DIR}/export_vars.sh ]; then
+  . ${WORK_DIR}/export_vars.sh
+fi

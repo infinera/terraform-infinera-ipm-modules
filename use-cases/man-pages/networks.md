@@ -1,74 +1,74 @@
-% networks(1) Version 1.0 
+networks(1) Version 1.0 
+
 NAME
 ====
 
-**networks** — XR Network Management
+**networks** — XR Network Management CRUD Management
 
 SYNOPSIS
 ========
 
-| **networks** **command** init=yes|no intent=userIntentFileName system_profile=systemDataPath profile=userProfileName** 
+**networks** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+
 
 DESCRIPTION
 ===========
 
-Depending on the *command*, the**networks** function shall create, update, or delete the XR network.
+Depending on the *command*, the **networks** function shall create, update, or delete the XR network.
 
- 1. Using the environment variable *DEFAULT_HELLO_DEDICATION*
- 2. Using the per-user configuration file, *~/.hellorc*
- 3. Using the system-wide configuration file, */etc/hello.conf*
- 4. Finally, using "world".
 
 Arguments
 -------
 
-1. command : the support commands are
-   1.  create:
-   2.  update:
-   3.  delete:
-2. init=yes|no. This will remove the state files and execute the *"terraform init"* before the *terraform apply* 
-3. intent=userIntentFile
-4. profile=userProfile
-5. system_profile=systemDataPath
+| Argument         |  Type     | Valid Values      | Description                   |
+|------------------|-----------|-------------------|-------------------------------|
+| command          |  string   | - create          | Create Network based on the intent               |
+|                  |           | - update          | Update Network based on the updated intent               |
+|                  |           | - delete          | Delete Network                |
+| *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
+| [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
+| [system_profile=systemProfileName] |   |         | systemProfileName is the full path file name of the system profile. No required for *delete* command or if the SYSTEM_PROFILE environment variable is set.    |
+| [user_profile=userProfileName] |   |         | userProfileName is the full path file name of the user profile. No required for *delete* command or if the USER_PROFILE environment variable is set.    |
 
+EXAMPLES
+===========
 
-:   Prints brief usage information.
+Get XR Network
+------
 
--o, --output
+1. get-networks all init=y
+2. get-networks all 
+3. get-networks networkId
 
-:   Outputs the greeting to the given filename.
+Create XR Network
+------
 
-    The file must be an **open(2)**able and **write(2)**able file.
+1. networks create init=y intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+2. networks create intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
 
--v, --version
+Update XR Network
+------
 
-:   Prints the current version number.
+1. networks update intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
 
-FILES
-=====
+Delete XR Network
+------
 
-*~/.hellorc*
-
-:   Per-user default dedication file.
-
-*/etc/hello.conf*
-
-:   Global default dedication file.
+1. networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
 
 ENVIRONMENT
 ===========
 
-**DEFAULT_HELLO_DEDICATION**
+1. SYSTEM_PROFILE. It is used if the command argument *system_profile* is not set.
+2. USER_PROFILE. It is used if the command argument *user_profile* is not set.
 
-:   The default dedication if none is given. Has the highest precedence
-    if a dedication is not supplied on the command line.
 
-BUGS
+TROUBLE SHOOTING
 ====
 
-See GitHub Issues: <https://github.com/[owner]/[repo]/issues>
+If the command keeps failing, enter the command with *"init=yes"* to cleanup and reset.
 
 AUTHOR
 ======
 
-Foobar Goodprogrammer <foo@example.org>
+Lam Hoang <lhoang@infinera.com>
