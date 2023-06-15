@@ -22,7 +22,7 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| networkId        |  string   |                   | Get the XR leaf module of a XR network which *networkId* is *xyz*               |
+| networkId        |  string   |                   | Get the XR leaf module of a XR network which is is *networkId*               |
 | *[init=y\|yes]*  |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
