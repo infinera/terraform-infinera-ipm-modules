@@ -3,8 +3,8 @@ terraform {
     ipm = {
       source = "infinera.com/poc/ipm"
     }
-  }
 
+  }
 }
 
 provider "ipm" {
@@ -13,10 +13,12 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_acs" "acs" {
+data "ipm_transport_capacities" "tcs" {
   id = var.id
 }
 
-output "acs" {
-  value = data.ipm_acs.acs
+output "tcs" {
+  value = data.ipm_transport_capacities.tcs
 }
+
+

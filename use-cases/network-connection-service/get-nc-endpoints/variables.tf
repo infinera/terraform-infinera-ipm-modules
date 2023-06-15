@@ -11,6 +11,6 @@ variable "ipm_host" {
   type = string
 }
 
-variable "id" {
+variable "nc_id" {
   type = string
 }

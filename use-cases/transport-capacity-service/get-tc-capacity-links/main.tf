@@ -13,10 +13,12 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_network_connections" "network_connections" {
-  //id = "5ff66884-bf1b-4e77-8340-ec9d739c7ca8"
+data "ipm_tc_capacity_links" "tc_capacity_links" {
+  tc_id = var.tc_id
 }
 
-output "network_connections" {
-  value = data.ipm_network_connections.network_connections
+output "tcs" {
+  value = data.ipm_tc_capacity_links.tc_capacity_links
 }
+
+

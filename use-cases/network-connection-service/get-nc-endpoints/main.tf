@@ -13,10 +13,10 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_acs" "acs" {
-  id = var.id
+data "ipm_nc_endpoints" "endpoints" {
+  nc_id = var.nc_id
 }
 
 output "acs" {
-  value = data.ipm_acs.acs
+  value = data.ipm_nc_endpoints.endpoints
 }

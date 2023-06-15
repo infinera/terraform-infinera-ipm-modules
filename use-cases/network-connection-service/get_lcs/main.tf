@@ -14,7 +14,7 @@ provider "ipm" {
 }
 
 data "ipm_lcs" "lcs" {
-  //id = "5ff66884-bf1b-4e77-8340-ec9d739c7ca8"
+  id = var.id
 }
 
 output "lcs" {
