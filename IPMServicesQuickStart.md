@@ -6,7 +6,7 @@
 
 ## Procedures
 1. Bring up the docker container in desired working directory by executing this command *'docker run -it -v ABC:/XYZ --add-host=pt-xrivk824-dv:10.46.76.81 sv-artifactory.infinera.com/marvel/ipm/ipm-services:v0.0.1 bash'*. *ABC* is host directory which will be mapped to the volume *"/XYZ" (XYZ can be any valid name)* in the container.  
-2. In the container's bash shell, execute the command *". setup.sh AAA"*. The */XYZ/AAA* working directory will be created and it will be the current directory. In this working directory, the user can enter IPM service commands to manage the IPM XR networks. Please see [*". setup.sh man page"*](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/setup.md)
+2. In the container's bash shell, execute the command *". setup.sh AAA"*. The */XYZ/AAA* working directory will be created as the current directory. In this working directory, the user can enter IPM service commands to manage the IPM XR resources such as networks, transport capacities, network connections, etc. Please see [*". setup.sh man page"*](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/setup.md) for more details.
 3. Now the support IPM Service commands are available to provision IPM service resources as shown below:
 
 | Support Command         |  Description                                   | Man Page    |

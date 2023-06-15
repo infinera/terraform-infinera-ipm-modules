@@ -14,8 +14,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-Setup command shall set up the neccessary environment variables and working directory for IPM service executions. All IPM services' resources executions shall store the Terraform state at the working directory. 
-The working directory shall be created as needed in the host volume. This allows the users to view or to persist the terraform state or output files in the host system.
+Setup command shall create the working directory and set all required environment variables for IPM services's provision and configurations. In the working directory the user shall issue the desired IPM service commands to manage the IPM XR networks. All IPM services' resources terraform states and outputs shall be stores in the working directory. 
 
 In addition, to allow exporting of the environment variables such as the IPM host credentials in the IPM service container, the *setup* command shall execute (*source*) the user defined environment variables in the *export_variables.sh* file located in the host volume. I.E. if the host volume is */xyz*, the *setup* command shall check and run the */xyz/export_variables.sh* script to export the variables. Please see the *export_vars_example.sh* script for sample of the export variables.
 
