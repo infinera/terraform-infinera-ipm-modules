@@ -27,6 +27,26 @@
 | get_ncs_lcs       | Get Network Connection's local connections |  TBD    |
 | get_ncs_acs       | Get Network Connection's attachment circuits |  TBD    |
 
+## Examples
+```
+get-modules all init=y
+
+networks create init=y intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+get-networks all init=y
+get-hub-module $networkId init=y
+get-leaf-modules $networkId init=y
+get-reachable-modules $networkId init=y
+
+networks updated intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/
+get-networks all
+get-hub-module $networkId
+get-leaf-modules $networkId
+get-reachable-modules $networkId
+
+networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/
+
+get-networks all
+```
 
 ## Trouble Shooting
 1. If terraform **command** fails for any reason, the terraform state file may need to be removed and run "terraform init" again. Execute the command *"networks command init=yes intent=networks.tfvars"*
