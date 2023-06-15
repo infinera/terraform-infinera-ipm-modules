@@ -21,7 +21,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Author Server](https://github.com/infinera/terraform-ipm_modules/tree/master/author-server) |                  |   |
 
 ## IPM Services Quick start
- Please see [IPM Servics Quick Start](https://github.com/infinera/terraform-ipm-modules/blob/master/IPMServicesQuickStart.md)
+ Please see [IPM Services Quick Start](https://github.com/infinera/terraform-ipm-modules/blob/master/IPMServicesQuickStart.md)
 
 # IPM E2E Network Operational Modules
 These modules are used to orchestrate the E2E configuration and provisioning of constellation networks and their resources across multiple services.
