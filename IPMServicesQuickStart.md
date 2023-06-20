@@ -17,7 +17,7 @@
 | get-hub-modules         | Get hub module for a specific XR Network |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_hub_modules.md)    |
 | get-leaf-modules        | Get leaf modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_leaf_modules.md)     |
 | get-reachable-modules   | Get reachable modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_reachable_modules.md)     |
-| tcs                     | Transport capacity CRUD management|  [man page] ()    |
+| tcs                     | Transport capacity CRUD management|  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/tcs.md)    |
 | get-tcs                 | Get all or specific Transport capacities|  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs.md)    |
 | get-tc_endpoints        | Get Transport capacity's endpoints |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tc_endpoints.md)    |
 | get-tc_capacity_links   | Get Transport capacity's capacity links |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs_capacity_links.md)   |
