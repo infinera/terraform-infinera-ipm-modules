@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**gget_hub_module** networkId *[init=y|yes]*
+**get_hub_module** networkId *[init=y|yes]*
 
 
 DESCRIPTION
