@@ -10,7 +10,7 @@ do
   esac
 done
 
-if [ ! -n "$1" ]; then
+if [ ! -n "$3" ]; then
   echo "Can't proceed. ${2} is not specified."
   return 1
 fi
