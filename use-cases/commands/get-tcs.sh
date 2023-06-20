@@ -1,3 +1,3 @@
 #!/bin/bash
 
-get-entities transport-capacity-service/get-tcs id "$@"
+get-entities.sh transport-capacity-service/get-tcs id "$@"

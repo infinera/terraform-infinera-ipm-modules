@@ -1,2 +1,2 @@
 #!/bin/bash
-get-entities module-management-service/get-modules id "$@"
+get-entities.sh module-management-service/get-modules id "$@"

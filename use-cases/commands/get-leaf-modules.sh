@@ -1,2 +1,2 @@
 #!/bin/bash
-get-entities network-service/get-leaf-modules network_id "$@"
+get-entities.sh network-service/get-leaf-modules network_id "$@"

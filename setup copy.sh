@@ -1,5 +1,4 @@
 #!/bin/bash
-bash
 vol=`grep "^/dev" /etc/mtab | grep -v " \/etc/"`
 stringarray=($vol)
 export IPM_VOLUME=${stringarray[1]}
@@ -17,3 +16,4 @@ cd $WORK_DIR
 if [ -f ${IPM_VOLUME}/export_vars.sh ]; then
   . ${IPM_VOLUME}/export_vars.sh
 fi
+bash

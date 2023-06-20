@@ -1,2 +1,2 @@
 #!/bin/bash
-service network-service/networks "$@"
+service.sh network-service/networks "$@"

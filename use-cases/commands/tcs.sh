@@ -1,2 +1,2 @@
 #!/bin/bash
-service transport-capacity-service/transport-capacities "$@"
+service.sh transport-capacity-service/transport-capacities "$@"

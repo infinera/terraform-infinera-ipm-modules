@@ -1,2 +1,2 @@
 #!/bin/bash
-get-entities network-service/get-networks id "$@"
+get-entities.sh network-service/get-networks id "$@"
