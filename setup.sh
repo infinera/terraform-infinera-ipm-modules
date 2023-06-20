@@ -1,5 +1,4 @@
 #!/bin/bash
-bash
 vol=`grep "^/dev" /etc/mtab | grep -v " \/etc/"`
 stringarray=($vol)
 export IPM_VOLUME=${stringarray[1]}
