@@ -24,7 +24,7 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | Id         |  string   | - all             | Get all Capacity Links               |
 |                  |           | - xyz id          | Get the Capacity Link which id is *xyz*               |
-| *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
+| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========

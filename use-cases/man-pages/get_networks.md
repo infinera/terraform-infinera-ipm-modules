@@ -24,7 +24,7 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | id         |  string   | - all             | Get all XR networks               |
 |                  |           | - xyz id          | Get the XR networks which id is *xyz*               |
-| *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
+| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========

@@ -23,7 +23,7 @@ Arguments
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
 | TCId         |  string   | - xyz id              | Get all endpoints for TC which id is *xyz*               |
-| *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
+| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========

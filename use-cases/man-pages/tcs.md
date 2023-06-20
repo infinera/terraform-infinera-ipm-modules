@@ -1,20 +1,20 @@
-networks(1) Version 1.0 
+tcs(1) Version 1.0 
 
 NAME
 ====
 
-**networks** — XR Network CRUD Management
+**tcs** — Transport Capacity CRUD Management
 
 SYNOPSIS
 ========
 
-**networks** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+**tcs** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
 
 
 DESCRIPTION
 ===========
 
-Depending on the *command*, the **networks** function shall create, update, or delete the XR network.
+Depending on the *command*, the **tcs** function shall create, update, or delete the Transport Capacity.
 
 
 Arguments
@@ -33,26 +33,26 @@ Arguments
 EXAMPLES
 ===========
 
-Get XR Network
+Get XR Network's Transport Capacities
 ------
 
-1. get-networks all *[init=y|yes]*
-2. get-networks networkId *[init=y|yes]*
+1. get-tcs all *[init=y | yes]*
+2. get-tcs id *[init=y | yes]*
 
 Create XR Network
 ------
 
-1. networks create *[init=y|yes]* intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+1. tcs create *[init=y | yes]* intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs.json
 
 Update XR Network
 ------
 
-1. networks update intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+1. tcs update intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
 
 Delete XR Network
 ------
 
-1. networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+1. tcs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
 
 ENVIRONMENT
 ===========

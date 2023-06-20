@@ -18,9 +18,9 @@
 | get-leaf-modules        | Get leaf modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_leaf_modules.md)     |
 | get-reachable-modules   | Get reachable modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_reachable_modules.md)     |
 | tcs                     | Transport capacity CRUD management|  [man page] ()    |
-| get-tcs                 | Get all or specific Transport capacities|  TBD    |
-| get-tc_endpoints        | Get Transport capacity's endpoints |  TBD    |
-| get-tc_capacity_links   | Get Transport capacity's capacity links |  TBD   |
+| get-tcs                 | Get all or specific Transport capacities|  [man page] (https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs.md)    |
+| get-tc_endpoints        | Get Transport capacity's endpoints |  [man page] ()    |
+| get-tc_capacity_links   | Get Transport capacity's capacity links |  [man page] ()   |
 | ncs                     | Network Connection CRUD management|  TBD    |
 | get_ncs                 | Get all or specific Network Connection |  TBD    |
 | get_ncs_endpoints       | Get Network Connection's Endpoints |  TBD    |
