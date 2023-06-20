@@ -1,2 +1,2 @@
 #!/bin/bash
-get-entities network-service/get-huf-module network_id "$@"
+get-entities network-service/get-hub-module network_id "$@"
