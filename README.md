@@ -9,7 +9,7 @@ Each service shall have a collection of TF modules for configurations of its res
 | [Host Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)    |     | In Progress |
 | [Module Management Service](https://github.com/infinera/terraform-ipm_modules/tree/master/module-management-service)                         |                                                | In Progress  |
 | [Network Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service)                       |                                                | Ready  |
-| [Transport Capacity Service](https://github.com/infinera/terraform-ipm_modules/tree/master/transport-capacity-service) |                                                | In Progress  |
+| [Transport Capacity Service](https://github.com/infinera/terraform-ipm_modules/tree/master/transport-capacity-service) |                                                | Ready  |
 | [Network Connection Service](https://github.com/infinera/terraform-ipm_modules/tree/master/network-service) |                                                | In Progress |
 | [Module Software Manager](https://github.com/infinera/terraform-ipm_modules/tree/master/module-software-manager)       |                                                | In Progress |
 | [NDU Service](https://github.com/infinera/terraform-ipm_modules/tree/master/ndu-service)                               |                                                | In Progress |
