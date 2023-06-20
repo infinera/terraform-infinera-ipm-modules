@@ -27,7 +27,7 @@
 | get_ncs_lcs       | Get Network Connection's local connections |  TBD    |
 | get_ncs_acs       | Get Network Connection's attachment circuits |  TBD    |
 
-## Examples
+## XR Network Examples
 ```
 # get all modules
 get-modules all init=y
@@ -35,8 +35,8 @@ get-modules all init=y
 # create network 
 networks create init=y intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
 
-# get all network
-get-networks all init=y
+# get all networks
+get-networks all
 
 # get created network's modules. $networkId is the id of the created network.
 get-hub-module $networkId init=y
@@ -51,10 +51,38 @@ get-leaf-modules $networkId
 get-reachable-modules $networkId
 
 # delete network
-networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/
+networks delete intent=/Work-Directory/user-intents/networks.tfvars
 
 # verify that that the network is deleted
 get-networks networkId
+```
+
+## Transport Capacity Examples
+```
+# get all TCs
+get-tcs all init=y
+
+# create network 
+tcs create init=y intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+
+# get all networks
+get-tcs all
+
+# get created network's endpoints and Capacity Links. $networkId is the id of the created network.
+get-tc-endpoints $TCId init=y
+get-tcs-capacity-links $id init=y
+
+# update network
+tcs update intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+get-tcs all
+get-tc-endpoints $TCId
+get-tcs-capacity-links $id
+
+# delete network
+tcs delete intent=/Work-Directory/user-intents/tcs.tfvars 
+
+# verify that that the network is deleted
+get-tcs $TCId
 ```
 
 ## Trouble Shooting
