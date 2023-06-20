@@ -3,12 +3,12 @@ get-hub-module(1) Version 1.0
 NAME
 ====
 
-**get-hub-module** — Get XR hub module of a XR network
+**get_hub_module** — Get XR hub module of a XR network
 
 SYNOPSIS
 ========
 
-**get-hub-module** networkId *[init=y|yes]*
+**gget_hub_module** networkId *[init=y|yes]*
 
 
 DESCRIPTION
@@ -28,11 +28,10 @@ Arguments
 EXAMPLES
 ===========
 
-Get XR Hub Module(s) for a XR Network
+Get XR Hub Module for a XR Network
 ------
 
-1. get-hub-module networkId init=y
-2. get-hub-module networkId
+1. get_hub_module networkId *[init=y|yes]*
 
 ENVIRONMENT
 ===========

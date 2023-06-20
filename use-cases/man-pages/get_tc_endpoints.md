@@ -1,20 +1,20 @@
-get-modules(1) Version 1.0 
+get-networks(1) Version 1.0 
 
 NAME
 ====
 
-**get_modules** — Get all or specific XR module
+**get_tc_endpoints** — Get all endpoints for a specific Transport Capacity
 
 SYNOPSIS
 ========
 
-**get_modules** id *[init=y|yes]*
+**get_tc_endpoints** TCId *[init=y|yes]*
 
 
 DESCRIPTION
 ===========
 
-Get the XR module based on its *Id*. If the *id* is **all**, get all XR modules in the XR networks.
+Get the Transport Capacity'a endpoints based on the specific *TCId*.
 
 
 Arguments
@@ -22,18 +22,16 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| id         |  string   | - all             | Get all XR modules               |
-|                  |           | - xyz id          | Get the XR module which id is *xyz*               |
+| TCId         |  string   | - xyz id              | Get all endpoints for TC which id is *xyz*               |
 | *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
-Get XR Module(s)
+Get Transport Capacities(s)
 ------
 
-1. get_modules all *[init=y|yes]*
-2. get_modules id *[init=y|yes]*
+1. get_tc_endpoints TCId *[init=y|yes]*
 
 ENVIRONMENT
 ===========

@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get-networks** networkId *[init=y|yes]*
+**get_networks** id *[init=y|yes]*
 
 
 DESCRIPTION
@@ -22,9 +22,9 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| networkId         |  string   | - all             | Get all XR networks               |
+| id         |  string   | - all             | Get all XR networks               |
 |                  |           | - xyz id          | Get the XR networks which id is *xyz*               |
-| [init=y\|yes]    |           |                   | Only need at the first execution the IPM service commands      |
+| *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
@@ -32,9 +32,8 @@ EXAMPLES
 Get XR Networks(s)
 ------
 
-1. get-networks all init=y
-2. get-networks all 
-3. get-networks networkId
+1. get_networks all *[init=y|yes]
+2. get_networks id *[init=y|yes]*
 
 ENVIRONMENT
 ===========

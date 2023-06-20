@@ -3,12 +3,12 @@ get-reachable-modules(1) Version 1.0
 NAME
 ====
 
-**get-reachable-modules** — Get XR reachable modules of a XR network
+**get_reachable_modules** — Get XR reachable modules of a XR network
 
 SYNOPSIS
 ========
 
-**get-reachable-modules** networkId *[init=y|yes]*
+**get_reachable_modules** networkId *[init=y|yes]*
 
 
 DESCRIPTION
@@ -31,8 +31,7 @@ EXAMPLES
 Get XR Reachable Module(s) for a XR Network
 ------
 
-1. get-reachable-modules networkId init=y
-2. get-reachable-modules networkId
+1. get_reachable_modules networkId *[init=y|yes]*
 
 ENVIRONMENT
 ===========

@@ -1,20 +1,20 @@
-get-modules(1) Version 1.0 
+get-networks(1) Version 1.0 
 
 NAME
 ====
 
-**get_modules** — Get all or specific XR module
+**get_tcs** — Get all or specific Transport Capacity
 
 SYNOPSIS
 ========
 
-**get_modules** id *[init=y|yes]*
+**get_tcs** id *[init=y|yes]*
 
 
 DESCRIPTION
 ===========
 
-Get the XR module based on its *Id*. If the *id* is **all**, get all XR modules in the XR networks.
+Get the XR network's Transport Capacity based on its *Id*. If the *Id* is **all**, get all Transport Capacities in the XR networks.
 
 
 Arguments
@@ -22,18 +22,18 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| id         |  string   | - all             | Get all XR modules               |
-|                  |           | - xyz id          | Get the XR module which id is *xyz*               |
+| id         |  string   | - all             | Get all Transport Capacities               |
+|                  |           | - xyz id          | Get the Transport Capacity which id is *xyz*               |
 | *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
-Get XR Module(s)
+Get Transport Capacities(s)
 ------
 
-1. get_modules all *[init=y|yes]*
-2. get_modules id *[init=y|yes]*
+1. get-tcs all *[init=y|yes]*
+2. get-tcs id *[init=y|yes]*
 
 ENVIRONMENT
 ===========

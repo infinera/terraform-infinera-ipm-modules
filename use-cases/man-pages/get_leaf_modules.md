@@ -3,12 +3,12 @@ get-leaf-modules(1) Version 1.0
 NAME
 ====
 
-**get-leaf-modules** — Get XR leaf modules of a XR network
+**get_leaf_modules** — Get XR leaf modules of a XR network
 
 SYNOPSIS
 ========
 
-**get-leaf-modules** networkId *[init=y|yes]*
+**get_leaf_modules** networkId *[init=y|yes]*
 
 
 DESCRIPTION
@@ -22,7 +22,7 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| networkId        |  string   |                   | Get the XR leaf module of a XR network which is is *networkId*               |
+| networkId        |  string   |                   | Get the XR leaf modules of a XR network which network id is *networkId*               |
 | *[init=y\|yes]*  |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
@@ -31,8 +31,7 @@ EXAMPLES
 Get XR Leaf Module(s) for a XR Network
 ------
 
-1. get-leaf-modules networkId init=y
-2. get-leaf-modules networkId
+1. get_leaf_modules networkId *[init=y|yes]*
 
 ENVIRONMENT
 ===========

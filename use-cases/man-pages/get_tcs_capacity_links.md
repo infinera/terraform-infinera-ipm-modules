@@ -1,20 +1,20 @@
-get-modules(1) Version 1.0 
+get-networks(1) Version 1.0 
 
 NAME
 ====
 
-**get_modules** — Get all or specific XR module
+**get_tcs_capacity_links** — Get all or specific Capacity Link
 
 SYNOPSIS
 ========
 
-**get_modules** id *[init=y|yes]*
+**get_tcs_capacity_links** Id *[init=y|yes]*
 
 
 DESCRIPTION
 ===========
 
-Get the XR module based on its *Id*. If the *id* is **all**, get all XR modules in the XR networks.
+Get the Capacity Links based on its *Id*. If the *Id* is **all**, get all Capacity Links in the XR networks.
 
 
 Arguments
@@ -22,18 +22,18 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| id         |  string   | - all             | Get all XR modules               |
-|                  |           | - xyz id          | Get the XR module which id is *xyz*               |
+| Id         |  string   | - all             | Get all Capacity Links               |
+|                  |           | - xyz id          | Get the Capacity Link which id is *xyz*               |
 | *[init=y|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
-Get XR Module(s)
+Get Capacity Link(s)
 ------
 
-1. get_modules all *[init=y|yes]*
-2. get_modules id *[init=y|yes]*
+1. get_tcs_capacity_links all *[init=y|yes]*
+2. get_tcs_capacity_links Id *[init=y|yes]*
 
 ENVIRONMENT
 ===========
