@@ -16,3 +16,4 @@ cd $WORK_DIR
 if [ -f ${IPM_VOLUME}/export_vars.sh ]; then
   . ${IPM_VOLUME}/export_vars.sh
 fi
+bash
