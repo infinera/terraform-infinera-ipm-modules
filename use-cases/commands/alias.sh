@@ -8,4 +8,7 @@ alias get-hub-module=". ${IPM_CMDS}/get-hub-module.sh"
 alias get-leaf-modules=". ${IPM_CMDS}/get-leaf-modules.sh"
 alias get-reachable-modules=". ${IPM_CMDS}/get-reachable-modules.sh"
 alias get-networks=". ${IPM_CMDS}/get-networks.sh"
+alias get-tcs=". ${IPM_CMDS}/get-tcs.sh"
+alias get-tcs-capacity-links=". ${IPM_CMDS}/get-tcs-capacity-links.sh"
+alias get-tc-endpoints=". ${IPM_CMDS}/get-tcs-endpoints.sh"
 

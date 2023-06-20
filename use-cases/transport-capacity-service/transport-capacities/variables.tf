@@ -10,11 +10,15 @@ variable "transport-capacities" {
     capacity = optional(number) }))
   }))
   description = "List of Transport Capacities"
-  default = [{ name = "tc1", profile = "system_tc_profile1",
+  /*default = [{ name = "tc1", profile = "system_tc_profile1",
     endpoints = [{ identifier = { host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "ipAddress", host_port_id = "192.168.101.1",
       host_port_id_subtype = "ipAddress" } }, { identifier = { host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent",
     host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "portComponent" } }]
-  }]
+  }]*/
+  default = [{ name: "TC1", profile = "system_tc_profile1",
+                endpoints : [{ identifier: { module_client_if_aid: "XR-T1", module_name: "PORT_MODE_HUB"}},
+                             { identifier: { module_client_if_aid: "XR-T1", module_name: "PORT_MODE_LEAF1"} }]
+            }]
 }
 
 variable "ipm_user" {
@@ -32,10 +36,10 @@ variable "ipm_host" {
 
 variable "system_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "../../system-profiles/tc_profiles.json"
 }
 
 variable "user_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "tc_profiles.json"
 }

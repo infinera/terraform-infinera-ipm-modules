@@ -11,11 +11,11 @@ do
 done
 
 if [ ! -n "$1" ]; then
-  echo "Can't proceed. Module id is not specified."
+  echo "Can't proceed. ${2} is not specified."
   return 1
 fi
 
-cd  ${TF_ROOT}/module-management-service/get-modules
+cd  ${TF_ROOT}/$1
 if [ "$init" = "y" -o "$init" = "yes" ]; then
   rm ./.terraform.lock.hcl; rm ./terraform.tfstate;
   terraform init
@@ -24,6 +24,9 @@ elif [ ! -f ".tfinit" ]; then
 fi
 touch .tfinit
 
-terraform apply -auto-approve -var="id=${1}"
-terraform output > $WORK_DIR/get-modules-output.json
+searchstring="/"
+rest=${1#*$searchstring}
+
+terraform apply -auto-approve -var="${2}=${3}"
+terraform output > $WORK_DIR/${rest}-output.json
 cd $WORK_DIR

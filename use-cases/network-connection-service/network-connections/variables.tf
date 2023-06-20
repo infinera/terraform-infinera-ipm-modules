@@ -25,7 +25,7 @@ variable "nc_profiles" {
 
 variable "system_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "../../system-profiles/nc_profiles.json"
 }
 
 variable "user_profile" {

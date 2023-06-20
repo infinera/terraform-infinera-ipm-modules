@@ -43,7 +43,7 @@ variable "ipm_host" {
 
 variable "system_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "../../system-profiles/network_profiles.json"
 }
 
 variable "user_profile" {

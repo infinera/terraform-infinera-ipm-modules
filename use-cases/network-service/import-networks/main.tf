@@ -13,10 +13,10 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-/*import {
+import {
   to = ipm_constellation_network.constellation_network
   id = "f3d6b443-1910-4de2-838b-3f56faf4aa8b"
-}*/
+}
 
 resource "ipm_constellation_network" "constellation_network" {
   config = {
@@ -39,8 +39,8 @@ resource "ipm_constellation_network" "constellation_network" {
         requested_nominal_psd_offset =  "unknown"
         fec_iterations = "unknown"
         tx_clp_target = 0
-        MaxDSCs = []
-        MaxTxDSCs = []
+        MaxDSCs = 0
+        MaxTxDSCs = 0
         AllowedTxCDSCs = []
         AllowedRxCDSCs = []
       }

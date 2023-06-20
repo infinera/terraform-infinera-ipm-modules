@@ -14,7 +14,7 @@ provider "ipm" {
 }
 
 data "ipm_tc_capacity_links" "tc_capacity_links" {
-  tc_id = var.tc_id
+  id = var.id
 }
 
 output "tcs" {
