@@ -10,27 +10,39 @@ variable "network_connections" {
     capacity = optional(number) }))
   }))
   description = "List of Network Connection"
-  default = [{ profile = "nc_profile1",
-    endpoints = [{ identifier = { host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "ipAddress", host_port_id = "192.168.101.1",
-      host_port_id_subtype = "ipAddress" } }, { identifier = { host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent",
-    host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "portComponent" }, capacity = 400 }]
+  default = [{ profile = "nc_profile1", name="test-nc1",
+    endpoints = [{ identifier = { host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "networkAddress", host_port_id = "192.168.101.1",
+      host_port_id_subtype = "networkAddress" }, capacity = 100 }, { identifier = { host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent",
+    host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "portComponent" }, capacity = 100 }]
   }]
 }
 
-variable "nc_profiles" {
-  type = map(object({ service_mode = optional(string), mc = optional(string), outer_vid = optional(string),
-  implicit_transport_capacity = optional(string), labels = optional(map(string)), endpoint_capacity : optional(string) }))
-  description = "Map of NC Config profiles"
-}
-
+//  type = map(object({ service_mode = optional(string), mc = optional(string), outer_vid = optional(string),
+//  implicit_transport_capacity = optional(string), labels = optional(map(string)), endpoint_capacity : optional(string) }))
+//  description = "Map of NC Config profiles"
 variable "system_profile" {
   type    = string
   default = "../../system-profiles/nc_profiles.json"
 }
 
+//  type = map(object({ service_mode = optional(string), mc = optional(string), outer_vid = optional(string),
+//  implicit_transport_capacity = optional(string), labels = optional(map(string)), endpoint_capacity : optional(string) }))
+//  description = "Map of NC Config profiles"
 variable "user_profile" {
   type    = string
   default = "nc_profiles.json"
 }
 
+variable "ipm_user" {
+  type = string
+}
+
+variable "ipm_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "ipm_host" {
+  type = string
+}
 

@@ -25,5 +25,3 @@ module "transport-capacities" {
 output "transport-capacities" {
   value = module.transport-capacities
 }
-
-

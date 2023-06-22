@@ -20,12 +20,12 @@ import {
 
 resource "ipm_constellation_network" "constellation_network" {
   config = {
-    name = "unknown"
-    constellation_frequency = 0
-    modulation = "unknown"
-    tc_mode = true
-    managed_by  = "unknown"
-    topology = "unknown"
+    name = "XRNETWORK2"
+    constellation_frequency = 196100000
+    modulation = null
+    tc_mode = null
+    managed_by  = null
+    topology = null
   }
   hub_module = {
     config = {
@@ -33,11 +33,11 @@ resource "ipm_constellation_network" "constellation_network" {
         module_selector_by_module_name = {module_name = "unknown" }
       }
       module = {
-        traffic_mode = "unknown"
-        fiber_connection_mode = "unknown"
-        planned_capacity  = "unknown"
-        requested_nominal_psd_offset =  "unknown"
-        fec_iterations = "unknown"
+        traffic_mode = null
+        fiber_connection_mode = null
+        planned_capacity  = null
+        requested_nominal_psd_offset =  null
+        fec_iterations = null
         tx_clp_target = 0
         MaxDSCs = 0
         MaxTxDSCs = 0

@@ -17,6 +17,7 @@ module "profiles" {
 module "network_connection" {
   source              = "../../tasks/network-connections"
   network_connections = var.network_connections
+  nc_profiles = module.profiles.nc_profiles
 }
 
 output "network_connection" {
