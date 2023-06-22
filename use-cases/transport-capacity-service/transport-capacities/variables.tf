@@ -15,7 +15,7 @@ variable "transport-capacities" {
       host_port_id_subtype = "ipAddress" } }, { identifier = { host_chassis_id = "cb3b.783c.38db", host_chassis_id_subtype = "chassisComponent",
     host_port_id = "bc3b.783c.38bd", host_port_id_subtype = "portComponent" } }]
   }]*/
-  default = [{ name: "TC1", profile = "system_tc_profile1",
+  default = [{ name: "TC2", profile = "system_tc_profile1",
                 endpoints : [{ identifier: { module_client_if_aid: "XR-T1", module_name: "PORT_MODE_HUB"}},
                              { identifier: { module_client_if_aid: "XR-T1", module_name: "PORT_MODE_LEAF1"} }]
             }]
