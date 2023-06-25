@@ -1,6 +1,7 @@
 #!/bin/bash
 export IPM_VOLUME=$HOME/apimodels
 export WORK_DIR="${IPM_VOLUME}/${1}"
+export IPM_TEMP="${IPM_VOLUME}/terraform-ipm-modules/use-cases/tmp"
 export IPM_CMDS="${IPM_VOLUME}/terraform-ipm-modules/use-cases/commands"
 if [ ! -d "${WORK_DIR}" ]; then
   mkdir $WORK_DIR

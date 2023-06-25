@@ -3,6 +3,7 @@ vol=`grep "^/dev" /etc/mtab | grep -v " \/etc/"`
 stringarray=($vol)
 export IPM_VOLUME=${stringarray[1]}
 export WORK_DIR="${IPM_VOLUME}/${1}"
+export IPM_TEMP="/ipm-services/use-cases/tmp"
 export IPM_CMDS="/ipm-services/use-cases/commands"
 if [ ! -d "${WORK_DIR}" ]; then
   mkdir $WORK_DIR

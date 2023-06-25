@@ -13,15 +13,15 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-module "RESOURCES" {
-  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//SERVICE/workflows/RESOURCES"
-  source = "../../../SERVICE/workflows/RESOURCES"
+module "networks" {
+  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/networks"
+  source = "../../../network-service/workflows/networks"
 
-  RESOURCES       = var.RESOURCES
+  networks       = var.networks
   system_profile = var.system_profile
   user_profile   = var.user_profile
 }
 
-output "RESOURCES" {
-  value = module.RESOURCES
+output "networks" {
+  value = module.networks
 }

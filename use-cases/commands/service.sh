@@ -16,7 +16,8 @@ done
 
 resource=$2
 echo $resource
-tmp_directory=/tmp/${resource}$RANDOM
+tmp_directory=${IPM_TEMP}/${resource}$RANDOM
+mkdir $tmp_directory
 echo "temp directory: ${tmp_directory}"
 
 . ${IPM_CMDS}/gen_resource_main.sh $tmp_directory $1 $resource
