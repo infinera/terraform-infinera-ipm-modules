@@ -13,10 +13,12 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_toms" "modules" {
-  id = var.id
+data "ipm_RESOURCE" "RESOURCE" {
+  VAR1
+  VAR2
+  VAR3
 }
 
-output "modules" {
-  value = data.ipm_modules.modules
+output "RESOURCE" {
+  value = data.ipm_RESOURCE.RESOURCE
 }

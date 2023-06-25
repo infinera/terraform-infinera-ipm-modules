@@ -1,13 +1,11 @@
 #!/bin/bash
-vol=`grep "^/dev" /etc/mtab | grep -v " \/etc/"`
-stringarray=($vol)
-export IPM_VOLUME=${stringarray[1]}
+export IPM_VOLUME=$HOME/apimodels
 export WORK_DIR="${IPM_VOLUME}/${1}"
-export IPM_CMDS="/ipm-services/use-cases/commands"
+export IPM_CMDS="${IPM_VOLUME}/terraform-ipm-modules/use-cases/commands"
 if [ ! -d "${WORK_DIR}" ]; then
   mkdir $WORK_DIR
 fi
-export PATH=$PATH:/ipm-services:${IPM_CMDS}
+export PATH=$PATH:$IPM_CMDS
 chmod +x  ${IPM_CMDS}/*
 cd $WORK_DIR
 . ${IPM_CMDS}/alias.sh

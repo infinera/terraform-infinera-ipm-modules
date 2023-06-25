@@ -13,10 +13,11 @@ provider "ipm" {
   host     = var.ipm_host
 }
 
-data "ipm_toms" "modules" {
-  id = var.id
+data "ipm_lcs" "lcs" {
+  module_id = var.module_id
+  col_id = var.col_id
 }
 
-output "modules" {
-  value = data.ipm_modules.modules
+output "lcs" {
+  value = data.ipm_lcs.lcs
 }
