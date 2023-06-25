@@ -1,0 +1,27 @@
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera.com/poc/ipm"
+    }
+  }
+
+}
+
+provider "ipm" {
+  username = var.ipm_user
+  password = var.ipm_password
+  host     = var.ipm_host
+}
+
+module "RESOURCES" {
+  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/RESOURCES"
+  //source = "../../../network-service/workflows/RESOURCES"
+
+  RESOURCES       = var.RESOURCES
+  system_profile = var.system_profile
+  user_profile   = var.user_profile
+}
+
+output "RESOURCES" {
+  value = module.RESOURCES
+}
