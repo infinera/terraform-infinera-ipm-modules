@@ -14,15 +14,13 @@ do
   esac
 done
 
-cmd=`echo "$1" | awk -F"/" '{print $NF}'`
-arrIN=(${cmd//./ })
-resource=${arrIN[0]}
-echo $comresourcemand
+resource=$2
+echo $resource
 tmp_directory=/tmp/${resource}$RANDOM
 echo "temp directory: ${tmp_directory}"
 
-. ${IPM_CMDS}/gen_resource_main.sh $tmp_directory $resource
-cp ${IPM_CMDS}/templates/${resource}_variables.txt  ${tmp_directory}/variables.tf
+. ${IPM_CMDS}/gen_resource_main.sh $tmp_directory $1 $resource
+cat ${IPM_CMDS}/templates/${resource}_variables.txt  > ${tmp_directory}/variables.tf
 cd $tmp_directory
 
 # Check intent file
@@ -53,19 +51,22 @@ fi
 echo TF_VAR_user_profile="$TF_VAR_user_profile"
 
 if [ "$init" = "y" -o "$init" = "yes" ]; then
-  rm ./.terraform.lock.hcl; rm ${WORK_DIR}/${resource}.tfstate;
+  rm ${WORK_DIR}/${resource}.tfstate;
+  rm ./.terraform.lock.hcl; 
+  terraform init
+else
   terraform init
 fi
 
-echo cmd="$2"
-if [ "${2}" = "create" -o  "${2}" = "update" ]; then
+echo cmd="$3"
+if [ "${3}" = "create" -o  "${3}" = "update" ]; then
   terraform apply -var-file="${intent}" -state=${WORK_DIR}/${resource}.tfstate
-elif [ "${2}" = "plan" ]; then
+elif [ "${3}" = "plan" ]; then
   terraform plan -var-file="${intent}" -out=${WORK_DIR} -state=${WORK_DIR}/${resource}.tfstate
-elif [ "${2}" = "delete" ]; then
+elif [ "${3}" = "delete" ]; then
   terraform destroy -state=${WORK_DIR}/${resource}.tfstate
 else
-  echo "Invalid command ${2}."
+  echo "Invalid command ${3}."
   #cd $WORK_DIR
   return 1
 fi

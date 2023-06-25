@@ -14,8 +14,9 @@ provider "ipm" {
 }
 
 module "RESOURCES" {
-  source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/RESOURCES"
-  //source = "../../../network-service/workflows/RESOURCES"
+  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//SERVICE/workflows/RESOURCES"
+  //source = "../SERVICE/workflows/RESOURCES"
+  source = "/ipm-services/SERVICE/workflows/RESOURCES"
 
   RESOURCES       = var.RESOURCES
   system_profile = var.system_profile
