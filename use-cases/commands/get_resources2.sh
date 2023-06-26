@@ -22,8 +22,11 @@ elif [ $# -eq 5 ]; then
   echo "terraform apply -auto-approve -var=$4 -var=$5"
   terraform apply -auto-approve -var="$4" -var="$5"
 elif [ $# -eq 6 ]; then
- echo "terraform apply -auto-approve -var=$4 -var=$5 -var=$6"
-  terraform apply -auto-approve -var="$4" -var="$5" -var="$6"
+  echo "terraform apply -auto-approve -var=$4 -var=$5 -var=$6"
+  terraform apply -auto-approve -var="$4" -var="$5"  -var=$6
+elif [ $# -eq 7 ]; then
+ echo "terraform apply -auto-approve -var=$4 -var=$5 -var=$6 -var=$7"
+  terraform apply -auto-approve -var="$4" -var="$5" -var="$6" -var=$7
 fi
 terraform output > $WORK_DIR/${command}_output.json
 rm -rf $tmp_directory
