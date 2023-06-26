@@ -37,7 +37,7 @@ if [[ -v system_profile ]]; then
   export TF_VAR_system_profile="$system_profile"
 elif [[ -v SYSTEM_PROFILE ]]; then
   export TF_VAR_system_profile="${SYSTEM_PROFILE}"
-else
+elif [ "$2" != "delete" ]; then
   echo "Can't proceed. System profile is not specified."
   return 1
 fi
