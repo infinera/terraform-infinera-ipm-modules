@@ -2,7 +2,7 @@
 #get_resources.sh $0 id "$@"
 if [ $# -lt 2 ]; then
   echo "Need required argument! ${0} module_id line_ptp_col_id [carrier_col_id]"
-  return 1
+  exit
 fi
 col_id="all"
 if [ $# -eq 3 ]; then

@@ -1,4 +1,4 @@
-get-modules(1) Version 1.0 
+get_modules(1) Version 1.0 
 
 NAME
 ====
@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_modules** id *[init=y|yes]*
+**get_modules** id 
 
 
 DESCRIPTION
@@ -24,17 +24,16 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | id         |  string   | - all             | Get all XR modules               |
 |                  |           | - xyz id          | Get the XR module which id is *xyz*               |
-| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get XR Module(s)
 ------
-
-1. get_modules all *[init=y|yes]*
-2. get_modules id *[init=y|yes]*
-
+```
+1. get_modules all 
+2. get_modules id 
+```
 ENVIRONMENT
 ===========
 
@@ -43,7 +42,7 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
+
 
 AUTHOR
 ======

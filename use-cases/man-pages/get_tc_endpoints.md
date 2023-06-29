@@ -1,4 +1,4 @@
-get-networks(1) Version 1.0 
+get_tc_endpoints(1) Version 1.0 
 
 NAME
 ====
@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_tc_endpoints** TCId *[init=y|yes]*
+**get_tc_endpoints** TCId 
 
 
 DESCRIPTION
@@ -23,16 +23,15 @@ Arguments
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
 | TCId         |  string   | - xyz id              | Get all endpoints for TC which id is *xyz*               |
-| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get Transport Capacities(s)
 ------
-
-1. get_tc_endpoints TCId *[init=y|yes]*
-
+```
+get_tc_endpoints TCId 
+```
 ENVIRONMENT
 ===========
 
@@ -41,7 +40,6 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
 
 AUTHOR
 ======

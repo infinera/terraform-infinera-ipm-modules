@@ -1,14 +1,14 @@
-get-networks(1) Version 1.0 
+get_networks(1) Version 1.0 
 
 NAME
 ====
 
-**get-networks** — get all or specific XR Network
+**get_networks** — get all or specific XR Network
 
 SYNOPSIS
 ========
 
-**get_networks** id *[init=y|yes]*
+**get_networks** id 
 
 
 DESCRIPTION
@@ -24,17 +24,16 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | id         |  string   | - all             | Get all XR networks               |
 |                  |           | - xyz id          | Get the XR networks which id is *xyz*               |
-| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get XR Networks(s)
 ------
-
-1. get_networks all *[init=y|yes]
-2. get_networks id *[init=y|yes]*
-
+```
+1. get_networks all 
+2. get_networks id 
+```
 ENVIRONMENT
 ===========
 
@@ -43,7 +42,7 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
+
 
 AUTHOR
 ======

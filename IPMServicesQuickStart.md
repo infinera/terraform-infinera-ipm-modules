@@ -11,23 +11,64 @@
    3. *\$workingDir* is the directory in the host directory *ABC* which will be created in the *\$workingDir* as needed. The container will start in this directory.
 2. Now in the container's bash shell under *\$WorkingDir* directory,the support IPM Service commands are available to provision IPM service resources as shown below:
 
-| Support Command         |  Description                                   | Man Page    |
+| Support Host Management Command         |  Description                                   | Man Page    |
 |-------------------------|------------------------------------------------|-------------|
-| get-modules.sh             | Get all or a specific module | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_modules.md)     |
+| get_hosts.sh             | Get all or a specific host | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_hosts.md)     |
+| get_hosts_port.sh        | Get all Host's port or a specific Port | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_host_port.md)     |
+
+| Support Module Management Command         |  Description                                   | Man Page    |
+|-------------------------|------------------------------------------------|-------------|
+| get_modules.sh             | Get all or a specific module | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_modules.md)     |
+| get_acs.sh             |     | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_acs.md)       |
+| get_carriers.sh             |     | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_carriers.md)       |
+| get_dscgs.sh             |     |    |
+| get_dscs.sh             |     |    |
+| get_ethernet_clients.sh             |     |    |
+| get_lcs.sh             |     |    |
+| get_line_ptps.sh             |     |    |
+| get_otus.sh             |     |    |
+| get_odus.sh             |     |    |
+
+
+| Support Network Management Command         |  Description                                   | Man Page    |
+|-------------------------|------------------------------------------------|-------------|
 | networks.sh                | XR Network CRUD management | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/networks.md)     |
-| get-networks.sh            | Get all or a specific XR networks | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_networks.md)    |
-| get-hub-modules.sh         | Get hub module for a specific XR Network |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_hub_modules.md)    |
-| get-leaf-modules.sh        | Get leaf modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_leaf_modules.md)     |
-| get-reachable-modules.sh   | Get reachable modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_reachable_modules.md)     |
+| get_networks.sh            | Get all or a specific XR networks | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_networks.md)    |
+| get_hub_modules.sh         | Get hub module for a specific XR Network |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_hub_modules.md)    |
+| get_leaf_modules.sh        | Get leaf modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_leaf_modules.md)     |
+| get_reachable_modules.sh   | Get reachable modules for a specific XR Network | [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_reachable_modules.md)     |
+
+| Support Transport Capacity Management Command         |  Description                                   | Man Page    |
+|-------------------------|------------------------------------------------|-------------|
 | tcs.sh                     | Transport capacity CRUD management|  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/tcs.md)    |
-| get-tcs.sh                 | Get all or specific Transport capacities|  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs.md)    |
-| get-tc_endpoints.sh        | Get Transport capacity's endpoints |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tc_endpoints.md)    |
-| get-tc_capacity_links.sh   | Get Transport capacity's capacity links |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs_capacity_links.md)   |
+| get_tcs.sh                 | Get all or specific Transport capacities|  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs.md)    |
+| get_tc_endpoints.sh        | Get Transport capacity's endpoints |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tc_endpoints.md)    |
+| get_tc_capacity_links.sh   | Get Transport capacity's capacity links |  [man page](https://github.com/infinera/terraform-ipm-modules/blob/master/use-cases/man-pages/get_tcs_capacity_links.md)   |
+
+| Support Network Connection Management Command         |  Description                                   | Man Page    |
+|-------------------------|------------------------------------------------|-------------|
 | ncs.sh                     | Network Connection CRUD management|  TBD    |
 | get_ncs.sh                 | Get all or specific Network Connection |  TBD    |
 | get_ncs_endpoints.sh       | Get Network Connection's Endpoints |  TBD    |
 | get_ncs_lcs.sh       | Get Network Connection's local connections |  TBD    |
 | get_ncs_acs.sh       | Get Network Connection's attachment circuits |  TBD    |
+
+| Support NDU Management Command         |  Description                                   | Man Page    |
+|-------------------------|------------------------------------------------|-------------|
+| get_ndus.sh                     | |      |
+| get_ndu_eclients.sh                     | |      |
+| get_ndu_carriers.sh                     | |      |
+| get_ndu_edfas.sh                     | |      |
+| get_ndu_lcs.sh                     | |      |
+| get_ndu_line_ptps.sh                     | |      |
+| get_ndu_otus.sh                     | |      |
+| get_ndu_odus.sh                     | |      |
+| get_ndu_pol_ptps.sh                     | |      |
+| get_ndu_ports.sh                     | |      |
+| get_ndu_toms.sh                     | |      |
+| get_ndu_trib_ptps.sh                     | |      |
+| get_ndu_voas.sh                     | |      |
+| get_ndu_xrs.sh                     | |      |
 
 ## XR Network Examples
 ```

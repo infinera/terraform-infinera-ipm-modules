@@ -24,6 +24,7 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | command          |  string   | - create          | Create Network based on the intent               |
 |                  |           | - update          | Update Network based on the updated intent               |
+|                  |           | - plan          | Plan Network                |
 |                  |           | - delete          | Delete Network                |
 | *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
 | [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
@@ -33,27 +34,27 @@ Arguments
 EXAMPLES
 ===========
 
-Get XR Network's Transport Capacities
+Get Transport Capacities
 ------
 
-1. get-tcs all *[init=y | yes]*
-2. get-tcs id *[init=y | yes]*
+1. get-tcs all
+2. get-tcs id
 
-Create XR Network
+Create Transport Capacities
 ------
-
-1. tcs create *[init=y | yes]* intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs.json
-
+```
+tcs create *[init=y | yes]* intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs.json
+```
 Update XR Network
 ------
-
-1. tcs update intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
-
+```
+tcs update intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+```
 Delete XR Network
-------
-
-1. tcs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
-
+-----
+```
+tcs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+```
 ENVIRONMENT
 ===========
 

@@ -1,20 +1,20 @@
-get-hub-module(1) Version 1.0 
+get_host_ports(1) Version 1.0 
 
 NAME
 ====
 
-**get_hub_module** — Get XR hub module of a XR network
+**get_host_ports** — Get Host Ports of a XR network
 
 SYNOPSIS
 ========
 
-**get_hub_module** networkId 
+**get_host_ports** hostId
 
 
 DESCRIPTION
 ===========
 
-Get the XR hub module of a XR network based on its *networkId*. 
+Get the Host Ports of a XR network based on the network's *hostId*. 
 
 
 Arguments
@@ -22,15 +22,15 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| networkId        |  string   |                   | Get the XR hub module of a XR network which is is *networkId*               |
+| hostId        |  string   |                   | Get the host's port which host id is *hostId*               |
 
 EXAMPLES
 ===========
 
-Get XR Hub Module for a XR Network
+Get Host Port(s) for a XR Network
 ------
 ```
-get_hub_module networkId 
+get_host_ports hostId 
 ```
 ENVIRONMENT
 ===========
@@ -39,8 +39,6 @@ None
 
 TROUBLE SHOOTING
 ====
-
-
 
 AUTHOR
 ======

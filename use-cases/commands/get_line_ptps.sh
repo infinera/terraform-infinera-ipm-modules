@@ -2,7 +2,7 @@
 
 if [ $# -lt 1 ]; then
   echo "Need required argument! ${0} module_id [linePTP_col_id]"
-  return 1
+  exit
 fi
 col_id="all"
 if [ $# -eq 2 ]; then

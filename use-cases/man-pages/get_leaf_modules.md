@@ -1,4 +1,4 @@
-get-leaf-modules(1) Version 1.0 
+get_leaf_modules(1) Version 1.0 
 
 NAME
 ====
@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_leaf_modules** networkId *[init=y|yes]*
+**get_leaf_modules** networkId
 
 
 DESCRIPTION
@@ -23,16 +23,15 @@ Arguments
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
 | networkId        |  string   |                   | Get the XR leaf modules of a XR network which network id is *networkId*               |
-| *[init=y\|yes]*  |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get XR Leaf Module(s) for a XR Network
 ------
-
-1. get_leaf_modules networkId *[init=y|yes]*
-
+```
+get_leaf_modules networkId 
+```
 ENVIRONMENT
 ===========
 
@@ -41,7 +40,7 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
+
 
 AUTHOR
 ======

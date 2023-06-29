@@ -1,20 +1,20 @@
-networks(1) Version 1.0 
+ncs(1) Version 1.0 
 
 NAME
 ====
 
-**networks** — XR Network CRUD Management
+**ncs** — Network Connection CRUD Management
 
 SYNOPSIS
 ========
 
-**networks** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+**ncs** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
 
 
 DESCRIPTION
 ===========
 
-Depending on the *command*, the **networks** function shall create, update, or delete the XR network.
+Depending on the *command*, the **ncs** function shall create, update, or delete the Transport Capacity.
 
 
 Arguments
@@ -22,10 +22,10 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| command          |  string   | - create          | Create Network based on the intent               |
-|                  |           | - update          | Update Network based on the updated intent               |
-|                  |           | - plan          | Plan Network                |
-|                  |           | - delete          | Delete Network                |
+| command          |  string   | - create          | Create Network Connection based on the intent               |
+|                  |           | - update          | Update Network Connection based on the updated intent               |
+|                  |           | - plan          | Plan Network Connection               |
+|                  |           | - delete          | Delete Network Connection               |
 | *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
 | [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
 | [system_profile=systemProfileName] |   |         | systemProfileName is the full path file name of the system profile. No required for *delete* command or if the SYSTEM_PROFILE environment variable is set.    |
@@ -34,27 +34,30 @@ Arguments
 EXAMPLES
 ===========
 
-Get XR Network
+Get XR Network's Transport Capacities
 ------
 ```
-1. get-networks all 
-2. get-networks networkId 
+1. get-ncs all 
+2. get-ncs id 
 ```
+
 Create XR Network
 ------
 ```
-networks create *[init=y|yes]* intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+ncs create *[init=y | yes]* intent=/Work-Directory/user-intents/ncs.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs.json
 ```
+
 Update XR Network
 ------
 ```
-networks update intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+1. ncs update intent=/Work-Directory/user-intents/ncs.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs_profiles.json
 ```
 Delete XR Network
 ------
 ```
-networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+1. ncs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs_profiles.json
 ```
+
 ENVIRONMENT
 ===========
 

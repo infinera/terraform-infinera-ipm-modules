@@ -1,4 +1,4 @@
-get-reachable-modules(1) Version 1.0 
+get_reachable_modules(1) Version 1.0 
 
 NAME
 ====
@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_reachable_modules** networkId *[init=y|yes]*
+**get_reachable_modules** networkId 
 
 
 DESCRIPTION
@@ -23,16 +23,15 @@ Arguments
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
 | networkId        |  string   |                   | Get the XR reachable module of a XR network which is is *networkId*               |
-| *[init=y\|yes]*  |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get XR Reachable Module(s) for a XR Network
 ------
-
-1. get_reachable_modules networkId *[init=y|yes]*
-
+```
+get_reachable_modules networkId 
+```
 ENVIRONMENT
 ===========
 
@@ -41,7 +40,7 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
+
 
 AUTHOR
 ======

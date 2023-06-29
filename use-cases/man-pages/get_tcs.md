@@ -1,4 +1,4 @@
-get-networks(1) Version 1.0 
+get_tcs(1) Version 1.0 
 
 NAME
 ====
@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_tcs** id *[init=y|yes]*
+**get_tcs** id 
 
 
 DESCRIPTION
@@ -24,17 +24,16 @@ Arguments
 |------------------|-----------|-------------------|-------------------------------|
 | id         |  string   | - all             | Get all Transport Capacities               |
 |                  |           | - xyz id          | Get the Transport Capacity which id is *xyz*               |
-| *[init=y\|yes]*    |           |                   | Only need at the first execution the IPM service commands      |
 
 EXAMPLES
 ===========
 
 Get Transport Capacities(s)
 ------
-
-1. get-tcs all *[init=y|yes]*
-2. get-tcs id *[init=y|yes]*
-
+```
+1. get-tcs all 
+2. get-tcs id 
+```
 ENVIRONMENT
 ===========
 
@@ -43,7 +42,6 @@ None
 TROUBLE SHOOTING
 ====
 
-If the command fails, enter the command with *"init=yes"* to cleanup and reset.
 
 AUTHOR
 ======
