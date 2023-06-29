@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 1 ]; then
-  echo "Need required argument! ${0} module_id [OTU_col_id]"
+  echo "Need required argument! ${0} module_id [otu_col_id]"
   exit
 fi
 col_id="all"
