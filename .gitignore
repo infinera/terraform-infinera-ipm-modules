@@ -30,3 +30,227 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+use-cases/tcs/get_modules_output.json
+use-cases/tcs/get_modules_output.json
+.gitignore
+.gitignore
+use-cases/tcs/get_ndu_voas_output.json
+use-cases/tcs/get_ndus_output.json
+use-cases/tcs/get_transport_capacities_output.json
+use-cases/tcs/get_ndus_output.json
+use-cases/tcs/get_ndu_ports_output.json
+use-cases/tcs/get_ndu_otus_output.json
+use-cases/tcs/get_modules_output.json
+use-cases/tcs/get_ndu_ports_output.json
+use-cases/tcs/get_ndus_output.json
+workSpace/networks/e2e_ncs-output.json
+workSpace/tmp/e2e_ncs11594/e2e_ncs.tf
+workSpace/tmp/e2e_ncs11594/variables.tf
+workSpace/tmp/e2e_ncs14154/e2e_ncs.tf
+workSpace/tmp/e2e_ncs14154/variables.tf
+workSpace/tmp/e2e_ncs14791/e2e_ncs.tf
+workSpace/tmp/e2e_ncs14791/variables.tf
+workSpace/tmp/e2e_ncs15524/e2e_ncs.tf
+workSpace/tmp/e2e_ncs15524/variables.tf
+workSpace/tmp/e2e_ncs15782/e2e_ncs.tf
+workSpace/tmp/e2e_ncs15782/variables.tf
+workSpace/tmp/e2e_ncs16557/e2e_ncs.tf
+workSpace/tmp/e2e_ncs16557/variables.tf
+workSpace/tmp/e2e_ncs18135/e2e_ncs.tf
+workSpace/tmp/e2e_ncs18135/variables.tf
+workSpace/tmp/e2e_ncs24242/e2e_ncs.tf
+workSpace/tmp/e2e_ncs24242/variables.tf
+workSpace/tmp/e2e_ncs26635/e2e_ncs.tf
+workSpace/tmp/e2e_ncs26635/variables.tf
+workSpace/tmp/e2e_ncs6037/e2e_ncs.tf
+workSpace/tmp/e2e_ncs6037/variables.tf
+workSpace/user-intents/e2encs.tfvars
+workSpace/tmp/e2e_ncs14154/e2e_ncs.tf
+workSpace/tmp/e2e_ncs14154/variables.tf
+workSpace/user-intents/e2encs.tfvars
+use-cases/tmp/32129/.tf
+use-cases/tmp/32129/variables.tf
+use-cases/tmp/e2e_ncs13624/main.tf
+use-cases/tmp/e2e_ncs13624/variables.tf
+use-cases/tmp/e2e_ncs16701/main.tf
+use-cases/tmp/e2e_ncs16701/variables.tf
+use-cases/tmp/e2e_ncs9645/e2e_ncs.tf
+use-cases/tmp/e2e_ncs9645/variables.tf
+use-cases/tmp/transport_capacities18942/main.tf
+use-cases/tmp/transport_capacities18942/variables.tf
+use-cases/tmp/transport_capacities22359/main.tf
+use-cases/tmp/transport_capacities22359/variables.tf
+use-cases/tmp/32129/.tf
+use-cases/tmp/32129/variables.tf
+use-cases/tmp/e2e_ncs13624/main.tf
+use-cases/tmp/e2e_ncs13624/variables.tf
+use-cases/tmp/e2e_ncs16701/main.tf
+use-cases/tmp/e2e_ncs16701/variables.tf
+use-cases/tmp/e2e_ncs9645/e2e_ncs.tf
+use-cases/tmp/e2e_ncs9645/variables.tf
+use-cases/tmp/transport_capacities18942/main.tf
+use-cases/tmp/transport_capacities18942/variables.tf
+use-cases/tmp/transport_capacities22359/main.tf
+use-cases/tmp/transport_capacities22359/variables.tf
+use-cases/tmp/32129/.tf
+use-cases/tmp/32129/variables.tf
+use-cases/tmp/e2e_ncs13624/main.tf
+use-cases/tmp/e2e_ncs13624/variables.tf
+use-cases/tmp/e2e_ncs16701/main.tf
+use-cases/tmp/e2e_ncs16701/variables.tf
+use-cases/tmp/e2e_ncs9645/e2e_ncs.tf
+use-cases/tmp/e2e_ncs9645/variables.tf
+use-cases/tmp/transport_capacities18942/main.tf
+use-cases/tmp/transport_capacities18942/variables.tf
+use-cases/tmp/transport_capacities22359/main.tf
+use-cases/tmp/transport_capacities22359/variables.tf
+use-cases/tmp/transport_capacities31085/main.tf
+use-cases/tmp/transport_capacities31085/variables.tf
+use-cases/tmp/transport_capacities7387/main.tf
+use-cases/tmp/transport_capacities7387/variables.tf
+use-cases/tmp/e2e_ncs20254/main.tf
+use-cases/tmp/e2e_ncs20254/variables.tf
+use-cases/tmp/e2e_ncs27636/main.tf
+use-cases/tmp/e2e_ncs27636/variables.tf
+use-cases/tmp/network_connections1103/main.tf
+use-cases/tmp/network_connections1103/variables.tf
+use-cases/tmp/network_connections13691/main.tf
+use-cases/tmp/network_connections13691/variables.tf
+use-cases/tmp/network_connections13933/main.tf
+use-cases/tmp/network_connections13933/variables.tf
+use-cases/tmp/network_connections14241/main.tf
+use-cases/tmp/network_connections14241/variables.tf
+use-cases/tmp/network_connections1467/main.tf
+use-cases/tmp/network_connections1467/variables.tf
+use-cases/tmp/network_connections16237/main.tf
+use-cases/tmp/network_connections16237/variables.tf
+use-cases/tmp/network_connections17625/main.tf
+use-cases/tmp/network_connections17625/variables.tf
+use-cases/tmp/network_connections18125/main.tf
+use-cases/tmp/network_connections18125/variables.tf
+use-cases/tmp/network_connections18489/main.tf
+use-cases/tmp/network_connections18489/variables.tf
+use-cases/tmp/network_connections18708/main.tf
+use-cases/tmp/network_connections18708/variables.tf
+use-cases/tmp/network_connections19137/main.tf
+use-cases/tmp/network_connections19137/variables.tf
+use-cases/tmp/network_connections19639/main.tf
+use-cases/tmp/network_connections19639/variables.tf
+use-cases/tmp/network_connections20012/main.tf
+use-cases/tmp/network_connections20012/variables.tf
+use-cases/tmp/network_connections21254/main.tf
+use-cases/tmp/network_connections21254/variables.tf
+use-cases/tmp/network_connections24034/main.tf
+use-cases/tmp/network_connections24034/variables.tf
+use-cases/tmp/network_connections27082/main.tf
+use-cases/tmp/network_connections27082/variables.tf
+use-cases/tmp/network_connections27608/main.tf
+use-cases/tmp/network_connections27608/variables.tf
+use-cases/tmp/network_connections27620/main.tf
+use-cases/tmp/network_connections27620/variables.tf
+use-cases/tmp/network_connections27958/main.tf
+use-cases/tmp/network_connections27958/variables.tf
+use-cases/tmp/network_connections28130/main.tf
+use-cases/tmp/network_connections28130/variables.tf
+use-cases/tmp/network_connections28519/main.tf
+use-cases/tmp/network_connections28519/variables.tf
+use-cases/tmp/network_connections29492/main.tf
+use-cases/tmp/network_connections29492/variables.tf
+use-cases/tmp/network_connections30022/main.tf
+use-cases/tmp/network_connections30022/variables.tf
+use-cases/tmp/network_connections535/main.tf
+use-cases/tmp/network_connections535/variables.tf
+use-cases/tmp/transport_capacities10417/main.tf
+use-cases/tmp/transport_capacities10417/variables.tf
+use-cases/tmp/transport_capacities10542/main.tf
+use-cases/tmp/transport_capacities10542/variables.tf
+use-cases/tmp/transport_capacities12638/main.tf
+use-cases/tmp/transport_capacities12638/variables.tf
+use-cases/tmp/transport_capacities13248/main.tf
+use-cases/tmp/transport_capacities13248/variables.tf
+use-cases/tmp/transport_capacities14626/main.tf
+use-cases/tmp/transport_capacities14626/variables.tf
+use-cases/tmp/transport_capacities14949/main.tf
+use-cases/tmp/transport_capacities14949/variables.tf
+use-cases/tmp/transport_capacities17080/main.tf
+use-cases/tmp/transport_capacities17080/variables.tf
+use-cases/tmp/transport_capacities19258/main.tf
+use-cases/tmp/transport_capacities19258/variables.tf
+use-cases/tmp/transport_capacities21308/main.tf
+use-cases/tmp/transport_capacities21308/variables.tf
+use-cases/tmp/transport_capacities23626/main.tf
+use-cases/tmp/transport_capacities23626/variables.tf
+use-cases/tmp/transport_capacities25318/main.tf
+use-cases/tmp/transport_capacities25318/variables.tf
+use-cases/tmp/transport_capacities27790/main.tf
+use-cases/tmp/transport_capacities27790/variables.tf
+use-cases/tmp/transport_capacities27917/main.tf
+use-cases/tmp/transport_capacities27917/variables.tf
+use-cases/tmp/transport_capacities28718/main.tf
+use-cases/tmp/transport_capacities28718/variables.tf
+use-cases/tmp/transport_capacities28961/main.tf
+use-cases/tmp/transport_capacities28961/variables.tf
+use-cases/tmp/transport_capacities29473/main.tf
+use-cases/tmp/transport_capacities29473/variables.tf
+use-cases/tmp/transport_capacities30085/main.tf
+use-cases/tmp/transport_capacities30085/variables.tf
+use-cases/tmp/transport_capacities30223/main.tf
+use-cases/tmp/transport_capacities30223/variables.tf
+use-cases/tmp/transport_capacities32113/main.tf
+use-cases/tmp/transport_capacities32113/variables.tf
+use-cases/tmp/transport_capacities3919/main.tf
+use-cases/tmp/transport_capacities3919/variables.tf
+use-cases/tmp/transport_capacities4658/main.tf
+use-cases/tmp/transport_capacities4658/variables.tf
+use-cases/tmp/transport_capacities5122/main.tf
+use-cases/tmp/transport_capacities5122/variables.tf
+use-cases/tmp/transport_capacities7294/main.tf
+use-cases/tmp/transport_capacities7294/variables.tf
+use-cases/tmp/transport_capacities8113/main.tf
+use-cases/tmp/transport_capacities8113/variables.tf
+use-cases/tmp/transport_capacities9340/main.tf
+use-cases/tmp/transport_capacities9340/variables.tf
+use-cases/tmp/transport_capacities9480/main.tf
+use-cases/tmp/transport_capacities9480/variables.tf
+use-cases/tmp/transport_capacities9816/main.tf
+use-cases/tmp/transport_capacities9816/variables.tf
+use-cases/user-intents copy/e2encs-1.tfvars
+use-cases/user-intents copy/e2encs.tfvars
+use-cases/user-intents copy/e2encs2.tfvars
+use-cases/user-intents copy/ncs_mac.tfvars
+use-cases/user-intents copy/ncs_mac2.tfvars
+use-cases/user-intents copy/ncs_sn.tfvars
+use-cases/user-intents copy/ncs_sn2.tfvars
+use-cases/user-intents copy/ncs-config1.tfvars
+use-cases/user-intents copy/ncs.tfvars
+use-cases/user-intents copy/ncs2.tfvars
+use-cases/user-intents copy/network_empty.tfvars
+use-cases/user-intents copy/network_intent-specification.tf
+use-cases/user-intents copy/network_no_leaf.tfvars
+use-cases/user-intents copy/network-connections.tfvars
+use-cases/user-intents copy/networks-by-host-portid.tfvars
+use-cases/user-intents copy/networks-config1.tfvars
+use-cases/user-intents copy/networks-ids.tfvars
+use-cases/user-intents copy/networks.tfvars
+use-cases/user-intents copy/networks1.tfvars
+use-cases/user-intents copy/networks2.tfvars
+use-cases/user-intents copy/tc_by_host_pot_id.tfvars
+use-cases/user-intents copy/tc_empty.tfvars
+use-cases/user-intents copy/tc_intent_specifications.tf
+use-cases/user-intents copy/tcs_mac.tfvars
+use-cases/user-intents copy/tcs_mac2.tfvars
+use-cases/user-intents copy/tcs_sn.tfvars
+use-cases/user-intents copy/tcs_sn2.tfvars
+use-cases/user-intents copy/tcs-config1.tfvars
+use-cases/user-intents copy/tcs2 copy.tfvars
+use-cases/user-intents copy/tcs2.tfvars
+use-cases/user-intents copy/tcs3.tfvars
+use-cases/user-intents copy/tcs4-ids.tfvars
+use-cases/user-intents copy/tcs4.tfvars
+use-cases/user-intents copy/two-networks.tfvars
+use-cases/tmp/transport_capacities11100/main.tf
+use-cases/tmp/transport_capacities11100/variables.tf
+use-cases/tmp/transport_capacities18809/main.tf
+use-cases/tmp/transport_capacities18809/variables.tf
+use-cases/tmp/transport_capacities8121/main.tf
+use-cases/tmp/transport_capacities8121/variables.tf

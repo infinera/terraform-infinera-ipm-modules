@@ -24,8 +24,8 @@ variable "networks" {
   description = "List of constellation Network"
   default = [{ network_name = "XR Network1",
     profile    = "network_profile1",
-    hub_module = { identifier = { module_name = "PORT_MODE_HUB" } },
-  leaf_modules = [{ identifier = { module_name = "PORT_MODE_LEAF1" } }] }]
+    hub_module = { identifier = { module_name = "A-LRN-Hub-Orlando" } },
+  leaf_modules = [{ identifier = { module_name = "A-LRN-Leaf1-BR" } }] }]
 }
 
 variable "ipm_user" {
@@ -47,7 +47,7 @@ variable "ipm_host" {
 //Module-config profile: type = map(object({traffic_mode= optional(string),fiber_connection_mode= optional(string), managed_by= optional(string), planned_capacity= optional(string), requested_nominal_psd_offset= optional(string), fec_iterations= optional(string), tx_clp_target= optional(string)}))
 variable "system_profile" {
   type = string
-  default = "../../system-profiles/network_profiles.json"
+  default = "network_profiles.json"
 }
 
 // Please see System Profile

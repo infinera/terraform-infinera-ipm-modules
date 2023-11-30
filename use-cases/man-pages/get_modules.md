@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_modules** id 
+**get_modules.sh** id 
 
 
 DESCRIPTION
 ===========
 
 Get the XR module based on its *Id*. If the *id* is **all**, get all XR modules in the XR networks.
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -31,8 +32,8 @@ EXAMPLES
 Get XR Module(s)
 ------
 ```
-1. get_modules all 
-2. get_modules id 
+get_modules.sh all 
+get_modules.sh id 
 ```
 ENVIRONMENT
 ===========

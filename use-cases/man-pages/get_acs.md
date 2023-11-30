@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_acs** module_id eclient_col_id [ac_col_id]
+**get_acs.sh** module_id eclient_col_id [ac_col_id]
 
 
 
@@ -16,7 +16,7 @@ DESCRIPTION
 ===========
 
 Get the XR leaf modules of a XR network based on the network's *networkId*. 
-
+The output result is saved in the *workingDirectory*.
 
 Arguments
 -------
@@ -29,17 +29,16 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get all AC for a Module's ethernet client 
 ------
 ```
-get_acs module_id eclient_col_id 
+get_acs.sh module_id eclient_col_id 
 ```
 
 Get specific AC of a Module's ethernet client 
 ------
 ```
-get_acs module_id eclient_col_id ac_col_id
+get_acs.sh module_id eclient_col_id ac_col_id
 ```
 ENVIRONMENT
 ===========

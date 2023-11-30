@@ -6,16 +6,30 @@ terraform {
   }
 
 }
+module "system_profile" {
+  source = "../../common/get_profiles"
+
+  profile = var.system_profile
+  
+}
+
+module "user_profile" {
+  source = "../../common/get_profiles"
+
+  profile = var.user_profile
+  
+}
 
 locals {
-  system_profiles = fileexists("${var.system_profile}") ? jsondecode(file("${var.system_profile}")) : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
+  system_profiles = length(module.system_profile.profiles) > 0 ? module.system_profile.profiles : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
 
-  user_profiles = fileexists("${var.user_profile}") ? jsondecode(file("${var.user_profile}")) : fileexists("${path.root}/${var.user_profile}") ? jsondecode(file("${path.root}/${var.user_profile}")) : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
+  user_profiles = length(module.user_profile.profiles) > 0 ? module.user_profile.profiles : { network_profiles : {}, network_config_profiles : {}, module_config_profiles : {} }
 
   network_profiles        = merge(local.user_profiles.network_profiles, local.system_profiles.network_profiles)
   network_config_profiles = merge(local.user_profiles.network_config_profiles, local.system_profiles.network_config_profiles)
   module_config_profiles  = merge(local.user_profiles.module_config_profiles, local.system_profiles.module_config_profiles)
 }
+
 
 // Network- Profile : type = map(object({network_config_profile = optional(string), hub_config_profile= optional(string), leaf_config_profile= optional(string)}))
 output "network_profiles" {

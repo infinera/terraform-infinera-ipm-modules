@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_tcs** id 
+**get_tcs.sh** id 
 
 
 DESCRIPTION
 ===========
 
 Get the XR network's Transport Capacity based on its *Id*. If the *Id* is **all**, get all Transport Capacities in the XR networks.
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -27,12 +28,11 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get Transport Capacities(s)
 ------
 ```
-1. get-tcs all 
-2. get-tcs id 
+get-tcs.sh all 
+get-tcs.sh id 
 ```
 ENVIRONMENT
 ===========

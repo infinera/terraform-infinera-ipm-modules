@@ -8,13 +8,13 @@ NAME
 SYNOPSIS
 ========
 
-**ncs** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+**ncs.sh** *command* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
 
 
 DESCRIPTION
 ===========
 
-Depending on the *command*, the **ncs** function shall create, update, or delete the Transport Capacity.
+Depending on the *command*, the **ncs** function shall create, update, or delete the Network Connection. 
 
 
 Arguments
@@ -22,11 +22,11 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| command          |  string   | - create          | Create Network Connection based on the intent               |
-|                  |           | - update          | Update Network Connection based on the updated intent               |
+| command          |  string   | - apply          | Create/Update Network Connection based on the intent               |
 |                  |           | - plan          | Plan Network Connection               |
 |                  |           | - delete          | Delete Network Connection               |
-| *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
+|                  |           | - init            | Only need at the first execution of the IPM service commands      |
+|                  |           | - recover         | copy the saved TF state file back.      |
 | [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
 | [system_profile=systemProfileName] |   |         | systemProfileName is the full path file name of the system profile. No required for *delete* command or if the SYSTEM_PROFILE environment variable is set.    |
 | [user_profile=userProfileName] |   |         | userProfileName is the full path file name of the user profile. No required for *delete* command or if the USER_PROFILE environment variable is set.    |
@@ -37,25 +37,26 @@ EXAMPLES
 Get XR Network's Transport Capacities
 ------
 ```
-1. get-ncs all 
-2. get-ncs id 
+get_network_connections.sh all 
+get_network_connections.sh id 
 ```
 
 Create XR Network
 ------
 ```
-ncs create *[init=y | yes]* intent=/Work-Directory/user-intents/ncs.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs.json
+ncs.sh *apply* intent=ncs.tfvars system_profile=ncs_profiles.json
 ```
 
 Update XR Network
 ------
+After make change in the intent file; enter the command below
 ```
-1. ncs update intent=/Work-Directory/user-intents/ncs.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs_profiles.json
+ncs.sh *apply* intent=ncs.tfvars 
 ```
 Delete XR Network
 ------
 ```
-1. ncs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/ncs_profiles.json user_profile=/Work-Directory/user-profiles/ncs_profiles.json
+ncs.sh *delete* intent=networks.tfvars
 ```
 
 ENVIRONMENT

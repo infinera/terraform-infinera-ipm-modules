@@ -41,7 +41,7 @@ provider "ipm" {
 }
 
 module "network" {
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//common/workflows/network"
+  source                   = "git::https://bitbucket.infinera.com/scm/mar/terraform-ipm-modules.git//common/workflows/network"
   <b>networks</b>                 = var.networks 
 }
 ```
@@ -551,7 +551,7 @@ provider "ipm" {
 }
 
 module "profiles" {
-  source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-mgnmt/profiles"
+  source                   = "git::https://bitbucket.infinera.com/scm/mar/terraform-ipm-modules.git//network-mgnmt/profiles"
 }
 
 output "network_profiles" {

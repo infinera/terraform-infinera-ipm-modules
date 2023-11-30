@@ -118,7 +118,7 @@ The Module Configuration Profile specifies the common configurations for a Hub/L
                   leaf_modules=[{identifier =  {module_name = "PORT_MODE_LEAF1"}}]}]`
     </pre>
 
-2. Execute Terraform apply
+2. Execute TF configuration networks.sh command
    
 ## How to Override The Module Configuration Profile settings
 
@@ -144,7 +144,7 @@ The Module Configuration Profile specifies the common configurations for a Hub/L
                       leaf_modules=[{identifier =  {module_name = "PORT_MODE_LEAF1"}, profile = "leaf_config_profile2"},
                                     {identifier =  {module_name = "PORT_MODE_LEAF2"}, <b>traffic_mode = "L1Mode"}</b>]}]
       </pre>
-2. Execute Terraform apply
+2.  Execute TF configuration network.sh command
    
 ## How to Define and Use the User Define Profiles
 The Constellation Network's profiles are system defined profiles which can be extending by the additional user defined profiles. The following steps are required to customize the network profiles.
@@ -170,56 +170,4 @@ The Constellation Network's profiles are system defined profiles which can be ex
       "user_defined_leaf_profile2" = {traffic_mode: "L1Mode",fiber_connection_mode: "single", tx_power_target_per_dsc: -0.3}
     }
     ```
-2. Execute Terraform apply on the Network Modules
-    When terraform apply command is executed on any network workflow modules, the specified user defined profiles shall be merged with the system defined network profiles. Then the extended profiles are available to refer to in the intent.
-
-## How To View The Existing Network Profiles
-### __Steps__
-1. Create the main.tf file as shown below
-    ```
-    terraform {
-      required_providers {
-        ipm = {
-          source = "infinera.com/poc/ipm"
-        }
-      }
-    }
-
-    provider "ipm" {
-      username = var.ipm_user     // TF_VAR_ipm_user
-      password = var.ipm_password // TF_VAR_ipm_password
-      host     = var.ipm_host     // TF_VAR_ipm_host
-    }
-
-    module "profiles" {
-      source                   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-mgnmt/profiles"
-    }
-
-    output "network_profiles" {
-      value = module.profiles.network_profiles
-    }
-
-    output "network_config_profiles" {
-      value = module.profiles.network_config_profiles
-    }
-
-    output "module_config_profiles" {
-      value = module.profiles.module_config_profiles
-    }
-    variable "ipm_user" {
-      type = string
-    }
-
-    variable "ipm_password" {
-      type = string
-      sensitive = true
-    }
-
-    variable "ipm_host" {
-      type = string
-    }
-    ```
-2. Execute "terraform init". This command is needed to be execute one time initially or whenever the user wants to clean up the TF state.
-3. Execute "terraform Apply"
-
-
+2.  Execute TF configuration network.sh command

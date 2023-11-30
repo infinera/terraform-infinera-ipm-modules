@@ -1,7 +1,0 @@
-{
-  "domain_fault_profiles" : {
-              "domain_fault_profile1" : { "service_mode" : "portMode", "mc" : "matchOuterVID", "outer_vid" : "10,20,50..100", "implicit_transport_capacity" : "none", "labels" : {"region": "West Coast"} },
-              "domain_fault_profile2" : { "service_mode" : "sharedDownlink", "mc" : "matchAll", "outer_vid" : "10,20,50..100", "implicit_transport_capacity" : "sharedDownlink", "labels" : {"region": "East Coast"} }
-            }
-}
-

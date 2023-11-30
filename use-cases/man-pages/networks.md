@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**networks** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+**networks.sh** *command* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
 
 
 DESCRIPTION
@@ -22,11 +22,11 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| command          |  string   | - create          | Create Network based on the intent               |
-|                  |           | - update          | Update Network based on the updated intent               |
+| command          |  string   | - apply          | Create/Update Network based on the intent               |
 |                  |           | - plan          | Plan Network                |
 |                  |           | - delete          | Delete Network                |
-| *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
+|                  |           | - init            | Only need at the first execution of the IPM service commands      |
+|                  |           | - recover         | copy the saved TF state file back.      |
 | [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
 | [system_profile=systemProfileName] |   |         | systemProfileName is the full path file name of the system profile. No required for *delete* command or if the SYSTEM_PROFILE environment variable is set.    |
 | [user_profile=userProfileName] |   |         | userProfileName is the full path file name of the user profile. No required for *delete* command or if the USER_PROFILE environment variable is set.    |
@@ -37,23 +37,24 @@ EXAMPLES
 Get XR Network
 ------
 ```
-1. get-networks all 
-2. get-networks networkId 
+get_networks.sh all 
+get_networks.sh networkId 
 ```
 Create XR Network
 ------
 ```
-networks create *[init=y|yes]* intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+networks.sh *apply* intent=networks.tfvars 
 ```
 Update XR Network
 ------
+After make change in the intent file; enter the command below
 ```
-networks update intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+networks.sh *apply* intent=networks.tfvars 
 ```
 Delete XR Network
 ------
 ```
-networks delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/network_profiles.json user_profile=/Work-Directory/user-profiles/network_profiles.json
+networks.sh *delete* intent=networks.tfvars 
 ```
 ENVIRONMENT
 ===========

@@ -13,7 +13,7 @@ variable "hosts" {
                identifier = {host_chassis_id = "192.168.101.1", host_chassis_id_subtype = "ipAddress"} }]
 }
 
-variable "host_profiles" {
+variable "profiles" {
   type = map(object({ managed_by = optional(string), location = optional(object({longtitude = number, latitude = number})),
                       labels = optional(map(string)),}))
   description = "Map of Host profiles"

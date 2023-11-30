@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_hosts** id
+**get_hosts.sh** id
 
 
 DESCRIPTION
 ===========
 
 Get the XR host based on its *Id*. If the *id* is **all**, get all XR hosts in the XR networks.
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -31,8 +32,8 @@ EXAMPLES
 Get XR host(s)
 ------
 ```
-1. get_hosts all 
-2. get_hosts id 
+get_hosts.sh all 
+get_hosts.sh id 
 ```
 ENVIRONMENT
 ===========

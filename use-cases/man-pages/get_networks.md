@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_networks** id 
+**get_networks.sh** id 
 
 
 DESCRIPTION
 ===========
 
 Get the XR network based on its *networkId*. If the *networkId* is **all**, get all XR modules in the XR networks.
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -31,8 +32,8 @@ EXAMPLES
 Get XR Networks(s)
 ------
 ```
-1. get_networks all 
-2. get_networks id 
+get_networks.sh all 
+get_networks.sh id 
 ```
 ENVIRONMENT
 ===========

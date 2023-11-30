@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_hub_module** networkId 
+**get_hub_module.sh** networkId 
 
 
 DESCRIPTION
 ===========
 
 Get the XR hub module of a XR network based on its *networkId*. 
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -26,11 +27,10 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get XR Hub Module for a XR Network
 ------
 ```
-get_hub_module networkId 
+get_hub_module.sh networkId 
 ```
 ENVIRONMENT
 ===========

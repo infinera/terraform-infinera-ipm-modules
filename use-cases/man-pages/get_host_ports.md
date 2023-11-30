@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_host_ports** hostId
+**get_host_ports.sh** hostId
 
 
 DESCRIPTION
 ===========
 
 Get the Host Ports of a XR network based on the network's *hostId*. 
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -26,11 +27,10 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get Host Port(s) for a XR Network
 ------
 ```
-get_host_ports hostId 
+get_host_ports.sh hostId 
 ```
 ENVIRONMENT
 ===========

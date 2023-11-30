@@ -1,2 +1,0 @@
-bash create-networks.sh system_profile=
- force_init=yes

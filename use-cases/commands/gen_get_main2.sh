@@ -1,4 +1,3 @@
-
 if [[ $# < 3 ]]; then
   echo Missing argument.
   return 1

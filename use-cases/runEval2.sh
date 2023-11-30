@@ -1,0 +1,1 @@
+docker run -it -v "$(pwd)":/Work-Directory --add-host=ipm-eval2.westus3.cloudapp.azure.com:20.25.146.166 $(docker pull sv-artifactory.infinera.com/marvel/ipm/ipm-services:1.0.0 | grep Status |  awk 'NF>1{print $NF}') $1

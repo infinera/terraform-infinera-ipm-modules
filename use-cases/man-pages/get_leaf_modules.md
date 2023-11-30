@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_leaf_modules** networkId
+**get_leaf_modules.sh** networkId
 
 
 DESCRIPTION
 ===========
 
 Get the XR leaf modules of a XR network based on the network's *networkId*. 
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -26,11 +27,10 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get XR Leaf Module(s) for a XR Network
 ------
 ```
-get_leaf_modules networkId 
+get_leaf_modules.sh networkId 
 ```
 ENVIRONMENT
 ===========

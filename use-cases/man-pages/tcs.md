@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**tcs** *command* *[init=y|yes]* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
+**tcs.sh** *command* [intent=intentFileName] [system_profile=systemProfileName] [user_profile=userProfileName] 
 
 
 DESCRIPTION
@@ -22,11 +22,11 @@ Arguments
 
 | Argument         |  Type     | Valid Values      | Description                   |
 |------------------|-----------|-------------------|-------------------------------|
-| command          |  string   | - create          | Create Network based on the intent               |
-|                  |           | - update          | Update Network based on the updated intent               |
-|                  |           | - plan          | Plan Network                |
-|                  |           | - delete          | Delete Network                |
-| *[init=y\|yes]*  |           |                   | Only need at the first execution of the IPM service commands      |
+| command          |  string   | - apply          | Create/Update Transport Capacity based on the intent               |
+|                  |           | - plan          | Plan Transport Capacity               |
+|                  |           | - delete          | Delete Transport Capacity               |
+|                  |           | - init            | Only need at the first execution of the IPM service commands      |
+|                  |           | - recover         | copy the saved TF state file back.      |
 | [intent=intentFileName] |           |            | intentFileName is the full path file name of the intent. Not required for *delete* command      |
 | [system_profile=systemProfileName] |   |         | systemProfileName is the full path file name of the system profile. No required for *delete* command or if the SYSTEM_PROFILE environment variable is set.    |
 | [user_profile=userProfileName] |   |         | userProfileName is the full path file name of the user profile. No required for *delete* command or if the USER_PROFILE environment variable is set.    |
@@ -37,23 +37,24 @@ EXAMPLES
 Get Transport Capacities
 ------
 
-1. get-tcs all
-2. get-tcs id
+1. get_transport_capacities.sh all
+2. get_transport_capacities.sh id
 
 Create Transport Capacities
 ------
 ```
-tcs create *[init=y | yes]* intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs.json
+tcs.sh *apply* intent=tcs.tfvars
 ```
 Update XR Network
 ------
+After make change in the intent file; enter the command below
 ```
-tcs update intent=/Work-Directory/user-intents/tcs.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+tcs.sh *apply* intent=tcs.tfvars system_profile=tcs_profiles.json
 ```
 Delete XR Network
 -----
 ```
-tcs delete intent=/Work-Directory/user-intents/networks.tfvars system_profile=/Work-Directory/system_profiles/tcs_profiles.json user_profile=/Work-Directory/user-profiles/tcs_profiles.json
+tcs.sh delete intent=networks.tfvars
 ```
 ENVIRONMENT
 ===========

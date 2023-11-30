@@ -8,7 +8,7 @@ NAME
 SYNOPSIS
 ========
 
-**get_carriers** module_id line_ptp_col_id [carrier_col_id]
+**get_carriers.sh** module_id line_ptp_col_id [carrier_col_id]
 
 
 
@@ -16,6 +16,7 @@ DESCRIPTION
 ===========
 
 Get the XR leaf modules of a XR network based on the network's *networkId*. 
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -29,17 +30,16 @@ Arguments
 
 EXAMPLES
 ===========
-
 Get all carriers for a Module's Line PTP 
 ------
 ```
-get_carriers module_id line_ptp_col_id 
+get_carriers.sh module_id line_ptp_col_id 
 ```
 
 Get specific carrier of a Module's Line PTP 
 ------
 ```
-get_carriers module_id line_ptp_col_id carrier_col_id
+get_carriers.sh module_id line_ptp_col_id carrier_col_id
 ```
 ENVIRONMENT
 ===========

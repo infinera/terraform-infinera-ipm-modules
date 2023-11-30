@@ -4,7 +4,6 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-
 }
 
 provider "ipm" {
@@ -14,7 +13,7 @@ provider "ipm" {
 }
 
 module "networks" {
-  //source   = "git::https://github.com/infinera/terraform-ipm_modules.git//network-service/workflows/networks"
+  //source   = "git::https://bitbucket.infinera.com/scm/mar/terraform-ipm-modules.git//network-service/workflows/networks"
   source = "../../../network-service/workflows/networks"
 
   networks       = var.networks

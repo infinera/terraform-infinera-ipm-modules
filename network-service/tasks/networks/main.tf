@@ -4,12 +4,11 @@ terraform {
       source = "infinera.com/poc/ipm"
     }
   }
-
 }
 
 // Constellation Network Resource supports CRUD functions
 resource "ipm_constellation_network" "constellation_networks" {
-  for_each = { for network in var.networks : network.network_name => network }
+  for_each = { for network in var.networks : (network.hub_module.identifier.module_name != null ? network.hub_module.identifier.module_name : network.hub_module.identifier.module_id != null ? network.hub_module.identifier.module_id : network.hub_module.identifier.serial_number != null ? network.hub_module.identifier.serial_number : network.hub_module.identifier.mac_address != null ? network.hub_module.identifier.mac_address : network.value.hub_module.identifier.host_name == null ? network.value.hub_module.identifier.host_name : network.value.hub_module.identifier.host_port_id != null ? network.value.hub_module.identifier.host_port_id : network.value.hub_module.identifier.host_sys_name != null ? network.value.hub_module.identifier.host_sys_name : network.value.hub_module.identifier.host_port_source_mac != null ? network.value.hub_module.identifier.host_port_source_mac : "") => network }
   config = {
     name                    = each.value.network_name
     constellation_frequency = each.value.constellation_frequency != null ? each.value.constellation_frequency : each.value.profile == null ? null : var.network_config_profiles[var.network_profiles[each.value.profile].network_config_profile].constellation_frequency

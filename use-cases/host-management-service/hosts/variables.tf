@@ -21,12 +21,12 @@ variable "host_profiles" {
 
 variable "system_profile" {
   type    = string
-  default = "../../ipm-data"
+  default = "host_profiles.json"
 }
 
 variable "user_profile" {
   type    = string
-  default = "host_profiles.json"
+  default = ""
 }
 
 

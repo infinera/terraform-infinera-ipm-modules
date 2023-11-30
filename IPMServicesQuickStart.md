@@ -9,6 +9,11 @@
    1. *\$ABC* is host directory which will be mapped to the volume *"/XYZ" (XYZ can be any valid name)* in the container.
    2. *\$imageName* is *"sv-artifactory.infinera.com/marvel/ipm/ipm-services:v0.0.1"*
    3. *\$workingDir* is the directory in the host directory *ABC* which will be created in the *\$workingDir* as needed. The container will start in this directory.
+   
+   Example:
+   ```
+   docker run -it -v "$(pwd)":/Work-Directory --add-host=pt-xrivk824-dv:10.46.76.81 sv-artifactory.infinera.com/marvel/ipm/ipm-services:v0.0.1 bash
+   ```
 2. Now in the container's bash shell under *\$WorkingDir* directory,the support IPM Service commands are available to provision IPM service resources as shown below:
 
 | Support Host Management Command         |  Description                                   | Man Page    |

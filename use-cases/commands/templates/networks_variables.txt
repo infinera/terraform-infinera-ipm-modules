@@ -44,6 +44,7 @@ variable "ipm_host" {
 
 variable "system_profile" {
   type = string
+  default = "network_profiles.json"
 }
 
 // Please see System Profile

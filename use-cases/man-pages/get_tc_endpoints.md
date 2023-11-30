@@ -8,13 +8,14 @@ NAME
 SYNOPSIS
 ========
 
-**get_tc_endpoints** TCId 
+**get_tc_endpoints.sh** TCId 
 
 
 DESCRIPTION
 ===========
 
 Get the Transport Capacity'a endpoints based on the specific *TCId*.
+The output result is saved in the *workingDirectory*.
 
 
 Arguments
@@ -30,7 +31,7 @@ EXAMPLES
 Get Transport Capacities(s)
 ------
 ```
-get_tc_endpoints TCId 
+get_tc_endpoints.sh TCId 
 ```
 ENVIRONMENT
 ===========
