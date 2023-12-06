@@ -1,6 +1,0 @@
-{
-  "profiles" : {
-      "system_module_profile1" : { "m_vlan_mode" : "disabled", "labels" : { "region" : "South"}, "debug_port_access" : "enabled" }, 
-      "system_module_profile2" :  { "m_vlan_mode" : "disabled", "labels" : { "region" : "North"}, "debug_port_access" : "enabled" }
-  }
-}
