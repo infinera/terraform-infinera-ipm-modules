@@ -2,7 +2,7 @@
 The user can create one or more constellation networks by specify the desired intent for the networks and their leaf modules.
 
 # Prerequisite
-1. The "infinera.com/poc/ipm" provider
+1. The "infinera/ipm" provider
     a. Build it. Please down load and build the provider https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse
     b. Available in accessible repository. 
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
@@ -29,7 +29,7 @@ networks = [{name= "XR Network1",
 terraform {
   required_providers {
     ipm = {
-      source = "infinera.com/poc/ipm"
+      source = "infinera/ipm"
     }
   }
 }
@@ -539,7 +539,7 @@ networks = [{name= "XR Network1",
 terraform {
   required_providers {
     ipm = {
-      source = "infinera.com/poc/ipm"
+      source = "infinera/ipm"
     }
   }
 }

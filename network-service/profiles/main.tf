@@ -1,11 +1,4 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-  }
 
-}
 module "system_profile" {
   source = "../../common/get_profiles"
 

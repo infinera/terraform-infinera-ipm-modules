@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     ipm = {
-      source = "infinera.com/poc/ipm"
+      source = "infinera/ipm"
     }
   }
 }

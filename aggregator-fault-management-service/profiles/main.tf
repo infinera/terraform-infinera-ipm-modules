@@ -1,11 +1,4 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-  }
 
-}
 locals {
   system_profiles = fileexists("${var.system_profile}") ? jsondecode(file("${var.system_profile}")) : { agregator_fault_profiles : {} }
 

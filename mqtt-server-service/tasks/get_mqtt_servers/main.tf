@@ -1,11 +1,4 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-  }
-  
-}
+
 
 locals {
    servers = { for server in var.mqtt_servers : server.identifier.module_name != null ? server.identifier.module_name : server.identifier.module_id != null ? server.identifier.module_id : server.identifier.module_serial_number != null ? server.identifier.module_serial_number : server.identifier.module_mac_address != null ? server.identifier.module_mac_address : "" => server }

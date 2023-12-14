@@ -1,10 +1,3 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-  }
-}
 
 
 locals {

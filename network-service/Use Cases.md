@@ -185,7 +185,7 @@ The *network_profile2* profile specifies the configuration profiles for the netw
 terraform {
   required_providers {
     ipm = {
-      source = "infinera.com/poc/ipm"
+      source = "infinera/ipm"
     }
   }
 }

@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-
-  }
-}
-
-provider "ipm" {
-  username = "xr-user-1"
-  password = "infinera"
-  host     = "ipm-eval2.westus3.cloudapp.azure.com"
-}
 
 data "ipm_hosts" "hosts" {
 }

@@ -1,10 +1,4 @@
-terraform {
-  required_providers {
-    ipm = {
-      source = "infinera.com/poc/ipm"
-    }
-  }
-}
+
 
 resource "null_resource" "resource_internal" {
   provisioner "local-exec" {
