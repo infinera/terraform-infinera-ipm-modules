@@ -3,7 +3,7 @@ data "ipm_network_connections" "ncs" {
 }
 
 locals {
-  found_nc =[ for nc in local.ncs : nc if nc.state.name == var.name]
+  found_nc =[ for nc in  data.ipm_network_connections.ncs.ncs : nc if nc.state.name == var.name]
 }
 
 output "found_nc" {

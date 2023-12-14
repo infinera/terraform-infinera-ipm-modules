@@ -1,4 +1,5 @@
-
+data "ipm_networks" "networks" {
+}
 
 locals {
   networks = flatten([for network in data.ipm_networks.networks.networks : [ for leaf in network.leaf_modules : { 

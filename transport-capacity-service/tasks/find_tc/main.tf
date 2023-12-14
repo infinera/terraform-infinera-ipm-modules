@@ -3,7 +3,6 @@
 data "ipm_transport_capacities" "tcs" {
 }
 
-
 locals {
   tcs = [for tc in data.ipm_transport_capacities.tcs.transport_capacities : {
       id = tc.id

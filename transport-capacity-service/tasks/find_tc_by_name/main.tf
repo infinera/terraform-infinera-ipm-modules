@@ -3,7 +3,7 @@ data "ipm_transport_capacities" "tcs" {
 }
 
 locals {
-  found-tc =[ for tc in local.tcs : tc if tc.state.name == var.name]
+  found-tc =[ for tc in ata.ipm_transport_capacities.tcs.transport_capacities : tc if tc.state.name == var.name]
 }
 
 output "found-tc" {

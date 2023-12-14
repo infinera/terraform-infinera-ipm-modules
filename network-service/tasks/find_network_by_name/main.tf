@@ -4,7 +4,7 @@ data "ipm_networks" "networks" {
 
 
 locals {
-  found_network = [ for network in local.networks : network if network.state.name == var.name ]
+  found_network = [ for network in data.ipm_networks.networks.networks : network if network.state.name == var.name ]
 }
 
 output "found_network" {
