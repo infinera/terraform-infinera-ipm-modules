@@ -1,4 +1,12 @@
 
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera/ipm"
+      version = "~>0.4.0"
+    }
+  }
+}
 
 // Constellation Network Resource supports CRUD functions
 resource "ipm_network_connection" "network_connections" {

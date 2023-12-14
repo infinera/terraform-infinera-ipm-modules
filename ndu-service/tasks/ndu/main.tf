@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera/ipm"
+      version = "~>0.4.0"
+    }
+  }
+}
 
 locals {
   ndus = { for ndu in var.ndus : ndu.identifier.ndu_name != null ? ndu.identifier.ndu_name : ndu.identifier.ndu_id != null ? ndu.identifier.ndu_id : ndu.identifier.ndu_serial_number != null ? ndu.identifier.ndu_serial_number : ndu.identifier.ndu_mac_address != null ? ndu.identifier.ndu_mac_address : "" => ndu }

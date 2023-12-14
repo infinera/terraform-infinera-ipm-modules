@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera/ipm"
+      version = "~>0.4.0"
+    }
+  }
+}
 
 module "profiles" {
   source = "../../../common/profiles"

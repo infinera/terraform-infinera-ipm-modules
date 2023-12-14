@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    ipm = {
+      source = "infinera/ipm"
+      version = "~>0.4.0"
+    }
+  }
+}
 
 // Constellation Network's leaf module supports CRUD functions
 resource "ipm_leaf_module" "leaf_modules" {
