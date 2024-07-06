@@ -1,7 +1,7 @@
 # Device Aggregator Management 
 
 # Prerequisite
-1. The "infinera/ipm" provider
+1. The "infinera/ipm/config" provider
     a. Build it. Please down load and build the provider https://bitbucket.infinera.com/projects/MAR/repos/terraform-provider-ipm/browse
     b. Available in accessible repository. 
 2. Terraform (Install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)

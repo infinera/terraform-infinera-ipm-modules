@@ -2,7 +2,7 @@
 terraform {
   required_providers {
     ipm = {
-      source = "infinera/ipm"
+      source = "infinera/ipm/config"
       version = "~> 0.4.0"
     }
   }
